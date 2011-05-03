@@ -1,0 +1,17 @@
+html, body, #maintable {
+	height:100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: #dfded7;
+}
+#maintable {
+	margin: 0 auto;
+	padding: 0px 0px 30px 30px;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+#confirmBox {
+	background-color:#cccbc4;
+}
