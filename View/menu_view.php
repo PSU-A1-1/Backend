@@ -109,7 +109,6 @@ $().ready(function() {
 	}	
 });
 </script>
-hat
 <a id="menuFixed" href="#">Tilføj standart</a><br>
 <a id="menuSpecial" href="#">Tilføj antal</a>
 <div id="confirmBox">
