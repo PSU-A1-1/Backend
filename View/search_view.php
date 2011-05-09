@@ -44,8 +44,8 @@ $().ready(function() {
 	});
 	$("#searchName").keypress(function(event){
 		  if(event.keyCode == 13){
-			$('#searchAdd').blur();
 		    $("#searchAdd").click();
+		    return false;
 		  }
 	});
 });
