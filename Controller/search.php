@@ -8,7 +8,7 @@ function gridRow ($data) {
 	echo "<td>".$data['drinks']."</td>";
 	if($_SESSION['Admin']) 
 		echo "<td>".$data['active']."</td>";
-	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\" checked></td>";
+	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\"></td>";
 	echo "</tr>";
 }
 
@@ -20,8 +20,7 @@ if(isset($_GET["q"])) {
 	$users = $UserModel->searchVolunteers($q);
 	foreach ($users as $user) {
 		echo $user['ST-ID'].", ".utf8_encode($user['name'])."\n";
-	}
-	
+	}	
 } // Når der trykkes på tilføj knappen sendes  $_GET["id"]
 elseif (isset($_GET["id"])) {
 	include_once "../Model/user_model.php";
@@ -36,6 +35,13 @@ elseif (isset($_GET["ids"])) {
 	$ids = substr($_GET["ids"], 3);
 	foreach (explode(", ", $ids) as $id) {
 		$user = $UserModel->searchVolunteer($id);
+		gridRow($user);
+	}
+} elseif (isset($_GET["showall"]) && $_GET["showall"] == 1) {
+	include_once "../Model/user_model.php";
+	$UserModel = new User();
+	$users = $UserModel->searchVolunteers("");
+	foreach ($users as $user) {
 		gridRow($user);
 	}
 }

@@ -13,13 +13,16 @@ class User {
 		return $volunteer;
 	}
 	function searchVolunteers($text) {
-		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name FROM volunteer WHERE CONCAT(first_name, surname) LIKE '%$text%'";
+		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active FROM volunteer WHERE CONCAT(first_name, surname) LIKE '%$text%'";
 		$volunteer_query = mysql_query($query);
 		$volunteers = array();
 		$i = 0;
 		while($volunteer = mysql_fetch_assoc($volunteer_query)) {
 			$volunteers[$i]['ST-ID'] = $volunteer['ST-ID'];
 			$volunteers[$i]['name'] = $volunteer['name'];
+			$volunteers[$i]['beers'] = $volunteer['beers'];
+			$volunteers[$i]['drinks'] = $volunteer['drinks'];
+			$volunteers[$i]['active'] = $volunteer['active'];
 			$i++;
 		}
 		mysql_close();

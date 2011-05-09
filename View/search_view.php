@@ -42,6 +42,19 @@ $().ready(function() {
 		$('#searchName').val("");
 		$('#searchName').focus();
 	});
+
+	$("#showAll").click(function() {
+			$.ajax({
+				  type: "GET",
+				  cache: false,
+				  url: 'Controller/search.php',
+				  data: "showall=1",
+				  success: function(data, textStatus) {
+					  $('#grid tr:last').after(data);  
+				  }
+			});	
+	});
+	
 	$("#searchName").keypress(function(event){
 		  if(event.keyCode == 13){
 		    $("#searchAdd").click();
@@ -55,5 +68,5 @@ $().ready(function() {
 <form action="" method="post" >
 Søg<br> 
 <input type="text" name="name" id="searchName" /> <input type='hidden' id='searchID' />
-<input type="button" value="Tilføj" id="searchAdd"> 
+<input type="button" value="Tilføj" id="searchAdd"> <input type="button" value="Vis alle" id="showAll">
 </form> 
