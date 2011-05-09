@@ -26,14 +26,15 @@ elseif (isset($_GET["id"])) {
 	include_once "../Model/user_model.php";
 	$UserModel = new User();
 	$id = $_GET["id"];
+	$_SESSION['idsAdded'][] = $id;
 	$user = $UserModel->searchVolunteer($id);
 	gridRow($user);
 } // Når der opdateresi gridden
 elseif (isset($_GET["ids"])) {
 	include_once "../Model/user_model.php";
 	$UserModel = new User();
-	$ids = substr($_GET["ids"], 3);
-	foreach (explode(", ", $ids) as $id) {
+	//$ids = substr($_GET["ids"], 3);
+	foreach ($_SESSION['idsAdded'] as $id) {
 		$user = $UserModel->searchVolunteer($id);
 		gridRow($user);
 	}

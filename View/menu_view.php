@@ -50,7 +50,7 @@ $().ready(function() {
 			dataType: "text",
 			success: function (data) {
 				alert('Øl og drinks point tilføjet');
-				updateGrid ();
+				updateGrid (ids.join(', '));
 			  },
 			error: function(request,error){
 			    alert('Fejl i tildeling af point');
@@ -76,7 +76,7 @@ $().ready(function() {
 			dataType: "text",
 			success: function (data) {
 				alert(' Øl og drinks point tilføjet');
-				updateGrid ();
+				updateGrid (ids.join(', '));
 			  },
 			error: function(request,error){
 			    alert('Fejl i tildeling af point');
@@ -93,13 +93,13 @@ $().ready(function() {
 		$('#addFixedBox').hide();
 	});	
 
-	function updateGrid () {
+	function updateGrid (ids) {
 		$('#grid tr:gt(0)').remove();
 		$.ajax({
 			type: "GET",
 			cache: false,
 			url: 'Controller/search.php',
-			data: "ids=" + $("#gridAdded").val() ,
+			data: "ids=" + ids ,
 			success: function(data, textStatus) {
 				$('#grid tr:last').after(data);
 			}
