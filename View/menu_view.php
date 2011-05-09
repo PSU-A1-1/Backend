@@ -18,7 +18,9 @@ $("#statistics").click(function() {
 	alert('clicked');
 });
 });
-	
+
+
+lalal
 </script>
 
 <a id="newVolunteer" href="#">Tilf?j frivillig</a><br>
