@@ -31,7 +31,7 @@ if (isset($_GET['admin']))
 		<a href="?admin=0">Afvikler</a><br>
 		<?php $MainController->search(); ?>
 	</td>
-	<td valign="top"><?php $MainController->grid(); ?>
+	<td valign="top"><?php $MainController->view(); ?>
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"></div>

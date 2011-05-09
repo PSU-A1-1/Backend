@@ -37,5 +37,21 @@ class User {
 		else
 			return mysql_error();
 	}
+	
+	function addVolunteer($name) {
+		
+		if ($result)
+			return $id;
+		else
+			return mysql_error();
+	}
+	
+function updateID($id) {
+		
+		if ($result)
+			return $id;
+		else
+			return mysql_error();
+	}
 }
 ?>

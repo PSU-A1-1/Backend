@@ -6,10 +6,6 @@ if($_SESSION['Admin']) { ?>
 
 $().ready(function() {
 
-$("#newVolunteer").click(function() {	
-		alert('clicked');
-	});
-
 $("#editVolunteer").click(function() {	
 	alert('clicked');
 });
@@ -25,7 +21,7 @@ $("#statistics").click(function() {
 
 </script>
 
-<a id="newVolunteer" href="#">Tilf"j frivillig</a><br>
+<a id="newVolunteer" href="?view=newVolunteer">Tilføj frivillig</a><br>
 <a id="editVolunteer" href="#">Rediger frivillig</a><br>
 <a id="activateVolunteer" href="#">Aktiver / Deaktiver</a><br>
 <a id="statistics" href="#">Statistik</a><br>

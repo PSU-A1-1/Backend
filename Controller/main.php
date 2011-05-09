@@ -9,9 +9,20 @@ class MainController {
 	function menu() {
 		include "View/menu_view.php";
 	}
-	function grid() {
-		include "View/grid_view.php";
+	function view() {
+		if (isset($_GET['view'])) {
+			switch ($_GET['view']) {
+				case "newVolunteer" : include "View/new_volunteer_view.php"; 
+				break;
+				default : include "View/grid_view.php";	
+			}
+		} else {
+			include "View/grid_view.php";
+			
+		}
+		
 	}
+
 	function setAdmin($val) {
 		$_SESSION['Admin'] = $val;
 	}
