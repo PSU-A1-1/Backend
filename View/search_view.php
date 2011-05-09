@@ -14,6 +14,7 @@ $().ready(function() {
 		width: 260,
 		multiple: false,
 		selectFirst: false,
+		delay: 100,
 		formatItem:function(item){
 	        return item[0].split(',')[1];
 	    },
@@ -22,6 +23,7 @@ $().ready(function() {
 		}
 	}).result(function(event,item){
         $("#searchID").val(item[0].split(',')[0]);
+        $('#searchAdd').focus();
     });
     
 	$("#searchAdd").click(function() {
@@ -39,6 +41,12 @@ $().ready(function() {
 		}	
 		$('#searchName').val("");
 		$('#searchName').focus();
+	});
+	$("#searchName").keypress(function(event){
+		  if(event.keyCode == 13){
+		    $("#searchAdd").click();
+		    return false;
+		  }
 	});
 });
 
