@@ -5,25 +5,27 @@ if($_SESSION['Admin']) { ?>
 <script type="text/javascript">
 
 $().ready(function() {
+
 $("#newVolunteer").click(function() {	
 		alert('clicked');
 	});
+
 $("#editVolunteer").click(function() {	
 	alert('clicked');
 });
+
 $("#activateVolunteer").click(function() {	
 	alert('clicked');
 });
+
 $("#statistics").click(function() {	
 	alert('clicked');
 });
 });
 
-
-lalal
 </script>
 
-<a id="newVolunteer" href="#">Tilf?j frivillig</a><br>
+<a id="newVolunteer" href="#">Tilf"j frivillig</a><br>
 <a id="editVolunteer" href="#">Rediger frivillig</a><br>
 <a id="activateVolunteer" href="#">Aktiver / Deaktiver</a><br>
 <a id="statistics" href="#">Statistik</a><br>
