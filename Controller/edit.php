@@ -10,9 +10,11 @@ if(isset($_POST['m'])) {
 		}
 		break;
 	case 'addSpecial':
+		foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 		foreach(explode("|", $_POST['ids']) as $id) {
 			echo $UserModel->addPoints($id, $_POST['beers'], $_POST['drinks'])."<br>";
-			$_SESSION['idsAdded'][] = $id;
+			if(!in_array($id, $_SESSION['idsAdded']))
+				$_SESSION['idsAdded'][] = $id;
 		}
 		break;
 	}
