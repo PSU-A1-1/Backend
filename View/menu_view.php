@@ -1,10 +1,20 @@
 <?php 
 global $std_beers, $std_drinks;
 if($_SESSION['Admin']) { ?>
-Ny frivillig<br>
-Rediger frivillig<br>
-Aktiver/deaktiver frivillig<br>
-Statistik
+
+<script type="text/javascript">
+
+$().ready(function() {
+$("#newVolunteer").click(function() {	
+		alert('clicked');
+	});
+});
+	
+</script>
+<a id="newVolunteer" href="#">Tilføj frivillig</a><br>
+
+
+
 <?php  } else { ?>
 <script type="text/javascript">
 function positiveNumeric (value) {
@@ -71,6 +81,8 @@ $().ready(function() {
 		$('#addFixedBox').hide();
 	});	
 
+		
+
 	function updateGrid () {
 		$('#grid tr:gt(0)').remove();
 		$.ajax({
@@ -85,8 +97,12 @@ $().ready(function() {
 	}	
 });
 </script>
+
 <a id="menuFixed" href="#">Tilføj standart</a><br>
 <a id="menuSpecial" href="#">Tilføj antal</a>
+
+
+
 <div id="confirmBox">
 	<div id="addFixedBox">
 	Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til valgte brugere?<br>
