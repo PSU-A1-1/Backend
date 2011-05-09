@@ -8,12 +8,23 @@ $().ready(function() {
 $("#newVolunteer").click(function() {	
 		alert('clicked');
 	});
+$("#editVolunteer").click(function() {	
+	alert('clicked');
+});
+$("#activateVolunteer").click(function() {	
+	alert('clicked');
+});
+$("#statistics").click(function() {	
+	alert('clicked');
+});
 });
 	
 </script>
+
 <a id="newVolunteer" href="#">Tilføj frivillig</a><br>
-
-
+<a id="editVolunteer" href="#">Rediger frivillig</a><br>
+<a id="activateVolunteer" href="#">Aktiver / Deaktiver</a><br>
+<a id="statistics" href="#">Statistik</a><br>
 
 <?php  } else { ?>
 <script type="text/javascript">
