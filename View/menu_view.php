@@ -1,4 +1,4 @@
-<?php 
+<?php
 global $std_beers, $std_drinks;
 if($_SESSION['Admin']) { ?>
 
@@ -6,12 +6,24 @@ if($_SESSION['Admin']) { ?>
 
 $().ready(function() {
 
-$("#editVolunteer").click(function() {	
-	alert('clicked');
-});
+	$("#editVolunteer").click(function() {	
+		var ids = new Array();
+		$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
 
+		if (ids.length == 0) {	
+		    alert("Ingen brugere valgt");
+		} else {
+		}
+		});
+	
 $("#activateVolunteer").click(function() {	
-	alert('clicked');
+	var ids = new Array();
+	$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
+
+	if (ids.length == 0) {	
+	    alert("Ingen brugere valgt");
+	} else {
+	}
 });
 
 $("#statistics").click(function() {	
@@ -21,10 +33,14 @@ $("#statistics").click(function() {
 
 </script>
 
-<a id="newVolunteer" href="?view=newVolunteer">Tilføj frivillig</a><br>
-<a id="editVolunteer" href="#">Rediger frivillig</a><br>
-<a id="activateVolunteer" href="#">Aktiver / Deaktiver</a><br>
-<a id="statistics" href="#">Statistik</a><br>
+<a id="newVolunteer" href="?view=newVolunteer">Tilføj frivillig</a>
+<br>
+<a id="editVolunteer" href="#">Rediger frivillig</a>
+<br>
+<a id="activateVolunteer" href="#">Aktiver / Deaktiver</a>
+<br>
+<a id="statistics" href="#">Statistik</a>
+<br>
 
 <?php  } else { ?>
 
@@ -107,17 +123,24 @@ $().ready(function() {
 	}	
 });
 </script>
-<a id="menuFixed" href="#">Tilføj standart</a><br>
+<a id="menuFixed" href="#">Tilføj standart</a>
+<br>
 <a id="menuSpecial" href="#">Tilføj antal</a>
 <div id="confirmBox">
 	<div id="addFixedBox">
-	Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til valgte brugere?<br>
-	<input type="button" value="OK" id="addFixedButton" />
+		Tilføj
+		<?php echo $std_beers; ?>
+		øl og
+		<?php echo $std_drinks; ?>
+		drinks til valgte brugere?<br> <input type="button" value="OK"
+			id="addFixedButton" />
 	</div>
-	
+
 	<div id="addSpecialBox">
-	Tilføj <input type="text" value="0" id="numBeers" size="1" maxlength="2" /> øl og <input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> drinks til valgte brugere?<br>
-	<input type="button" value="OK" id="addSpecialButton" />
+		Tilføj <input type="text" value="0" id="numBeers" size="1"
+			maxlength="2" /> øl og <input type="text" value="0" id="numDrinks"
+			size="1" maxlength="2" /> drinks til valgte brugere?<br> <input
+			type="button" value="OK" id="addSpecialButton" />
 	</div>
 </div>
 <br>

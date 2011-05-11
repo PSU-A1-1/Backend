@@ -14,6 +14,8 @@ class MainController {
 			switch ($_GET['view']) {
 				case "newVolunteer" : include "View/new_volunteer_view.php"; 
 				break;
+				case "editVolunteer" : include "View/edit_volunteer_view.php"; 
+				break;
 				default : include "View/grid_view.php";	
 			}
 		} else {
