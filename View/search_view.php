@@ -34,6 +34,9 @@ $().ready(function() {
 				  url: 'Controller/search.php',
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
+					  if ($('#gridAdded').val() == 0) {
+						  $('#grid tr:gt(0)').remove();
+					  }
 					  $('#grid tr:last').after(data);
 					  $('#gridAdded').val($('#gridAdded').val() + ', ' + $("#searchID").val());
 				  }

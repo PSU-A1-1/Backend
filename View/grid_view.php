@@ -3,8 +3,8 @@
   <tr>
     <th width="40%">Navn</th>
     <th width="20%">ID</th>
-    <th width="10%">Øl</th>
-    <th width="10%">Drinks</th>
+    <th width="100">Øl</th>
+    <th width="100">Drinks</th>
     <?php if($_SESSION['Admin']) { ?>
     <th width="10%">Aktiv</th>
     <?php } ?>
@@ -13,4 +13,7 @@
 </table>
 
  <br><br>
-ids added: <?php foreach($_SESSION['idsAdded'] as $id) { echo $id+" "; } ?>
+ids added: <?php foreach($_SESSION['idsAdded'] as $id) { echo $id+" "; } ?><br>
+
+<br>
+<?php var_dump($_SESSION['idsChanged']); ?>

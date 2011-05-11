@@ -1,11 +1,29 @@
 <?php session_start();
 header('Content-type: text/html; charset=utf-8');
 
+function idChangeView ($id) {
+	$out[0] = "";
+	$out[1] = "";
+	if (isset($_SESSION['idsChanged'][$id])) {
+		$t = explode(", ", $_SESSION['idsChanged'][$id]);
+		if ($t[0] > 0)
+			$out[0] = " (+ $t[0])";
+		elseif ($t[0] < 0)
+			$out[0] = " (- $t[0])";
+			
+		if ($t[1] > 0)
+			$out[1] = " (+ $t[1])";
+		elseif ($t[1] < 0)
+			$out[1] = " (- $t[1])";
+	}
+	return $out;
+}
 function gridRow ($data) {
+	$pointChange = idChangeView($data['ST-ID']);
 	echo "<tr><td>".utf8_encode($data['name'])."</td>";
 	echo "<td>".$data['ST-ID']."</td>";
-	echo "<td>".$data['beers']."</td>";
-	echo "<td>".$data['drinks']."</td>";
+	echo "<td>".$data['beers'].$pointChange[0]."</td>";
+	echo "<td>".$data['drinks'].$pointChange[1]."</td>";
 	if($_SESSION['Admin']) 
 		echo "<td>".$data['active']."</td>";
 	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\"></td>";
