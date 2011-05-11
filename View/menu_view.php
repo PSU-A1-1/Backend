@@ -132,15 +132,13 @@ $().ready(function() {
 		<?php echo $std_beers; ?>
 		øl og
 		<?php echo $std_drinks; ?>
-		drinks til valgte brugere?<br> <input type="button" value="OK"
-			id="addFixedButton" />
+		drinks til valgte brugere?<br> <input type="button" value="OK" id="addFixedButton" />
 	</div>
 
-	<div id="addSpecialBox">
-		Tilføj <input type="text" value="0" id="numBeers" size="1"
-			maxlength="2" /> øl og <input type="text" value="0" id="numDrinks"
-			size="1" maxlength="2" /> drinks til valgte brugere?<br> <input
-			type="button" value="OK" id="addSpecialButton" />
+	<div id="addSpecialBox"> Tilføj 
+			<input type="text" value="0" id="numBeers" size="1" maxlength="2" /> øl og 	
+			<input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> drinks til valgte brugere?<br> 
+			<input type="button" value="OK" id="addSpecialButton" />
 	</div>
 </div>
 <br>

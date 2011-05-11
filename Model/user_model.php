@@ -39,7 +39,9 @@ class User {
 	}
 	
 	function addVolunteer($name) {
-		
+		$query = "INSERT INTO `volunteer` ( `ST-ID` , `first_name` , `surname` , `beers` , `drinks` , `active` , `start_date` )
+				VALUES ('400', 'test_f', 'test_s', '0', '0', '1', CURDATE( )";
+		$result = mysql_query($query);
 		if ($result)
 			return $id;
 		else
