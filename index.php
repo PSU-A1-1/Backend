@@ -10,8 +10,9 @@ if (!isset($_SESSION['idsAdded']))
 
 if (!isset($_SESSION['idsChanged']))
 	$_SESSION['idsChanged'] = array();
-		
-
+	
+$std_beers = 6;
+$std_drinks = 4;
 //Globale variabler ? 
 //  skal nok hentes fra en tabel i databasen.
 

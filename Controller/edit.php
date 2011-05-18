@@ -14,7 +14,9 @@ if(isset($_POST['m'])) {
 	case 'addFixed':
 		foreach(explode("|", $_POST['ids']) as $id) {
 			echo $UserModel->addPoints($id, $UserModel->std_beers, $UserModel->std_drinks)."<br>";
-			$_SESSION['idsAdded'][] = $id;
+			if (!in_array($id, $_SESSION['idsAdded'])) {
+				$_SESSION['idsAdded'][] = $id;
+			}	
 			idChange($id, $UserModel->std_beers, $UserModel->std_drinks);
 		}
 		break;
@@ -26,6 +28,14 @@ if(isset($_POST['m'])) {
 				$_SESSION['idsAdded'][] = $id;
 			idChange($id, $_POST['beers'], $_POST['drinks']);
 		}
+		break;
+	case 'addGuest':
+		foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
+		$id = $_POST['id'];
+		echo $UserModel->addPoints($id, $_POST['beers'], $_POST['drinks'])."<br>";
+		if(!in_array($id, $_SESSION['idsAdded']))
+				$_SESSION['idsAdded'][] = $id;
+		idChange($id, $_POST['beers'], $_POST['drinks']);
 		break;
 	}
 }

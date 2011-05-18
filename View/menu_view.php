@@ -52,6 +52,7 @@ function positiveNumeric (value) {
 $().ready(function() {
 	$('#addFixedBox').hide();
 	$('#addSpecialBox').hide();
+	$('#addGuestBox').hide();
 	$("#addFixedButton").click(function() {
 		var ids = new Array();
 		$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
@@ -100,14 +101,46 @@ $().ready(function() {
 			});
 		}
 	});	
+	$("#addGuestButton").click(function() {
+		var id = $('#guestId').val();
+		var beers = parseInt($('#numGuestBeers').val());
+		var drinks = parseInt($('#numGuestDrinks').val());
+		
+		if (id == "" || !positiveNumeric(id)) {
+		    alert("Ingen brugere valgt");
+		} else if (!(positiveNumeric(beers) && positiveNumeric(drinks))) {
+			alert("Kun positive antal øl/drinks point kan tilføjes");
+		} else {
+		    $.ajax({
+			type: "POST",
+			url: "Controller/edit.php",
+			data: "m=addGuest&id=" + id + "&beers=" + beers + "&drinks=" + drinks,
+			dataType: "text",
+			success: function (data) {
+				alert(' Øl og drinks point tilføjet');
+				updateGrid (id);
+			  },
+			error: function(request,error){
+			    alert('Fejl i tildeling af point');
+			  }
+			});
+		}
+	});	
 	$("#menuFixed").click(function() {	
 		$('#addFixedBox').toggle();
 		$('#addSpecialBox').hide();	
+		$('#addGuestBox').hide();	
 	});	
 	$("#menuSpecial").click(function() {	
 		$('#addSpecialBox').toggle();
 		$('#addFixedBox').hide();
+		$('#addGuestBox').hide();
 	});	
+	$("#menuGuest").click(function() {	
+		$('#addGuestBox').toggle();
+		$('#addFixedBox').hide();
+		$('#addSpecialBox').hide();
+	});
 
 	function updateGrid (ids) {
 		$('#grid tr:gt(0)').remove();
@@ -126,6 +159,8 @@ $().ready(function() {
 <a id="menuFixed" href="#">Tilføj standart</a>
 <br>
 <a id="menuSpecial" href="#">Tilføj antal</a>
+<br>
+<a id="menuGuest" href="#">Tilføj til gæst / id</a>
 <div id="confirmBox">
 	<div id="addFixedBox">
 		Tilføj
@@ -139,6 +174,13 @@ $().ready(function() {
 			<input type="text" value="0" id="numBeers" size="1" maxlength="2" /> øl og 	
 			<input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> drinks til valgte brugere?<br> 
 			<input type="button" value="OK" id="addSpecialButton" />
+	</div>
+	
+	<div id="addGuestBox"> Tilføj 
+			<input type="text" value="<?php echo $std_beers; ?>" id="numGuestBeers" size="1" maxlength="2" /> øl og 	
+			<input type="text" value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1" maxlength="2" /> drinks til id: 
+			<input type="text" value="" id="guestId" size="10" maxlength="16" />?<br> 
+			<input type="button" value="OK" id="addGuestButton" />
 	</div>
 </div>
 <br>

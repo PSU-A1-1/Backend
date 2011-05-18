@@ -34,8 +34,9 @@ $().ready(function() {
 				  url: 'Controller/search.php',
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
-					  if ($('#gridAdded').val() == 0) {
+					  if ($('#showAllSet').val() == 1) {
 						  $('#grid tr:gt(0)').remove();
+						  $('#showAllSet').val(0);
 					  }
 					  $('#grid tr:last').after(data);
 					  $('#gridAdded').val($('#gridAdded').val() + ', ' + $("#searchID").val());
@@ -47,6 +48,7 @@ $().ready(function() {
 	});
 
 	$("#showAll").click(function() {
+		$('#grid tr:gt(0)').remove();
 			$.ajax({
 				  type: "GET",
 				  cache: false,
@@ -56,6 +58,7 @@ $().ready(function() {
 					  $('#grid tr:last').after(data);  
 				  }
 			});	
+		$('#showAllSet').val(1);
 	});
 	
 	$("#searchName").keypress(function(event){
@@ -71,6 +74,6 @@ $().ready(function() {
 
 <form action="" method="post" >
 Søg<br> 
-<input type="text" name="name" id="searchName" /> <input type='hidden' id='searchID' />
+<input type="text" name="name" id="searchName" /> <input type='hidden' id='searchID' /> <input type='hidden' id='showAllSet' />
 <input type="button" value="Tilføj" id="searchAdd"> <input type="button" value="Vis alle" id="showAll">
 </form> 

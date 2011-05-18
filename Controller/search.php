@@ -44,7 +44,9 @@ elseif (isset($_GET["id"])) {
 	include_once "../Model/user_model.php";
 	$UserModel = new User();
 	$id = $_GET["id"];
-	$_SESSION['idsAdded'][] = $id;
+	if (!in_array($id, $_SESSION['idsAdded'])) {
+		$_SESSION['idsAdded'][] = $id;
+	}
 	$user = $UserModel->searchVolunteer($id);
 	gridRow($user);
 } // Når der opdateresi gridden
@@ -59,6 +61,7 @@ elseif (isset($_GET["ids"])) {
 } elseif (isset($_GET["showall"]) && $_GET["showall"] == 1) {
 	include_once "../Model/user_model.php";
 	$UserModel = new User();
+	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 	$users = $UserModel->searchVolunteers("");
 	foreach ($users as $user) {
 		gridRow($user);
