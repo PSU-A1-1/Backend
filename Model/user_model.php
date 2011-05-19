@@ -77,8 +77,6 @@ class User {
 		} else {
 			return mysql_error();
 		}
-	
-		
 	}
 	
 	function updateID($id) {

@@ -17,6 +17,7 @@ class MainController {
 				case "editVolunteer" : include "View/edit_volunteer_view.php"; 
 				break;
 				default : include "View/grid_view.php";	
+				break;
 			}
 		} else {
 			include "View/grid_view.php";

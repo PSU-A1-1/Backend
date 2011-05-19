@@ -20,6 +20,7 @@ function idChangeView ($id) {
 }
 function gridRow ($data) {
 	$pointChange = idChangeView($data['ST-ID']);
+	//$statusChange
 	echo "<tr><td>".utf8_encode($data['name'])."</td>";
 	echo "<td>".$data['ST-ID']."</td>";
 	echo "<td>".$data['beers'].$pointChange[0]."</td>";
