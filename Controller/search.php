@@ -46,9 +46,9 @@ elseif (isset($_GET["id"])) {
 	$id = $_GET["id"];
 	if (!in_array($id, $_SESSION['idsAdded'])) {
 		$_SESSION['idsAdded'][] = $id;
+		$user = $UserModel->searchVolunteer($id);
+		gridRow($user);
 	}
-	$user = $UserModel->searchVolunteer($id);
-	gridRow($user);
 } // Når der opdateresi gridden
 elseif (isset($_GET["ids"])) {
 	include_once "../Model/user_model.php";

@@ -32,8 +32,11 @@ class User {
 		$query = "UPDATE volunteer SET beers = beers + $beers,
 				  drinks = drinks + $drinks WHERE `ST-ID` = $id";
 		$result = mysql_query($query);
-		if ($result)
-			return $id[0];
+		
+		if (mysql_affected_rows() == 0)
+			return "Ikke fundet";
+		elseif ($result)
+			return true;
 		else
 			return mysql_error();
 	}

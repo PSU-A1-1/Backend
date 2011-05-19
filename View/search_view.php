@@ -1,6 +1,6 @@
 <script type="text/javascript">
 //søger efter id i streng af kommaseparerede id'er
-function IDAdded( id, addedIDs )
+function IDAdded(id, addedIDs)
 {
 	if (addedIDs.search(id+', ') != -1)
 		return true
@@ -9,7 +9,6 @@ function IDAdded( id, addedIDs )
 }
 
 $().ready(function() {
-	$('#gridAdded').val("0");
 	$("#searchName").autocomplete("Controller/search.php", {
 		width: 260,
 		multiple: false,
@@ -27,7 +26,6 @@ $().ready(function() {
     });
     
 	$("#searchAdd").click(function() {
-		if (!IDAdded($("#searchID").val(), $('#gridAdded').val())) {
 			$.ajax({
 				  type: "GET",
 				  cache: false,
@@ -39,10 +37,8 @@ $().ready(function() {
 						  $('#showAllSet').val(0);
 					  }
 					  $('#grid tr:last').after(data);
-					  $('#gridAdded').val($('#gridAdded').val() + ', ' + $("#searchID").val());
 				  }
-			});
-		}	
+			});	
 		$('#searchName').val("");
 		$('#searchName').focus();
 	});
