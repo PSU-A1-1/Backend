@@ -13,7 +13,7 @@ class User {
 		return $volunteer;
 	}
 	function searchVolunteers($text) {
-		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active FROM volunteer WHERE CONCAT(first_name, surname) LIKE '%$text%'";
+		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%'";
 		$volunteer_query = mysql_query($query);
 		$volunteers = array();
 		$i = 0;
@@ -33,19 +33,24 @@ class User {
 				  drinks = drinks + $drinks WHERE `ST-ID` = $id";
 		$result = mysql_query($query);
 		if ($result)
-			return $id;
+			return $id[0];
 		else
 			return mysql_error();
 	}
 	
-	function addVolunteer($name) {
-		$query = "INSERT INTO `volunteer` ( `ST-ID` , `first_name` , `surname` , `beers` , `drinks` , `active` , `start_date` )
-				VALUES ('400', 'test_f', 'test_s', '0', '0', '1', CURDATE( )";
+	// Transaction with rollback?
+	function addVolunteer($name, $s_name, $active) {
+		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`) FROM volunteer), 0)"), 0);
+		$query = "INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
+				VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
 		$result = mysql_query($query);
-		if ($result)
-			return $id;
-		else
+		if ($result) {
+			return "Ny frivillig: ".$name." ".$s_name." with id: ".$id;
+		}
+		else {
 			return mysql_error();
+		}
+			
 	}
 	
 function updateID($id) {

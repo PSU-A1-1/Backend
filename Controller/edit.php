@@ -37,6 +37,14 @@ if(isset($_POST['m'])) {
 				$_SESSION['idsAdded'][] = $id;
 		idChange($id, $_POST['beers'], $_POST['drinks']);
 		break;
+		
+	// Kaspers Code. For now.
+	case 'newVolunteer':
+		echo $UserModel->addVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
+		break;
+		
+		
+		
 	}
 }
 ?>
