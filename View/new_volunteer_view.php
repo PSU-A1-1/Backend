@@ -13,8 +13,6 @@ $().ready(
 				var surName = $('#volunteerSurName').val();
 				var aktiv = parseInt($('#aktiv').attr('checked')?1:0);
 
-
-			
 				$.ajax({
 					type: "POST",
 					url: "Controller/edit.php",
@@ -35,13 +33,7 @@ $().ready(
 				}
 			});
 		});
-
-
-
 </script>
-
-
-
 
 
 <form action="" method="post" >

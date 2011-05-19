@@ -43,6 +43,13 @@ if(isset($_POST['m'])) {
 		echo $UserModel->addVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
 		break;
 		
+	case 'activate':
+		foreach(explode("|", $_POST['ids']) as $id) {
+			echo $UserModel->activate($id)."<br>";
+		}
+		
+		break;
+		
 		
 		
 	}

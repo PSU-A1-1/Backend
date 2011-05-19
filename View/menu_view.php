@@ -1,3 +1,19 @@
+
+<script type="text/javascript">
+function updateGrid (ids) {
+		$('#grid tr:gt(0)').remove();
+		$.ajax({
+			type: "GET",
+			cache: false,
+			url: 'Controller/search.php',
+			data: "ids=" + ids ,
+			success: function(data, textStatus) {
+				$('#grid tr:last').after(data);
+			}
+		});
+	}
+	</script>
+
 <?php
 global $std_beers, $std_drinks;
 if($_SESSION['Admin']) { ?>
@@ -23,7 +39,21 @@ $("#activateVolunteer").click(function() {
 	if (ids.length == 0) {	
 	    alert("Ingen brugere valgt");
 	} else {
-	}
+		    $.ajax({
+			type: "POST",
+			url: "Controller/edit.php",
+			data: "m=activate&ids=" + ids.join('|'),
+			dataType: "text",
+			success: function (data) {
+				alert('done');
+				updateGrid (ids.join(', '));
+				
+			  },
+			error: function(request,error){
+			    alert(error);
+			  }
+			});
+		}
 });
 
 $("#statistics").click(function() {	
@@ -142,18 +172,7 @@ $().ready(function() {
 		$('#addSpecialBox').hide();
 	});
 
-	function updateGrid (ids) {
-		$('#grid tr:gt(0)').remove();
-		$.ajax({
-			type: "GET",
-			cache: false,
-			url: 'Controller/search.php',
-			data: "ids=" + ids ,
-			success: function(data, textStatus) {
-				$('#grid tr:last').after(data);
-			}
-		});
-	}	
+		
 });
 </script>
 <a id="menuFixed" href="#">Tilføj standart</a>

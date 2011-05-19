@@ -53,7 +53,32 @@ class User {
 			
 	}
 	
-function updateID($id) {
+	function activate($id) {
+		$active = mysql_query("SELECT `active` FROM `volunteer` WHERE `ST-ID` = '$id'");
+		if ($active) {
+			if (mysql_result($active, 0) == 1) {
+				$a = 0;
+			} else {
+				$a = 1;		
+			}
+			$query = "UPDATE volunteer SET active = $a WHERE `ST-ID` = '$id'";
+			
+			$result = mysql_query($query);
+			if ($result) {
+				return $id;
+			} else {
+				return mysql_error();
+
+			}
+
+		} else {
+			return mysql_error();
+		}
+	
+		
+	}
+	
+	function updateID($id) {
 		
 		if ($result)
 			return $id;
