@@ -66,8 +66,12 @@ $().ready(function() {
 			data: "m=addFixed&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {
-				alert('Øl og drinks point tilføjet');
-				updateGrid (ids.join(', '));
+				if (data == "Error") {
+					alert('Fejl i tildeling af point');
+				} else {
+					alert('Øl og drinks point tilføjet');
+					updateGrid (ids.join(', '));
+				}
 			  },
 			error: function(request,error){
 			    alert('Fejl i tildeling af point');
@@ -91,9 +95,13 @@ $().ready(function() {
 			url: "Controller/edit.php",
 			data: "m=addSpecial&ids=" + ids.join('|') + "&beers=" + beers + "&drinks=" + drinks,
 			dataType: "text",
-			success: function (data) {
-				alert(' Øl og drinks point tilføjet');
-				updateGrid (ids.join(', '));
+			success: function (data) {	
+				if (data == "Error") {
+					alert('Fejl i tildeling af point');
+				} else {
+					alert('Øl og drinks point tilføjet');
+					updateGrid (ids.join(', '));
+				}
 			  },
 			error: function(request,error){
 			    alert('Fejl i tildeling af point');
@@ -117,8 +125,12 @@ $().ready(function() {
 			data: "m=addGuest&id=" + id + "&beers=" + beers + "&drinks=" + drinks,
 			dataType: "text",
 			success: function (data) {
-				alert(' Øl og drinks point tilføjet');
-				updateGrid (id);
+				if (data == "Error") {
+					alert('Fejl i tildeling af point');
+				} else {
+					alert(' Øl og drinks point tilføjet');
+					updateGrid (id);
+				}
 			  },
 			error: function(request,error){
 			    alert('Fejl i tildeling af point');
