@@ -43,9 +43,15 @@ class User {
 	
 	// Transaction with rollback?
 	function addVolunteer($name, $s_name, $active) {
-		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`) FROM volunteer), 0)"), 0);
+		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`) 
+										FROM volunteer), 0)"), 0);
+		// Why not?
+		//$id = this.getNewId();
+		
+		
 		$query = "INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
-				VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
+				  VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
+		
 		$result = mysql_query($query);
 		if ($result) {
 			return "Ny frivillig: ".$name." ".$s_name." with id: ".$id;
@@ -89,7 +95,17 @@ class User {
 		return $volunteer;
 	}
 	
-
+	function getNewId() {
+		$id = 0;
+		$result = mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`) 
+				     		   FROM volunteer), 0)");
+		if ($result) {
+			$id = mysql_result($result, 0);
+		}
+	
+		return $id;
+		
+	}
 	
 	function updateID($id) {
 		

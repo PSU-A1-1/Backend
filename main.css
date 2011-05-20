@@ -36,3 +36,8 @@ input[type="checkbox"]
     float:left;
     display:block;
 }
+
+.changed{
+	color:rgb(255,255,255);
+    background-color: #C00000;
+}

@@ -86,7 +86,6 @@ if(isset($_POST['m'])) {
 			// TODO : acChange($id, $_POST['beers'], $_POST['drinks']);
 			echo $UserModel->activate($id)."<br>";
 		}
-		
 		break;
 		
 		

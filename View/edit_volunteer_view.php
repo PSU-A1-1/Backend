@@ -25,37 +25,41 @@ $().ready(
 					
 					success: function (data) {
 						var result = new Object;
-						// TODO : Better dialog box. ie. yes / no
+						
 						result = JSON.parse(data);
 						
-
-						 $("input:text[id=volunteerName]").val(result.first_name);
-						 $("input:text[id=volunteerSurName]").val(result.surname);
-						 $("input:text[id=id]").val(result.id);
+					    $("input:text[id=volunteerName]").val(result.first_name);
+						$("input:text[id=volunteerSurName]").val(result.surname);
+						$("input:checkbox[id=aktiv]").attr("checked", parseInt(result.active));
+						$("input:text[id=id]").val(result.id);
 						
 					  },
 					error: function(request, error){
 					    alert(error);
 					  }
 					});
-			
-			
-		   
 
-
-
-			
 			$("#newID").click(function() {	
 
-				idChanged = true;
+				
+				$.ajax({
+						type: "POST",
+						url: "Controller/exp.php",					
+						success: function (data) {
+							idChanged = true;
+							$("input:text[id=id]").val(data);
+							$("input:text[id=id]").addClass('changed');
 
+						  },
+						error: function(request, error){
+						    alert(error);
+						  }
+						});
 				});
 			
 			$("#volunteerEdit").click(function() 
 			{	
-				
-	
-			
+
 			if ($('#volunteerName').val() != "" && $('#volunteerSurName').val() != "" ) {
 
 				if (idChanged) 
@@ -113,7 +117,7 @@ Rediger frivillig<br><br>
 <br>
 <p>
 <label for="newID">Nyt ID</label> 
-<input type="button" value="Increment" id="newID">
+<input type="button" value="->" id="newID">
 </p>
 <input type="button" value="OK" id="volunteerEdit">
 </form> 
