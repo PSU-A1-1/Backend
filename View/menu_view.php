@@ -24,13 +24,20 @@ $().ready(function() {
 
 	$("#editVolunteer").click(function() {	
 		var ids = new Array();
-		$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
+		$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
 
 		if (ids.length == 0) {	
 		    alert("Ingen brugere valgt");
+		    return false;
+		    
+		} else if (ids.length > 1) {
+		    alert("For mange brugere valgt");	
+		    return false;
 		} else {
-		}
+		    var base_url = './?view=newVolunteer';
+	        document.location.href = base_url + "&id=" + ids[0];			}
 		});
+	
 $("#activateVolunteer").click(function() {	
 	var ids = new Array();
 	// Fixed a bug not discriminating checked names. What about the others?
