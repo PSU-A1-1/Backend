@@ -79,6 +79,15 @@ class User {
 		}
 	}
 	
+	// Same as seach, but seacr concats names...
+	function getVolunteer($id) {
+		$volunteer_query = mysql_query("SELECT `ST-ID`, 'first_name', 'surname', 'active' AS id, name, surname, active FROM volunteer WHERE `ST-ID` = '$id' LIMIT 1") or die(print(mysql_error()));
+		$volunteer = mysql_fetch_assoc($volunteer_query);
+		return $volunteer;
+	}
+	
+
+	
 	function updateID($id) {
 		
 		if ($result)

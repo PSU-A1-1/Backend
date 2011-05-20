@@ -69,6 +69,11 @@ if(isset($_POST['m'])) {
 		}	
 		break;
 		
+	case 'getVolunteer':
+		$arr = $UserModel->getVolunteer($_POST['id']);
+		echo json_encode($arr);
+		break;
+		
 	case 'newVolunteer':
 		echo $UserModel->addVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
 		break;
