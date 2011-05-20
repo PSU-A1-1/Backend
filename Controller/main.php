@@ -20,7 +20,7 @@ class MainController {
 				break;
 			}
 		} else {
-			include "View/grid_view.php";
+			include "View/login.php";
 			//break;
 			
 		}

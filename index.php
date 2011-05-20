@@ -36,8 +36,8 @@ $std_drinks = 4;
 </tr>
 <tr>
 	<td width="200px" height="80%" valign="top">
-		<a href="?admin=1">Administrator</a><br>
-		<a href="?admin=0">Afvikler</a><br>
+		<a href="?view&admin=1">Administrator</a><br>
+		<a href="?view&admin=0">Afvikler</a><br>
 		<?php $MainController->search(); ?>
 	</td>
 	<td valign="top"><?php $MainController->view(); ?>

@@ -14,10 +14,6 @@
 *** TODO Don't make search load automaically. 
     searchview -> $("#showAll").click();
 
-
-
-
-
-
 *** TODO Refactor!
     Lot's of things could benefit from refactoring.
+    Probably start with a better view-machine.

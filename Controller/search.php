@@ -1,6 +1,9 @@
 <?php session_start();
 header('Content-type: text/html; charset=utf-8');
 
+include_once "../Model/user_model.php";
+$UserModel = new User();
+
 function idChangeView ($id) {
 	$out[0] = "";
 	$out[1] = "";
@@ -20,8 +23,9 @@ function idChangeView ($id) {
 }
 
 function gridRow ($data) {
+
 	$pointChange = idChangeView($data['ST-ID']);
-	//$statusChange
+
 	echo "<tr><td>".utf8_encode($data['name'])."</td>";
 	echo "<td>".$data['ST-ID']."</td>";
 	echo "<td>".$data['beers'].$pointChange[0]."</td>";
@@ -34,8 +38,7 @@ function gridRow ($data) {
 
 // $q fra autocomplete i søge view (ajax)
 if(isset($_GET["q"])) {
-	include_once "../Model/user_model.php";
-	$UserModel = new User();
+	
 	$q = strtolower($_GET["q"]);
 	$users = $UserModel->searchVolunteers($q);
 	foreach ($users as $user) {
@@ -43,8 +46,7 @@ if(isset($_GET["q"])) {
 	}	
 } // Når der trykkes på tilføj knappen sendes  $_GET["id"]
 elseif (isset($_GET["id"])) {
-	include_once "../Model/user_model.php";
-	$UserModel = new User();
+	
 	$id = $_GET["id"];
 	if (!in_array($id, $_SESSION['idsAdded'])) {
 		$_SESSION['idsAdded'][] = $id;
@@ -53,16 +55,13 @@ elseif (isset($_GET["id"])) {
 	}
 } // Når der opdateresi gridden
 elseif (isset($_GET["ids"])) {
-	include_once "../Model/user_model.php";
-	$UserModel = new User();
-	//$ids = substr($_GET["ids"], 3);
+
 	foreach ($_SESSION['idsAdded'] as $id) {
 		$user = $UserModel->searchVolunteer($id);
 		gridRow($user);
 	}
 } elseif (isset($_GET["showall"]) && $_GET["showall"] == 1) {
-	include_once "../Model/user_model.php";
-	$UserModel = new User();
+
 	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 	$users = $UserModel->searchVolunteers("");
 	foreach ($users as $user) {

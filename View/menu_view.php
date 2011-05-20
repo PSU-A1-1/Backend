@@ -20,31 +20,55 @@ if($_SESSION['Admin']) { ?>
 
 <script type="text/javascript">
 
-$().ready(function() {
+var tooMany = 'For mange brugere valgt';
+var tooFew =  'Ingen brugere valgt';
 
-	$("#editVolunteer").click(function() {	
-		var ids = new Array();
-		$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
-
-		if (ids.length == 0) {	
-		    alert("Ingen brugere valgt");
-		    return false;
-		    
-		} else if (ids.length > 1) {
-		    alert("For mange brugere valgt");	
-		    return false;
-		} else {
-		    var base_url = './?view=editVolunteer';
-	        document.location.href = base_url + "&id=" + ids[0];			}
-		});
-	
-$("#activateVolunteer").click(function() {	
+function getChecks() {
 	var ids = new Array();
-	// Fixed a bug not discriminating checked names. What about the others?
 	$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
 
+	return ids;
+}
+
+function howManyChecks(ids) {
+	var hmc = 'none'
+	if (ids.length == 1) {
+		hmc = 'one'
+	} else if (ids.length > 1) {
+		hmc = 'many'
+	}
+
+	return hmc;
+}
+
+$().ready(function() {
+
+	$("#editVolunteer").click(function() 
+	{	
+		var ids = getChecks();
+
+		switch (howManyChecks(ids)) 
+		{
+			case 'none' :
+				alert(tooFew);
+				break;
+			case 'many' :
+				alert(tooMany);
+				break;
+			case 'one' :
+				var base_url = './?view=editVolunteer';
+	        	document.location.href = base_url + "&id=" + ids[0];
+	        	break;
+		}
+	});
+	
+	$("#activateVolunteer").click(function() {	
+	var ids = getChecks();
+	// Fixed a bug not discriminating checked names. What about the others?
+	//$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
+
 	if (ids.length == 0) {	
-	    alert("Ingen brugere valgt");
+	    alert(tooFew);
 	} else {
 		    $.ajax({
 			type: "POST",
@@ -52,7 +76,7 @@ $("#activateVolunteer").click(function() {
 			data: "m=activate&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {
-				alert('done');
+				alert('Status opdateret');
 				updateGrid (ids.join(', '));
 				
 			  },
@@ -74,7 +98,7 @@ $("#statistics").click(function() {
 <br>
 <a id="editVolunteer" href="#">Rediger frivillig</a>
 <br>
-<a id="activateVolunteer" href="#">Aktiver / Deaktiver</a>
+<a id="activateVolunteer" href="#">Skift status</a>
 <br>
 <a id="statistics" href="#">Statistik</a>
 <br>
@@ -205,22 +229,26 @@ $().ready(function() {
 		<?php echo $std_beers; ?>
 		øl og
 		<?php echo $std_drinks; ?>
-		drinks til valgte brugere?<br> <input type="button" value="OK" id="addFixedButton" />
+		drinks til valgte brugere?<br> <input type="button" value="OK"
+			id="addFixedButton" />
 	</div>
 
-	<div id="addSpecialBox"> Tilføj 
-			<input type="text" value="0" id="numBeers" size="1" maxlength="2" /> øl og 	
-			<input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> drinks til valgte brugere?<br> 
-			<input type="button" value="OK" id="addSpecialButton" />
+	<div id="addSpecialBox">
+		Tilføj <input type="text" value="0" id="numBeers" size="1"
+			maxlength="2" /> øl og <input type="text" value="0" id="numDrinks"
+			size="1" maxlength="2" /> drinks til valgte brugere?<br> <input
+			type="button" value="OK" id="addSpecialButton" />
 	</div>
-	
-	<div id="addGuestBox"> Tilføj 
-			<input type="text" value="<?php echo $std_beers; ?>" id="numGuestBeers" size="1" maxlength="2" /> øl og 	
-			<input type="text" value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1" maxlength="2" /> drinks til id: 
-			<input type="text" value="" id="guestId" size="10" maxlength="16" />?<br> 
-			<input type="button" value="OK" id="addGuestButton" />
+
+	<div id="addGuestBox">
+		Tilføj <input type="text" value="<?php echo $std_beers; ?>"
+			id="numGuestBeers" size="1" maxlength="2" /> øl og <input type="text"
+			value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1"
+			maxlength="2" /> drinks til id: <input type="text" value=""
+			id="guestId" size="10" maxlength="16" />?<br> <input type="button"
+			value="OK" id="addGuestButton" />
 	</div>
 </div>
 <br>
 
-<?php } ?>
+		<?php } ?>
