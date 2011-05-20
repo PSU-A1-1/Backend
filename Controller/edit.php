@@ -78,6 +78,10 @@ if(isset($_POST['m'])) {
 		echo $UserModel->addVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
 		break;
 		
+	case 'updateVolunteer':
+		echo $UserModel->updateVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv'], $_POST['newid'], $_POST['oldid']);
+		break;
+		
 	case 'activate':
 	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 		foreach(explode("|", $_POST['ids']) as $id) {

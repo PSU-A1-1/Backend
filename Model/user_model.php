@@ -28,6 +28,7 @@ class User {
 		mysql_close();
 		return $volunteers;
 	}
+	
 	function addPoints($id, $beers, $drinks) {
 		$query = "UPDATE volunteer SET beers = beers + $beers,
 				  drinks = drinks + $drinks WHERE `ST-ID` = $id";
@@ -107,6 +108,26 @@ class User {
 		
 	}
 	
+	function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
+		$query = "UPDATE volunteer SET `first_name` = '$name',
+				  `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  WHERE `ST-ID` = $oldId";
+		$result = mysql_query($query);
+		
+		if (mysql_affected_rows() == 0) {
+			return "Noting changed";
+		} elseif ($result) {
+			return "Frivillig opdateret";
+		} else {
+			return mysql_error();
+		}
+			
+		
+		
+		
+		
+	}
+	
+	/*
 	function updateID($id) {
 		
 		if ($result)
@@ -114,5 +135,6 @@ class User {
 		else
 			return mysql_error();
 	}
+	*/
 }
 ?>

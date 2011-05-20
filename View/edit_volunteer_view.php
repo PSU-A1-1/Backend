@@ -5,7 +5,7 @@ $().ready(
 		{
 			// A few vars.
 			var idChanged = false;
-			var id = $.url.param("id");
+			var id = parseInt($.url.param("id"));
 		
 
 			// Format form
@@ -63,16 +63,22 @@ $().ready(
 			if ($('#volunteerName').val() != "" && $('#volunteerSurName').val() != "" ) {
 
 				if (idChanged) 
-					alert ("yo");
+					//alert ("yo");
 				
 				var name = $('#volunteerName').val();
 				var surName = $('#volunteerSurName').val();
 				var aktiv = parseInt($('#aktiv').attr('checked')?1:0);
+				var newId = parseInt($("input:text[id=id]").val());
 
+				//alert(name + surName + aktiv + id);
+				
+				alert(id + newId);
+				
 				$.ajax({
 					type: "POST",
 					url: "Controller/edit.php",
-					data: "m=newVolunteer" + "&name=" + name + "&s_name=" + surName + "&aktiv=" + aktiv,
+					data: "m=updateVolunteer" + "&name=" + name 
+						   + "&s_name=" + surName + "&aktiv=" + aktiv + "&newid=" + newId + "&oldid=" + id ,
 					dataType: "text",
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
@@ -83,6 +89,7 @@ $().ready(
 					    alert(error);
 					  }
 					});
+					
 				
 			} else {
 				alert("Udfyld Fornavn og Efternavn");
