@@ -1,4 +1,19 @@
 <script type="text/javascript">
+function updateGrid (ids) {
+		$('#grid tr:gt(0)').remove();
+		$.ajax({
+			type: "GET",
+			cache: false,
+			url: 'Controller/search.php',
+			data: "ids=" + ids ,
+			success: function(data, textStatus) {
+				$('#grid tr:last').after(data);
+			}
+		});
+	}
+	</script>
+
+<script type="text/javascript">
 
 $().ready(
 		function() 
@@ -62,18 +77,16 @@ $().ready(
 
 			if ($('#volunteerName').val() != "" && $('#volunteerSurName').val() != "" ) {
 
-				if (idChanged) 
+				//if (idChanged) 
 					//alert ("yo");
 				
-				var name = $('#volunteerName').val();
-				var surName = $('#volunteerSurName').val();
-				var aktiv = parseInt($('#aktiv').attr('checked')?1:0);
+				var name = $("input:text[id=volunteerName]").val();
+				var surName = $("input:text[id=volunteerSurName]").val();
+				var aktiv = parseInt($("input:checkbox[id=aktiv]").attr('checked')?1:0);
 				var newId = parseInt($("input:text[id=id]").val());
 
 				//alert(name + surName + aktiv + id);
-				
-				alert(id + newId);
-				
+			
 				$.ajax({
 					type: "POST",
 					url: "Controller/edit.php",
@@ -83,6 +96,7 @@ $().ready(
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
 						confirm(data);
+						//updateGrid (newId);
 						
 					  },
 					error: function(request, error){

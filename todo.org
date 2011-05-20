@@ -9,7 +9,7 @@
 *** TODO Indicate newly added volunteers.
 *** DONE Fix 'New Volunteer' / Ac. bug. !! Found the source. Yet to fix.
     Bug fixed in menuview -> $("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
-*** TODO Check up on checkboxes. Seems the 'user_id' don't matter.
+*** DONE Check up on checkboxes. Seems the 'user_id' don't matter.
 *** TODO Maybe make things lazy? Confirmations? For ex. when adding new vol.
 *** TODO Don't make search load automaically. 
     searchview -> $("#showAll").click();
@@ -19,3 +19,5 @@
 
 
 
+*** TODO Refactor!
+    Lot's of things could benefit from refactoring.
