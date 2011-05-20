@@ -21,7 +21,7 @@ class MainController {
 			}
 		} else {
 			include "View/grid_view.php";
-			break;
+			//break;
 			
 		}
 		

@@ -34,7 +34,7 @@ $().ready(function() {
 		    alert("For mange brugere valgt");	
 		    return false;
 		} else {
-		    var base_url = './?view=newVolunteer';
+		    var base_url = './?view=editVolunteer';
 	        document.location.href = base_url + "&id=" + ids[0];			}
 		});
 	

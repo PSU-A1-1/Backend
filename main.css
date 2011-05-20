@@ -15,3 +15,24 @@ html, body, #maintable {
 #confirmBox {
 	background-color:#cccbc4;
 }
+
+label, input[type="text"]{
+    float:left;
+    display:block;
+}
+
+label
+{
+    margin-right: 5px;
+}
+.field{
+    width:100px;
+    overflow:auto;
+    margin:5px 0px;
+}
+
+input[type="checkbox"]
+{
+    float:left;
+    display:block;
+}

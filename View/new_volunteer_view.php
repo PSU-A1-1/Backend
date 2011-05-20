@@ -3,6 +3,15 @@
 $().ready(
 		function() 
 		{
+
+			// Format form -- These are duplicate functions...maybe refactor.
+			var max = 0;
+		    $("label").each(function(){
+		        if ($(this).width() > max)
+		            max = $(this).width();   
+		    });
+		    $("label").width(max);
+			
 			$("#volunteerAdd").click(function() 
 			{	
 	
@@ -50,9 +59,9 @@ Tilføj ny frivillig<br><br>
 <br>
 <p>
 <label for="aktiv">Aktiv</label> 
-<input type="checkbox" name="aktiv" id="aktiv" checked="checked" /> Aktiv<br />
+<input type="checkbox" name="aktiv" id="aktiv" checked="checked" />
 </p>
-<br>
+<br><br>
 <input type="button" value="OK" id="volunteerAdd">
 </form> 
 

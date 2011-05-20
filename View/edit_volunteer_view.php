@@ -6,6 +6,7 @@ $().ready(
 			// A few vars.
 			var idChanged = false;
 			var id = $.url.param("id");
+		
 
 			// Format form
 			var max = 0;
@@ -21,22 +22,29 @@ $().ready(
 					type: "POST",
 					url: "Controller/edit.php",
 					data: "m=getVolunteer" + "&id=" + id,
-					dataType: 'json',
+					
 					success: function (data) {
 						var result = new Object;
+						// TODO : Better dialog box. ie. yes / no
 						result = JSON.parse(data);
 						
-						$("input:text[id=volunteerName]").val(result.name);
-					    $("input:text[id=id]").val(id);
-					    
-						//confirm(result.name);
+
+						 $("input:text[id=volunteerName]").val(result.first_name);
+						 $("input:text[id=volunteerSurName]").val(result.surname);
+						 $("input:text[id=id]").val(result.id);
 						
 					  },
 					error: function(request, error){
 					    alert(error);
 					  }
 					});
+			
+			
+		   
 
+
+
+			
 			$("#newID").click(function() {	
 
 				idChanged = true;
@@ -46,6 +54,7 @@ $().ready(
 			$("#volunteerEdit").click(function() 
 			{	
 				
+	
 			
 			if ($('#volunteerName').val() != "" && $('#volunteerSurName').val() != "" ) {
 

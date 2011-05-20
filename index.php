@@ -22,8 +22,10 @@ $std_drinks = 4;
 <head>
 <script type="text/javascript" src="View/lib/jquery.js"></script>
 <script type='text/javascript' src='View/lib/jquery.autocomplete.js'></script>
+<script type="text/javascript" src="View/lib/jquery.url.min.js"></script>
 <link rel="stylesheet" type="text/css" href="main.css" />
 <link rel="stylesheet" type="text/css" href="View/lib/jquery.autocomplete.css" />
+
 </head>
 <body>
 <table border="2" id="maintable">
