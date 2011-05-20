@@ -44,7 +44,7 @@ Fornavn<br>
 Efternavn<br>
 <input type="text" name="name" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
 <br>
-<input type="checkbox" name="aktiv" id="aktiv" checked="checked" /> Aktiv<br />
+<input type="checkbox" name="aktiv" checked="checked" /> Aktiv<br />
 <br>
 <input type="button" value="OK" id="volunteerAdd">
 </form> 

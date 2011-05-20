@@ -63,7 +63,7 @@ $().ready(function() {
 		    return false;
 		  }
 	});
-	$("#showAll").click();
+	$("#showAll").click();	// I think this is a bit buggy. Maybe, if isset : someview.....
 });
 
 </script>

@@ -31,10 +31,10 @@ $().ready(function() {
 		} else {
 		}
 		});
-	
 $("#activateVolunteer").click(function() {	
 	var ids = new Array();
-	$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
+	// Fixed a bug not discriminating checked names. What about the others?
+	$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
 
 	if (ids.length == 0) {	
 	    alert("Ingen brugere valgt");

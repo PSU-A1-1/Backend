@@ -1,5 +1,3 @@
-  
-    
 * Stengade Backend
 ** Tasks
 *** TODO Deactivated volunteers still show.

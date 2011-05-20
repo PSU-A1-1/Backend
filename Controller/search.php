@@ -18,6 +18,7 @@ function idChangeView ($id) {
 	}
 	return $out;
 }
+
 function gridRow ($data) {
 	$pointChange = idChangeView($data['ST-ID']);
 	//$statusChange
