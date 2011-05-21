@@ -1,5 +1,6 @@
 <?php 
 include 'Controller/main.php'; 
+
 $MainController = new MainController(); 
 
 if (isset($_GET['admin']))
@@ -13,9 +14,6 @@ if (!isset($_SESSION['idsChanged']))
 	
 $std_beers = 6;
 $std_drinks = 4;
-//Globale variabler ? 
-//  skal nok hentes fra en tabel i databasen.
-
 
 ?>
 <html>

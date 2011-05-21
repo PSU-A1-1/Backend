@@ -16,7 +16,9 @@ function updateGrid (ids) {
 
 <?php
 global $std_beers, $std_drinks;
-if($_SESSION['Admin']) { ?>
+
+if($_SESSION['Admin']) { 
+?>
 
 <script type="text/javascript">
 
