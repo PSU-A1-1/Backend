@@ -8,12 +8,14 @@ class User {
 
 	}
 	function searchVolunteer($id) {
-		$volunteer_query = mysql_query("SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active, start_date FROM volunteer WHERE `ST-ID` = '$id' LIMIT 1") or die(print(mysql_error()));
+		$volunteer_query = mysql_query("SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active, start_date 
+                                                FROM volunteer WHERE `ST-ID` = '$id' LIMIT 1") or die(print(mysql_error()));
 		$volunteer = mysql_fetch_assoc($volunteer_query);
 		return $volunteer;
 	}
 	function searchVolunteers($text) {
-		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%'";
+		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active 
+                          FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%'";
 		$volunteer_query = mysql_query($query);
 		$volunteers = array();
 		$i = 0;
@@ -30,8 +32,9 @@ class User {
 	}
 
 	function addPoints($id, $beers, $drinks) {
-		$query = "UPDATE volunteer SET beers = beers + $beers,
-				  drinks = drinks + $drinks WHERE `ST-ID` = $id";
+		$query = "UPDATE volunteer 
+                          SET beers = beers + $beers, drinks = drinks + $drinks 
+                          WHERE `ST-ID` = $id";
 		$result = mysql_query($query);
 
 		if (mysql_affected_rows() == 0)
@@ -45,13 +48,13 @@ class User {
 	// Transaction with rollback?
 	function addVolunteer($name, $s_name, $active) {
 		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
-										FROM volunteer), 0)"), 0);
+					        FROM volunteer), 0)"), 0);
 		// Why not?
 		//$id = this.getNewId();
 
 
 		$query = "INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
-				  VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
+			  VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
 
 		$result = mysql_query($query);
 		if ($result) {
@@ -64,14 +67,18 @@ class User {
 	}
 
 	function activate($id) {
-		$active = mysql_query("SELECT `active` FROM `volunteer` WHERE `ST-ID` = '$id'");
+		$active = mysql_query("SELECT `active` 
+                                       FROM `volunteer` 
+                                       WHERE `ST-ID` = '$id'");
 		if ($active) {
 			if (mysql_result($active, 0) == 1) {
 				$a = 0;
 			} else {
 				$a = 1;
 			}
-			$query = "UPDATE volunteer SET active = $a WHERE `ST-ID` = '$id'";
+			$query = "UPDATE volunteer 
+                                  SET active = $a 
+                                  WHERE `ST-ID` = '$id'";
 				
 			$result = mysql_query($query);
 			if ($result) {
@@ -89,9 +96,8 @@ class User {
 	// Same as seach, but search concats names...
 	function getVolunteer($id) {
 		$volunteer_query = mysql_query("SELECT `ST-ID` AS id , `first_name` , `surname` , `active`
-										FROM volunteer
-										WHERE `ST-ID` = $id
-										LIMIT 1  ") or die(print(mysql_error()));
+					        FROM volunteer
+						WHERE `ST-ID` = $id LIMIT 1  ") or die(print(mysql_error()));
 		$volunteer = mysql_fetch_assoc($volunteer_query);
 		return $volunteer;
 	}
@@ -99,7 +105,7 @@ class User {
 	function getNewId() {
 		$id = 0;
 		$result = mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
-				     		   FROM volunteer), 0)");
+				       FROM volunteer), 0)");
 		if ($result) {
 			$id = mysql_result($result, 0);
 		}
@@ -109,8 +115,9 @@ class User {
 	}
 
 	function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
-		$query = "UPDATE volunteer SET `first_name` = '$name',
-				  `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  WHERE `ST-ID` = $oldId";
+		$query = "UPDATE volunteer 
+                          SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  
+                          WHERE `ST-ID` = $oldId";
 		$result = mysql_query($query);
 
 		if (mysql_affected_rows() == 0) {
