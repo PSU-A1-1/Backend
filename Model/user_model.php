@@ -1,11 +1,12 @@
 <?php
+
+// Debug
 ini_set('display_errors',1); 
- error_reporting(E_ALL);
- 
+error_reporting(E_ALL); 
+
+
 class CardHolder {
 
-  
-  
   public $id;
   public $beers;
   public $drinks;
@@ -13,29 +14,31 @@ class CardHolder {
   public $error;
 
   public function __construct($id, $beers, $drinks) {
-  	include_once './connect.php';
-    $this->id->id = $id;
-    $this->id->orId = $id;
-    $this->beers->orBeers = $beers;
-    $this->drinks->orDrinks = $drinks;
+  	include_once '../connect.php';
+    $this->id->current = (int)$id;
+    $this->id->original = (int)$id;
+    $this->beers->added = 0;
+    $this->beers->original = (int)$beers;
+    $this->drinks->added = 0;
+    $this->drinks->original = (int)$drinks;
   }
 
   public function updateDrinks($drinks) {
     
-  	$id = $this->id->id;
+  	$id = $this->id->current;
   	
     $query = "UPDATE volunteer 
               SET drinks = drinks + $drinks
               WHERE `ST-ID` = $id";
     $result = mysql_query($query);
-
+   
     if (mysql_affected_rows() == 0) {
       $this->succes = false;
-      $this->error = "Ikke fundet";
+      $this->error = "some error";
     }
     else if ($result) {
       $this->succes = true;
-      $this->drinks->drinks = $drinks;
+      $this->drinks->added += $drinks;
     }
     else {
       $this->succes = false;
@@ -57,7 +60,7 @@ class CardHolder {
   }
 
   public function updateId($id) {
-    $this->id->id = $id;
+    $this->id->current = $id;
   }
     
 }
@@ -70,17 +73,17 @@ class Volunteer extends CardHolder{
 
   public function __construct($name, $surname, $id, $beers, $drinks, $active) {
     parent::__construct($id, $beers, $drinks);
-    $this->name->orName = $name;
-    $this->surname->orSurname = $surname;
-    $this->active->orActive = $active;
+    $this->name->original = $name;
+    $this->surname->original = $surname;
+    $this->active->orginal = (int)$active;
   }
 
   public function updateName($name) {
-    $this->name->name = $name;
+    $this->name->current = $name;
   }
 
   public function updateSurName($surName) {
-    $this->surname->surname = $surName;
+    $this->surname->current = $surName;
   }
 
   public function updateBothNames($name, $surname) {
@@ -89,7 +92,7 @@ class Volunteer extends CardHolder{
   }
 
   public function updateActive($active) {
-    $this->active->active = $active;
+    $this->active->current = (int)$active;
   }
   
 }
@@ -100,8 +103,6 @@ class Guest extends CardHolder {
   }
 
 }
-
-
 
 
 class User {
@@ -149,27 +150,45 @@ class User {
 		else
 		return mysql_error();
 	}
-
-	// Transaction with rollback?
-	function addVolunteer($name, $s_name, $active) {
-		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
-					        FROM volunteer), 0)"), 0);
-		// Why not?
-		//$id = this.getNewId();
-
-
+	
+	
+	function addVolunteer($user) {
+		
+		$name = $user->name->original;
+		$surname = $user->surname->original;
+		$id = $user->id->current;
+		$active = $user->active->original;
+		
 		$query = "INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
-			  VALUES ($id, '$name', '$s_name', 0, 0, $active, CURDATE())";
+			      VALUES ($id, '$name', '$surname', 0, 0, '$active', CURDATE())";
 
 		$result = mysql_query($query);
 		if ($result) {
+			$_SESSION['workgroup'][(string)$id] = $user;
 			return "Ny frivillig: ".$name." ".$s_name." with id: ".$id;
 		}
 		else {
 			return mysql_error();
-		}
-			
+		}	
 	}
+	
+	function createUserFromId($id) {
+		$query = "SELECT `ST-ID` AS id , `first_name` AS name , `surname` , 'beers', 'drinks', `active`
+				  FROM volunteer
+				  WHERE `ST-ID` = $id LIMIT 1 ";
+		$result = mysql_query($query) or die(print(mysql_error()));
+		if ($result) {
+			$data = mysql_fetch_assoc($result);
+			//return $data['name'];
+			$volunteer = new Volunteer($data['name'], $data['surname'], $data['id'], $data['beers'], $data['drinks'], $data['active']);
+			//$_SESSION['workgroup'][(string)$id] = $data;
+			return $volunteer;
+		} else {
+			return mysql_error();
+		}
+	}
+	
+	
 
 	function activate($id) {
 		$active = mysql_query("SELECT `active` 

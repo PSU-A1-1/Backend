@@ -1,5 +1,6 @@
 <script type="text/javascript">
 //søger efter id i streng af kommaseparerede id'er
+
 function IDAdded(id, addedIDs)
 {
 	if (addedIDs.search(id+', ') != -1)

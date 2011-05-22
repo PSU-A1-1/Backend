@@ -1,12 +1,15 @@
 <?php 
 // Exp.
+// Debug
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
 
 include 'Controller/main.php'; 
-
-include 'Model/user_model.php';
+//include ("./Model/user_model.php");
+//require "./Model/user_model.php";
 
 $MainController = new MainController(); 
-$User = new Volunteer("kasper", "helweg", 5, 10, 10, 1);                                                      
+//$User = new Volunteer("kasper", "helweg", 56, 10, 10, 1);                                                      
 
 if (isset($_GET['admin']))
 	$MainController->setAdmin($_GET['admin']);
@@ -16,6 +19,9 @@ if (!isset($_SESSION['idsAdded']))
 
 if (!isset($_SESSION['idsChanged']))
 	$_SESSION['idsChanged'] = array();
+	
+if (!isset($_SESSION['workgroup']))
+	$_SESSION['workgroup'] = array();
 	
 $std_beers = 6;
 $std_drinks = 4;
@@ -47,15 +53,17 @@ $std_drinks = 4;
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"><?php 
+	var_dump( $_SESSION['workgroup']);
 	
-	  echo $User->id->id . '<br>';
-	  if ($User->updateDrinks(10)) {
-	  	echo "succes" . '<br>';
-	  	echo "drinks was: " . $User->drinks->orDrinks . '<br>';
-	  	echo "drinks are: " . $User->drinks->drinks . '<br>';
-	  } else {
-	  	echo $User->error;
-	  }
+	  //echo $User->id->current . '<br>';
+	  
+	  //if ($User->updateDrinks(10)) {
+	  	//echo "succes" . '<br>';
+	  	//var_dump($User);
+	 // } else {
+	  	//echo $User->error;
+	  //}
+	  
 	  
 	  //echo $User->name->name;
 	

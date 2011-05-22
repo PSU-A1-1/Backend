@@ -14,12 +14,6 @@ function updateGrid (ids) {
 	}
 	</script>
 
-<?php
-global $std_beers, $std_drinks;
-
-if($_SESSION['Admin']) { 
-?>
-
 <script type="text/javascript">
 
 var tooMany = 'For mange brugere valgt';
@@ -27,6 +21,7 @@ var tooFew =  'Ingen brugere valgt';
 
 function getChecks() {
 	var ids = new Array();
+	
 	$("input:checkbox[name=user_id]:checked").each(function() {ids.push($(this).val());});
 
 	return ids;
@@ -42,6 +37,16 @@ function howManyChecks(ids) {
 
 	return hmc;
 }
+</script>
+
+<?php
+global $std_beers, $std_drinks;
+//include_once "./Model/user_model.php";
+
+if($_SESSION['Admin']) { 
+?>
+
+<script type="text/javascript">
 
 $().ready(function() {
 
@@ -117,12 +122,13 @@ $().ready(function() {
 	$('#addSpecialBox').hide();
 	$('#addGuestBox').hide();
 	$("#addFixedButton").click(function() {
-		var ids = new Array();
-		$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
-
+		
+		var ids = getChecks();
+		
 		if (ids.length == 0) {
-		    alert("Ingen brugere valgt");
+		    alert(tooFew);
 		} else {
+			
 		    $.ajax({
 			type: "POST",
 			url: "Controller/edit.php",
@@ -132,7 +138,7 @@ $().ready(function() {
 				if (data == "Error") {
 					alert('Fejl i tildeling af point');
 				} else {
-					alert('Øl og drinks point tilføjet');
+					alert("Tilf¿jet");
 					updateGrid (ids.join(', '));
 				}
 			  },

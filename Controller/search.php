@@ -1,7 +1,9 @@
-<?php session_start();
+<?php 
 header('Content-type: text/html; charset=utf-8');
 
-include_once "../Model/user_model.php";
+include_once ("../Model/user_model.php");
+session_start();
+
 $UserModel = new User();
 
 function idChangeView ($id) {
@@ -26,12 +28,12 @@ function gridRow ($data) {
 
 	$pointChange = idChangeView($data['ST-ID']);
 
-	echo "<tr><td>".utf8_encode($data['name'])."</td>";
-	echo "<td>".$data['ST-ID']."</td>";
-	echo "<td>".$data['beers'].$pointChange[0]."</td>";
-	echo "<td>".$data['drinks'].$pointChange[1]."</td>";
+	echo "<tr><td id='name'>".utf8_encode($data['name'])."</td>";
+	echo "<td id='id'>".$data['ST-ID']."</td>";
+	echo "<td id='beers'>".$data['beers'].$pointChange[0]."</td>";
+	echo "<td id = 'drinks'>".$data['drinks'].$pointChange[1]."</td>";
 	if($_SESSION['Admin']) 
-		echo "<td>".$data['active']."</td>";
+		echo "<td id = 'active'>".$data['active']."</td>";
 	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\"></td>";
 	echo "</tr>";
 }
