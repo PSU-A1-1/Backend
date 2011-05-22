@@ -31,6 +31,7 @@ $().ready(
 						// TODO : Better dialog box. ie. yes / no
 						confirm(data);
 						
+						
 					  },
 					error: function(request, error){
 					    alert(error);

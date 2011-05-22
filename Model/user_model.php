@@ -75,7 +75,7 @@ class Volunteer extends CardHolder{
     parent::__construct($id, $beers, $drinks);
     $this->name->original = $name;
     $this->surname->original = $surname;
-    $this->active->orginal = (int)$active;
+    $this->active->original = (int)$active;
   }
 
   public function updateName($name) {
@@ -165,7 +165,7 @@ class User {
 		$result = mysql_query($query);
 		if ($result) {
 			$_SESSION['workgroup'][(string)$id] = $user;
-			return "Ny frivillig: ".$name." ".$s_name." with id: ".$id;
+			return "Ny frivillig: ".$name." ".$surname." with id: ".$id;
 		}
 		else {
 			return mysql_error();
@@ -173,20 +173,36 @@ class User {
 	}
 	
 	function createUserFromId($id) {
-		$query = "SELECT `ST-ID` AS id , `first_name` AS name , `surname` , 'beers', 'drinks', `active`
+		$query = "SELECT `ST-ID` AS id , `first_name` AS name , `surname` , `beers`, `drinks`, `active`
 				  FROM volunteer
 				  WHERE `ST-ID` = $id LIMIT 1 ";
 		$result = mysql_query($query) or die(print(mysql_error()));
 		if ($result) {
 			$data = mysql_fetch_assoc($result);
-			//return $data['name'];
 			$volunteer = new Volunteer($data['name'], $data['surname'], $data['id'], $data['beers'], $data['drinks'], $data['active']);
-			//$_SESSION['workgroup'][(string)$id] = $data;
 			return $volunteer;
 		} else {
 			return mysql_error();
 		}
 	}
+	
+	function createVolunteer($name, $surname, $active) {
+		// Make safer		
+		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
+					        	        FROM volunteer), 0)"), 0);
+		
+		if ($id) {
+			$user = new Volunteer($name, $surname, $id, 0, 0, $active);
+			return $user;
+		
+		} else {
+			//
+		}
+		
+		
+
+	}
+	
 	
 	
 

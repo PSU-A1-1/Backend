@@ -4,15 +4,15 @@
 ini_set('display_errors',1); 
 error_reporting(E_ALL);
 
-include 'Controller/main.php'; 
-//include ("./Model/user_model.php");
-//require "./Model/user_model.php";
+//include 'Controller/main.php'; 
+include_once 'Controller/viewmachine.php'; 
+//include_once "Model/user.php";
 
-$MainController = new MainController(); 
-//$User = new Volunteer("kasper", "helweg", 56, 10, 10, 1);                                                      
+$ViewMachine = new ViewMachine(); 
+//$User = new User();                                                    
 
 if (isset($_GET['admin']))
-	$MainController->setAdmin($_GET['admin']);
+	$ViewMachine->setAdmin($_GET['admin']);
 
 if (!isset($_SESSION['idsAdded']))
 	$_SESSION['idsAdded'] = array();
@@ -22,6 +22,10 @@ if (!isset($_SESSION['idsChanged']))
 	
 if (!isset($_SESSION['workgroup']))
 	$_SESSION['workgroup'] = array();
+	
+//if (!isset($_SESSION['user']))
+	//$_SESSION['user'] = $User;
+	
 	
 $std_beers = 6;
 $std_drinks = 4;
@@ -47,30 +51,17 @@ $std_drinks = 4;
 	<td width="200px" height="80%" valign="top">
 		<a href="?view&admin=1">Administrator</a><br>
 		<a href="?view&admin=0">Afvikler</a><br>
-		<?php $MainController->search(); ?>
+		<?php $ViewMachine->search(); ?>
 	</td>
-	<td valign="top"><?php $MainController->view(); ?>
+	<td valign="top"><?php $ViewMachine->view(); ?>
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"><?php 
 	var_dump( $_SESSION['workgroup']);
-	
-	  //echo $User->id->current . '<br>';
-	  
-	  //if ($User->updateDrinks(10)) {
-	  	//echo "succes" . '<br>';
-	  	//var_dump($User);
-	 // } else {
-	  	//echo $User->error;
-	  //}
-	  
-	  
-	  //echo $User->name->name;
-	
 	?></div>
 	
 	</td>
-	<td width="220px" valign="top" ><?php $MainController->menu(); ?></td>
+	<td width="220px" valign="top" ><?php $ViewMachine->menu(); ?></td>
 </tr>
 </table>
 </body>

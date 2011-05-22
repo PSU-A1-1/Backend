@@ -21,7 +21,7 @@ function workGroup() {
 	}	
 }
 
-if(isset($_GET["vis"])) {
+if(isset($_GET["workgroup"])) {
 	workGroup();
 	
 }
