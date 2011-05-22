@@ -1,9 +1,0 @@
-Skal gæste-add funktionen ikke kun gælde for gæster?
-Sortering og filtrering af grid. Alfabetisk, etc...
-
-
-// NEW VOLUNTERR
-START TRANSACTION;
-INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
-SELECT 1 + COALESCE((SELECT MAX(`ST-ID`) FROM volunteer), 0), 'f_name', 's_name', 0, 0, 0, CURDATE();
-Commit;

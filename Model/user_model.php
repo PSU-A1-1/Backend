@@ -1,4 +1,109 @@
 <?php
+ini_set('display_errors',1); 
+ error_reporting(E_ALL);
+ 
+class CardHolder {
+
+  
+  
+  public $id;
+  public $beers;
+  public $drinks;
+  public $succes;
+  public $error;
+
+  public function __construct($id, $beers, $drinks) {
+  	include_once './connect.php';
+    $this->id->id = $id;
+    $this->id->orId = $id;
+    $this->beers->orBeers = $beers;
+    $this->drinks->orDrinks = $drinks;
+  }
+
+  public function updateDrinks($drinks) {
+    
+  	$id = $this->id->id;
+  	
+    $query = "UPDATE volunteer 
+              SET drinks = drinks + $drinks
+              WHERE `ST-ID` = $id";
+    $result = mysql_query($query);
+
+    if (mysql_affected_rows() == 0) {
+      $this->succes = false;
+      $this->error = "Ikke fundet";
+    }
+    else if ($result) {
+      $this->succes = true;
+      $this->drinks->drinks = $drinks;
+    }
+    else {
+      $this->succes = false;
+      $this->error = mysql_error();
+    }   
+   
+    return $this->succes;
+  }
+
+    
+  public function updateBeers($beers) {
+    $this->beers->beers = $beers;
+
+  }
+
+  public function updateBoth($beers, $drinks) {
+    $this->updateBeers($beers);
+    $this->updateDrinks($drinks);
+  }
+
+  public function updateId($id) {
+    $this->id->id = $id;
+  }
+    
+}
+
+class Volunteer extends CardHolder{
+
+  public $name;
+  public $surname;
+  public $active;
+
+  public function __construct($name, $surname, $id, $beers, $drinks, $active) {
+    parent::__construct($id, $beers, $drinks);
+    $this->name->orName = $name;
+    $this->surname->orSurname = $surname;
+    $this->active->orActive = $active;
+  }
+
+  public function updateName($name) {
+    $this->name->name = $name;
+  }
+
+  public function updateSurName($surName) {
+    $this->surname->surname = $surName;
+  }
+
+  public function updateBothNames($name, $surname) {
+    $this->updateName($name);
+    $this->updateSurName($surname);
+  }
+
+  public function updateActive($active) {
+    $this->active->active = $active;
+  }
+  
+}
+
+class Guest extends CardHolder {
+  public function __construct($id, $beers, $drinks) {
+    parent::__construct($id, $beers, $drinks);
+  }
+
+}
+
+
+
+
 class User {
 	public $std_beers = 6;
 	public $std_drinks = 4;

@@ -3,7 +3,10 @@
 
 include 'Controller/main.php'; 
 
+include 'Model/user_model.php';
+
 $MainController = new MainController(); 
+$User = new Volunteer("kasper", "helweg", 5, 10, 10, 1);                                                      
 
 if (isset($_GET['admin']))
 	$MainController->setAdmin($_GET['admin']);
@@ -43,7 +46,20 @@ $std_drinks = 4;
 	<td valign="top"><?php $MainController->view(); ?>
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
-	<div id="status"></div>
+	<div id="status"><?php 
+	
+	  echo $User->id->id . '<br>';
+	  if ($User->updateDrinks(10)) {
+	  	echo "succes" . '<br>';
+	  	echo "drinks was: " . $User->drinks->orDrinks . '<br>';
+	  	echo "drinks are: " . $User->drinks->drinks . '<br>';
+	  } else {
+	  	echo $User->error;
+	  }
+	  
+	  //echo $User->name->name;
+	
+	?></div>
 	
 	</td>
 	<td width="220px" valign="top" ><?php $MainController->menu(); ?></td>
