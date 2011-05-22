@@ -57,7 +57,7 @@ $std_drinks = 4;
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"><?php 
-	var_dump( $_SESSION['workgroup']);
+	//var_dump( $_SESSION['workgroup']);
 	?></div>
 	
 	</td>

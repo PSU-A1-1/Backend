@@ -25,7 +25,7 @@ $().ready(function() {
 					alert('Fejl i tildeling af point');
 				} else {
 					alert("Tilf¿jet");
-					renderWorkGroup();
+					renderGrid("workgroup");
 					//var base_url = './?view=workGroup';
 		        	//document.location.href = base_url;
 					//updateGrid (ids.join(', '));

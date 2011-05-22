@@ -15,13 +15,13 @@ function updateGrid (ids) {
 	
 <script type="text/javascript">
 	
-function renderWorkGroup () {
+function renderGrid (view) {
 		$('#grid tr:gt(0)').remove();
 		$.ajax({
 			type: "GET",
 			cache: false,
-			url: 'View/workgroup_view.php',
-			data: "vis",
+			url: 'Controller/rendergrid.php',
+			data: view,
 			success: function(data, textStatus) {
 				$('#grid tr:last').after(data);
 			}
