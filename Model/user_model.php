@@ -3,8 +3,8 @@
 // Debug
 ini_set('display_errors',1); 
 error_reporting(E_ALL); 
-include_once 'cardholder.php';
-include_once 'volunteer.php';
+//include_once 'cardholder.php';
+//include_once 'volunteer.php';
 
 class User {
 	public $std_beers;
@@ -40,22 +40,7 @@ class User {
 		return $volunteers;
 	}
 	
-	/*
-	public function addPoints($id, $beers, $drinks) {
-		$query = "UPDATE volunteer 
-                          SET beers = beers + $beers, drinks = drinks + $drinks 
-                          WHERE `ST-ID` = $id";
-		$result = mysql_query($query);
-
-		if (mysql_affected_rows() == 0)
-		return "Ikke fundet";
-		elseif ($result)
-		return true;
-		else
-		return mysql_error();
-	}
-	*/
-	
+//------------------------------------------------------------
 	
 	public function addVolunteer($user) {
 		
@@ -107,33 +92,7 @@ class User {
 		
 
 	}
-	
-	public function activate($id) {
-		$active = mysql_query("SELECT `active` 
-                                       FROM `volunteer` 
-                                       WHERE `ST-ID` = '$id'");
-		if ($active) {
-			if (mysql_result($active, 0) == 1) {
-				$a = 0;
-			} else {
-				$a = 1;
-			}
-			$query = "UPDATE volunteer 
-                                  SET active = $a 
-                                  WHERE `ST-ID` = '$id'";
-				
-			$result = mysql_query($query);
-			if ($result) {
-				return $id;
-			} else {
-				return mysql_error();
 
-			}
-
-		} else {
-			return mysql_error();
-		}
-	}
 
 	// Same as seach, but search concats names...
 	public function getVolunteer($id) {
@@ -158,8 +117,8 @@ class User {
 
 	public function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
 		$query = "UPDATE volunteer 
-                          SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  
-                          WHERE `ST-ID` = $oldId";
+                  SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  
+                  WHERE `ST-ID` = $oldId";
 		$result = mysql_query($query);
 
 		if (mysql_affected_rows() == 0) {

@@ -38,7 +38,7 @@ class Volunteer extends CardHolder{
 			} else {
 				$a = 1;
 			}
-				
+
 			$query = "UPDATE volunteer
                   SET active = $a 
                   WHERE `ST-ID` = $id";
@@ -60,7 +60,29 @@ class Volunteer extends CardHolder{
 
 		return $this->succes;
 
-		 
+			
+	}
+
+	public function updateAll($name, $s_name, $active, $newId, $oldId) {
+
+		/*
+		 public function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
+		 $query = "UPDATE volunteer
+		 SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId
+		 WHERE `ST-ID` = $oldId";
+		 $result = mysql_query($query);
+
+		 if (mysql_affected_rows() == 0) {
+			return "Noting changed";
+			} elseif ($result) {
+			return "Frivillig opdateret";
+			} else {
+			return mysql_error();
+			}
+
+			}
+		 */
+
 	}
 }
 ?>
