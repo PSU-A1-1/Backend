@@ -3,131 +3,26 @@
 // Debug
 ini_set('display_errors',1); 
 error_reporting(E_ALL); 
-
-
-class CardHolder {
-
-  public $id;
-  public $beers;
-  public $drinks;
-  public $succes;
-  public $error;
-
-  public function __construct($id, $beers, $drinks) {
-  	include_once '../connect.php';
-    $this->id->current = (int)$id;
-    $this->id->original = (int)$id;
-    $this->beers->added = 0;
-    $this->beers->original = (int)$beers;
-    $this->drinks->added = 0;
-    $this->drinks->original = (int)$drinks;
-  }
-
-  public function updateDrinks($drinks) {
-    
-  	$id = $this->id->current;
-  	
-    $query = "UPDATE volunteer 
-              SET drinks = drinks + $drinks
-              WHERE `ST-ID` = $id";
-    $result = mysql_query($query);
-   
-    if (mysql_affected_rows() == 0) {
-      $this->succes = false;
-      $this->error = "some error";
-    }
-    else if ($result) {
-      $this->succes = true;
-      $this->drinks->added += $drinks;
-    }
-    else {
-      $this->succes = false;
-      $this->error = mysql_error();
-    }   
-   
-    return $this->succes;
-  }
-
-    
-  public function updateBeers($beers) {
-    $this->beers->beers = $beers;
-
-  }
-
-  public function updateBoth($beers, $drinks) {
-    $this->updateBeers($beers);
-    $this->updateDrinks($drinks);
-  }
-
-  public function updateId($id) {
-    $this->id->current = $id;
-  }
-    
-}
-
-class Volunteer extends CardHolder{
-
-  public $name;
-  public $surname;
-  public $active;
-
-  public function __construct($name, $surname, $id, $beers, $drinks, $active) {
-    parent::__construct($id, $beers, $drinks);
-    $this->name->original = $name;
-    $this->surname->original = $surname;
-    $this->active->original = (int)$active;
-  }
-
-  public function updateName($name) {
-    $this->name->current = $name;
-  }
-
-  public function updateSurName($surName) {
-    $this->surname->current = $surName;
-  }
-
-  public function updateBothNames($name, $surname) {
-    $this->updateName($name);
-    $this->updateSurName($surname);
-  }
-
-  public function updateActive() {
-  	if ($this->active->current == 0) {
-  		$this->active->current = 1;
-  		
-  	} else {
-  		$this->active->current = 0;
-  	}
-  	// Make like update drinks
-  	return true;
-    
-  }
-  
-}
-
-class Guest extends CardHolder {
-  public function __construct($id, $beers, $drinks) {
-    parent::__construct($id, $beers, $drinks);
-  }
-
-}
-
+include_once 'cardholder.php';
+include_once 'volunteer.php';
 
 class User {
-	public $std_beers = 6;
-	public $std_drinks = 4;
+	public $std_beers;
+	public $std_drinks;
 
-	function User() {
-		include_once '../connect.php';
+	public function __construct() {
+		include_once 'connect.php';
+		$this->std_beers = 6;
+		$this->std_drinks = 4;
 
 	}
-	function searchVolunteer($id) {
+	public function searchVolunteer($id) {
 		$volunteer_query = mysql_query("SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active, start_date 
                                                 FROM volunteer WHERE `ST-ID` = '$id' LIMIT 1") or die(print(mysql_error()));
 		$volunteer = mysql_fetch_assoc($volunteer_query);
 		return $volunteer;
 	}
-	function searchVolunteers($text) {
+	public function searchVolunteers($text) {
 		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active 
                           FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%'";
 		$volunteer_query = mysql_query($query);
@@ -144,8 +39,9 @@ class User {
 		mysql_close();
 		return $volunteers;
 	}
-
-	function addPoints($id, $beers, $drinks) {
+	
+	/*
+	public function addPoints($id, $beers, $drinks) {
 		$query = "UPDATE volunteer 
                           SET beers = beers + $beers, drinks = drinks + $drinks 
                           WHERE `ST-ID` = $id";
@@ -158,9 +54,10 @@ class User {
 		else
 		return mysql_error();
 	}
+	*/
 	
 	
-	function addVolunteer($user) {
+	public function addVolunteer($user) {
 		
 		$name = $user->name->original;
 		$surname = $user->surname->original;
@@ -180,7 +77,7 @@ class User {
 		}	
 	}
 	
-	function createUserFromId($id) {
+	public function createUserFromId($id) {
 		$query = "SELECT `ST-ID` AS id , `first_name` AS name , `surname` , `beers`, `drinks`, `active`
 				  FROM volunteer
 				  WHERE `ST-ID` = $id LIMIT 1 ";
@@ -194,7 +91,7 @@ class User {
 		}
 	}
 	
-	function createVolunteer($name, $surname, $active) {
+	public function createVolunteer($name, $surname, $active) {
 		// Make safer		
 		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
 					        	        FROM volunteer), 0)"), 0);
@@ -211,10 +108,7 @@ class User {
 
 	}
 	
-	
-	
-
-	function activate($id) {
+	public function activate($id) {
 		$active = mysql_query("SELECT `active` 
                                        FROM `volunteer` 
                                        WHERE `ST-ID` = '$id'");
@@ -242,7 +136,7 @@ class User {
 	}
 
 	// Same as seach, but search concats names...
-	function getVolunteer($id) {
+	public function getVolunteer($id) {
 		$volunteer_query = mysql_query("SELECT `ST-ID` AS id , `first_name` , `surname` , `active`
 					        FROM volunteer
 						WHERE `ST-ID` = $id LIMIT 1  ") or die(print(mysql_error()));
@@ -250,7 +144,7 @@ class User {
 		return $volunteer;
 	}
 
-	function getNewId() {
+	public function getNewId() {
 		$id = 0;
 		$result = mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
 				       FROM volunteer), 0)");
@@ -262,7 +156,7 @@ class User {
 
 	}
 
-	function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
+	public function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
 		$query = "UPDATE volunteer 
                           SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  
                           WHERE `ST-ID` = $oldId";

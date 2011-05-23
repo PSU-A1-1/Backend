@@ -1,5 +1,7 @@
 <?php 
 include_once ("../Model/user_model.php");
+include_once '../Model/cardholder.php';
+include_once '../Model/volunteer.php';
 session_start();
 
 
@@ -19,16 +21,18 @@ if(isset($_POST['m'])) {
 	$succes = true;
 	
 	switch ($_POST['m']) {
-		
+	// Done for now	
 	case 'addFixed':
 		foreach(explode("|", $_POST['ids']) as $id) {
 			if (array_key_exists($id, $_SESSION['workgroup'])) {		
 				$user = $_SESSION['workgroup'][$id];
 			} else {
-				$user = $UserModel->createUserFromId($id);	
+				$user = $UserModel->createUserFromId($id);
+				var_dump($user);	
 			}
 			
-		if ($user->updateDrinks(10)) {
+		// Make $std_ a datacall
+		if ($user->updateBoth($UserModel->std_beers, $UserModel->std_drinks)) {
 				$_SESSION['workgroup'][$id] = $user;
 			} else {
 				$_SESSION['workgroup'][$id] = "fail";
@@ -72,7 +76,6 @@ if(isset($_POST['m'])) {
 		break;
 		
 	case 'newVolunteer':
-		
 		$user = $UserModel->createVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
 		echo $UserModel->addVolunteer($user);
 		
@@ -83,14 +86,13 @@ if(isset($_POST['m'])) {
 		break;
 		
 	case 'activate':
-		
 		foreach(explode("|", $_POST['ids']) as $id) {
 			if (array_key_exists($id, $_SESSION['workgroup'])) {		
 				$user = $_SESSION['workgroup'][$id];
 			} else {
 				$user = $UserModel->createUserFromId($id);	
 				// Works here!
-				$_SESSION['workgroup'][$id] = $user;
+				//$_SESSION['workgroup'][$id] = $user;
 			}
 		
 		// Fix theese----------
@@ -100,26 +102,9 @@ if(isset($_POST['m'])) {
 				$_SESSION['workgroup'][$id] = "fail";
 			}
 			
-		
-			// if user->succes!!!
-			
 		}
+		
 		break;
-		
-		
-		
-		
-		
-	/*	
-	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
-		foreach(explode("|", $_POST['ids']) as $id) {
-			if(!in_array($id, $_SESSION['idsAdded']))
-					$_SESSION['idsAdded'][] = $id;
-			// TODO : acChange($id, $_POST['beers'], $_POST['drinks']);
-			echo $UserModel->activate($id)."<br>";
-		}
-		break;
-		*/
 		
 		
 	}

@@ -1,7 +1,7 @@
 <?php 
-header('Content-type: text/html; charset=utf-8');
-
 include_once ("../Model/user_model.php");
+include_once ("../Model/cardholder.php");
+include_once ("../Model/volunteer.php");
 session_start();
 
 $UserModel = new User();

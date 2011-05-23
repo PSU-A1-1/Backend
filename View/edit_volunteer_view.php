@@ -77,15 +77,11 @@ $().ready(
 
 			if ($('#volunteerName').val() != "" && $('#volunteerSurName').val() != "" ) {
 
-				//if (idChanged) 
-					//alert ("yo");
-				
 				var name = $("input:text[id=volunteerName]").val();
 				var surName = $("input:text[id=volunteerSurName]").val();
 				var aktiv = parseInt($("input:checkbox[id=aktiv]").attr('checked')?1:0);
 				var newId = parseInt($("input:text[id=id]").val());
 
-				//alert(name + surName + aktiv + id);
 			
 				$.ajax({
 					type: "POST",
@@ -96,7 +92,8 @@ $().ready(
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
 						confirm(data);
-						//updateGrid (newId);
+						var base_url = './?view=';
+				    	document.location.href = base_url + "workgroup";
 						
 					  },
 					error: function(request, error){

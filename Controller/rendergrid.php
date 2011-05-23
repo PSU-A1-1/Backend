@@ -1,5 +1,7 @@
 <?php
 include_once ("../Model/user_model.php");
+include_once ("../Model/cardholder.php");
+include_once ("../Model/volunteer.php");
 session_start();
 
 function gridRow ($data) {
@@ -17,9 +19,9 @@ function gridRow ($data) {
 function parseVolunteer($volunteer) {
 	$data['name'] = $volunteer->name->original;
 	$data['ST-ID'] = $volunteer->id->current;
-	$data['beers'] = $volunteer->beers->original;
-	$data['drinks'] = $volunteer->drinks->original;
-	$data['active'] = $volunteer->active->original;
+	$data['beers'] = $volunteer->getBeers();
+	$data['drinks'] = $volunteer->getDrinks();// $volunteer->drinks->original . " +" . $volunteer->drinks->added;
+	$data['active'] = $volunteer->active->current;
 	return $data;
 
 }
@@ -39,7 +41,13 @@ function showAll() {
 	foreach ($users as $user) {
 		$id = $user['ST-ID'];
 		if (array_key_exists($id, $_SESSION['workgroup'])) {
-			$data = parseVolunteer($_SESSION['workgroup'][$id]);
+			// Handle fail...
+			if ($_SESSION['workgroup'][$id] == 'fail') {
+			} else {
+				$data = parseVolunteer($_SESSION['workgroup'][$id]);
+				
+				
+			}
 		} else {
 			$data = $user;
 		}

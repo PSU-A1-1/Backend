@@ -15,27 +15,6 @@ function updateGrid (ids) {
 
 
 
-	
-<script type="text/javascript">
-	
-function renderGrid (view) {
-		$('#grid tr:gt(0)').remove();
-		$.ajax({
-			type: "GET",
-			cache: false,
-			url: 'Controller/rendergrid.php',
-			data: view,
-			success: function(data, textStatus) {
-				$('#grid tr:last').after(data);
-				//var base_url = './?view=';
-		    	//document.location.href = base_url + view;
-				
-			}
-		});
-		
-	}
-	</script>
-
 <script type="text/javascript">
 
 var tooMany = 'For mange brugere valgt';

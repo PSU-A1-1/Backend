@@ -1,8 +1,7 @@
 <?php
 include_once ("./Model/user_model.php");
+//include_once ("./Model/volunteer.php");
 session_start();
-
-
 
 class ViewMachine {
 	function search() {

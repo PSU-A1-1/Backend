@@ -49,6 +49,13 @@ $().ready(function() {
    
 		
 	});
+
+	$("#workgroup").click(function() {
+		var base_url = './?view=';
+    	document.location.href = base_url + "workgroup";
+   
+		
+	});
 	
 	$("#searchName").keypress(function(event){
 		  if(event.keyCode == 13){
