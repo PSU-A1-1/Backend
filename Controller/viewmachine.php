@@ -15,13 +15,15 @@ class ViewMachine {
 	function view() {
 		if (isset($_GET['view'])) {
 			switch ($_GET['view']) {
-				case "newVolunteer" : include "View/new_volunteer_view.php";
+				case "newVolunteer" : include_once "View/new_volunteer_view.php";
 				break;
-				case "editVolunteer" : include "View/edit_volunteer_view.php";
+				case "editVolunteer" : include_once "View/edit_volunteer_view.php";
 				break;
-				case "workGroup" : include "View/workgroup_view.php"; //workGroup();
+				case "workGroup" : include_once "View/workgroup_view.php"; //workGroup();
 				break;
-				default : include "View/grid_view.php";
+				case "showall" : include_once "View/grid_view.php"; //workGroup();
+				break;
+				default : include_once "View/grid_view.php";
 				break;
 			}
 		} else {

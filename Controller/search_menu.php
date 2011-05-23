@@ -1,5 +1,4 @@
 <script type="text/javascript">
-//søger efter id i streng af kommaseparerede id'er
 
 function IDAdded(id, addedIDs)
 {
@@ -45,8 +44,11 @@ $().ready(function() {
 	});
 
 	$("#showAll").click(function() {
-		renderGrid("showall");
+		var base_url = './?view=';
+    	document.location.href = base_url + "showall";
+   
 		
+	});
 	
 	$("#searchName").keypress(function(event){
 		  if(event.keyCode == 13){

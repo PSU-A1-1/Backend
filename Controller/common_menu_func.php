@@ -12,6 +12,9 @@ function updateGrid (ids) {
 		});
 	}
 	</script>
+
+
+
 	
 <script type="text/javascript">
 	
@@ -24,8 +27,12 @@ function renderGrid (view) {
 			data: view,
 			success: function(data, textStatus) {
 				$('#grid tr:last').after(data);
+				//var base_url = './?view=';
+		    	//document.location.href = base_url + view;
+				
 			}
 		});
+		
 	}
 	</script>
 

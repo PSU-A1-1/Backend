@@ -25,10 +25,9 @@ $().ready(function() {
 					alert('Fejl i tildeling af point');
 				} else {
 					alert("Tilf¿jet");
-					renderGrid("workgroup");
-					//var base_url = './?view=workGroup';
-		        	//document.location.href = base_url;
-					//updateGrid (ids.join(', '));
+					
+					var base_url = './?view=';
+			    	document.location.href = base_url + "workgroup";
 				}
 			  },
 			error: function(request,error){
