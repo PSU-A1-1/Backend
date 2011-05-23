@@ -91,8 +91,16 @@ class Volunteer extends CardHolder{
     $this->updateSurName($surname);
   }
 
-  public function updateActive($active) {
-    $this->active->current = (int)$active;
+  public function updateActive() {
+  	if ($this->active->current == 0) {
+  		$this->active->current = 1;
+  		
+  	} else {
+  		$this->active->current = 0;
+  	}
+  	// Make like update drinks
+  	return true;
+    
   }
   
 }

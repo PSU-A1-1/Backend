@@ -97,9 +97,6 @@ class User {
 
 	}
 	
-	
-	
-
 	function activate($id) {
 		$active = mysql_query("SELECT `active` 
                                        FROM `volunteer` 
