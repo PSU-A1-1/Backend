@@ -83,6 +83,34 @@ if(isset($_POST['m'])) {
 		break;
 		
 	case 'activate':
+		
+		foreach(explode("|", $_POST['ids']) as $id) {
+			if (array_key_exists($id, $_SESSION['workgroup'])) {		
+				$user = $_SESSION['workgroup'][$id];
+			} else {
+				$user = $UserModel->createUserFromId($id);	
+				// Works here!
+				$_SESSION['workgroup'][$id] = $user;
+			}
+		
+		// Fix theese----------
+		if ($user->updateActive()) {
+				$_SESSION['workgroup'][$id] = $user;
+			} else {
+				$_SESSION['workgroup'][$id] = "fail";
+			}
+			
+		
+			// if user->succes!!!
+			
+		}
+		break;
+		
+		
+		
+		
+		
+	/*	
 	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 		foreach(explode("|", $_POST['ids']) as $id) {
 			if(!in_array($id, $_SESSION['idsAdded']))
@@ -91,7 +119,7 @@ if(isset($_POST['m'])) {
 			echo $UserModel->activate($id)."<br>";
 		}
 		break;
-		
+		*/
 		
 		
 	}

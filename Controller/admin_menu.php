@@ -34,7 +34,8 @@ $().ready(function() {
 			dataType: "text",
 			success: function (data) {
 				alert('Status opdateret');
-				updateGrid (ids.join(', '));
+				var base_url = './?view=';
+		    	document.location.href = base_url + "workgroup";
 				
 			  },
 			error: function(request,error){
