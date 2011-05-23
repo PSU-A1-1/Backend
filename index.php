@@ -26,10 +26,10 @@ $std_drinks = 4;
 <link rel="stylesheet" type="text/css" href="View/lib/jquery.autocomplete.css" />
 </head>
 <body>
-<table border="2" id="maintable">
+<table border="0" cellspacing="3" cellpadding="3" id="maintable">
 <tr height="20%">
 	<td></td>
-	<td>Header</td>
+	<td id="header"><img src="View/img/logo.jpg" /></td>
 	<td></td>
 </tr>
 <tr>
@@ -38,7 +38,7 @@ $std_drinks = 4;
 		<a href="?admin=0">Afvikler</a><br>
 		<?php $MainController->search(); ?>
 	</td>
-	<td valign="top"><?php $MainController->view(); ?>
+	<td valign="top" id="mainView"><?php $MainController->view(); ?>
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"></div>

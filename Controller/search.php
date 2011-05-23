@@ -18,15 +18,19 @@ function idChangeView ($id) {
 	}
 	return $out;
 }
-function gridRow ($data) {
+function gridRow ($data, $odd = 0) {
 	$pointChange = idChangeView($data['ST-ID']);
-	echo "<tr><td>".utf8_encode($data['name'])."</td>";
+	if ($odd == 1)
+		echo "<tr class=\"gridOdd\"><td>".utf8_encode($data['name'])."</td>";
+	else
+		echo "<tr><td>".utf8_encode($data['name'])."</td>";
+	
 	echo "<td>".$data['ST-ID']."</td>";
 	echo "<td>".$data['beers'].$pointChange[0]."</td>";
 	echo "<td>".$data['drinks'].$pointChange[1]."</td>";
 	if($_SESSION['Admin']) 
 		echo "<td>".$data['active']."</td>";
-	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\"></td>";
+	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\" class=\"input\"></td>";
 	echo "</tr>";
 }
 
@@ -63,7 +67,9 @@ elseif (isset($_GET["ids"])) {
 	$UserModel = new User();
 	foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
 	$users = $UserModel->searchVolunteers("");
+	$i = 0;
 	foreach ($users as $user) {
-		gridRow($user);
+		gridRow($user, $i % 2);
+		$i++;
 	}
 }

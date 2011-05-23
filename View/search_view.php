@@ -37,12 +37,16 @@ $().ready(function() {
 						  $('#showAllSet').val(0);
 					  }
 					  $('#grid tr:last').after(data);
+					  var rowCount = $('#grid tr').length;
+					  if ($('#grid tr').length % 2 == 1) {
+						  $("#grid tr:last").addClass("gridOdd");
+					  }
 				  }
 			});	
 		$('#searchName').val("");
 		$('#searchName').focus();
 	});
-
+	var tog = false;
 	$("#showAll").click(function() {
 		$('#grid tr:gt(0)').remove();
 			$.ajax({
@@ -51,7 +55,11 @@ $().ready(function() {
 				  url: 'Controller/search.php',
 				  data: "showall=1",
 				  success: function(data, textStatus) {
-					  $('#grid tr:last').after(data);  
+					  $('#grid tr:last').after(data); 
+					  $('#grid tr').click(function() {
+						$('input[name=user_id]', this).attr("checked",!tog);
+					  	tog = !tog; 
+					  	if(tog) {$(this).addClass("gridOver"); } else {$(this).removeClass("gridOver");} });
 				  }
 			});	
 		$('#showAllSet').val(1);
@@ -70,6 +78,6 @@ $().ready(function() {
 
 <form action="" method="post" >
 Søg<br> 
-<input type="text" name="name" id="searchName" /> <input type='hidden' id='searchID' /> <input type='hidden' id='showAllSet' />
+<input type="text" name="name" id="searchName" class="input"/> <input type='hidden' id='searchID' /> <input type='hidden' id='showAllSet' />
 <input type="button" value="Tilføj" id="searchAdd"> <input type="button" value="Vis alle" id="showAll">
 </form> 

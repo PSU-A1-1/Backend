@@ -183,14 +183,14 @@ $().ready(function() {
 	</div>
 
 	<div id="addSpecialBox"> Tilføj 
-			<input type="text" value="0" id="numBeers" size="1" maxlength="2" /> øl og 	
-			<input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> drinks til valgte brugere?<br> 
+			<input type="text" value="0" id="numBeers" size="1" maxlength="2" class="input" /> øl og 	
+			<input type="text" value="0" id="numDrinks" size="1" maxlength="2" class="input" /> drinks til valgte brugere?<br> 
 			<input type="button" value="OK" id="addSpecialButton" />
 	</div>
 	
 	<div id="addGuestBox"> Tilføj 
-			<input type="text" value="<?php echo $std_beers; ?>" id="numGuestBeers" size="1" maxlength="2" /> øl og 	
-			<input type="text" value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1" maxlength="2" /> drinks til id: 
+			<input type="text" value="<?php echo $std_beers; ?>" id="numGuestBeers" size="1" maxlength="2" class="input" /> øl og 	
+			<input type="text" value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1" maxlength="2" class="input" /> drinks til id: 
 			<input type="text" value="" id="guestId" size="10" maxlength="16" />?<br> 
 			<input type="button" value="OK" id="addGuestButton" />
 	</div>

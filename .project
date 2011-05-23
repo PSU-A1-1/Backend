@@ -19,4 +19,11 @@
 	<natures>
 		<nature>org.eclipse.php.core.PHPNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>View/img/logo.jpg</name>
+			<type>1</type>
+			<location>C:/Users/Jeppe/Desktop/Datalogi/Projekt/backend lort/logo.jpg</location>
+		</link>
+	</linkedResources>
 </projectDescription>
