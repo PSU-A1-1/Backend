@@ -3,6 +3,11 @@ include_once ("./Model/user_model.php");
 //include_once ("./Model/volunteer.php");
 session_start();
 
+if (!isset($_SESSION['Admin'])) {
+	$_SESSION['Admin'] = 0;
+}
+	 
+
 class ViewMachine {
 	function search() {
 		include "View/search_view.php";
