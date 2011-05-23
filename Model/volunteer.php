@@ -8,7 +8,9 @@ class Volunteer extends CardHolder{
 	public function __construct($name, $surname, $id, $beers, $drinks, $active) {
 		parent::__construct($id, $beers, $drinks);
 		$this->name->original = $name;
+		$this->name->current = $name;
 		$this->surname->original = $surname;
+		$this->surname->current = $surname;
 		$this->active->current = (int)$active;
 		$this->active->original = (int)$active;
 	}
@@ -60,7 +62,11 @@ class Volunteer extends CardHolder{
 
 		return $this->succes;
 
-			
+	}
+
+	public function getFullName() {
+		$name = $this->name->current . " " . $this->surname->current;
+		return $name;
 	}
 
 	public function updateAll($name, $s_name, $active, $newId, $oldId) {

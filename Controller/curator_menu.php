@@ -37,13 +37,12 @@ $().ready(function() {
 		}
 	});	
 	$("#addSpecialButton").click(function() {
-		var ids = new Array();
-		$("input[@name='user_id[]']:checked").each(function() {ids.push($(this).val());});
+		var ids = getChecks();
 		var beers = parseInt($('#numBeers').val());
 		var drinks = parseInt($('#numDrinks').val());
 		
 		if (ids.length == 0) {
-		    alert("Ingen brugere valgt");
+		    alert(tooFew);
 		} else if (!(positiveNumeric(beers) && positiveNumeric(drinks))) {
 			alert("Kun positive antal øl/drinks point kan tilføjes");
 		} else {
@@ -57,7 +56,9 @@ $().ready(function() {
 					alert('Fejl i tildeling af point');
 				} else {
 					alert('Øl og drinks point tilføjet');
-					updateGrid (ids.join(', '));
+					var base_url = './?view=';
+			    	document.location.href = base_url + "workgroup";
+					//updateGrid (ids.join(', '));
 				}
 			  },
 			error: function(request,error){

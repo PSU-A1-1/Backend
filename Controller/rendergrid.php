@@ -17,7 +17,7 @@ function gridRow ($data) {
 }
 
 function parseVolunteer($volunteer) {
-	$data['name'] = $volunteer->name->original;
+	$data['name'] = $volunteer->getFullName();
 	$data['ST-ID'] = $volunteer->id->current;
 	$data['beers'] = $volunteer->getBeers();
 	$data['drinks'] = $volunteer->getDrinks();// $volunteer->drinks->original . " +" . $volunteer->drinks->added;

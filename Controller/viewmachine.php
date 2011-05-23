@@ -1,12 +1,13 @@
 <?php
 include_once ("./Model/user_model.php");
-//include_once ("./Model/volunteer.php");
+include_once ("./Model/cardholder.php");
+include_once ("./Model/volunteer.php");
 session_start();
 
 if (!isset($_SESSION['Admin'])) {
 	$_SESSION['Admin'] = 0;
 }
-	 
+
 
 class ViewMachine {
 	function search() {
@@ -35,7 +36,7 @@ class ViewMachine {
 		}
 
 	}
-	
+
 	function setAdmin($val) {
 		$_SESSION['Admin'] = $val;
 	}
@@ -43,7 +44,7 @@ class ViewMachine {
 		return isset($_SESSION['Admin']) && $_SESSION['Admin'] == 1;
 	}
 
-	
+
 }
 ?>
 

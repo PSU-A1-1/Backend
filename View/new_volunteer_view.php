@@ -29,8 +29,14 @@ $().ready(
 					dataType: "text",
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
-						confirm(data);
-						
+						var c = confirm(data);
+						if (c) {
+							var base_url = './?view=';
+							document.location.href = base_url + "newVolunteer";
+						} else {
+							var base_url = './?view=';
+							document.location.href = base_url + "workgroup";
+						}
 						
 					  },
 					error: function(request, error){

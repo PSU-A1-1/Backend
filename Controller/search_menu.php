@@ -1,14 +1,10 @@
 <script type="text/javascript">
 
-function IDAdded(id, addedIDs)
-{
-	if (addedIDs.search(id+', ') != -1)
-		return true
-	else 
-		return false
-}
 
 $().ready(function() {
+
+	var base_url = './?view=';
+	
 	$("#searchName").autocomplete("Controller/search.php", {
 		width: 260,
 		multiple: false,
@@ -32,11 +28,7 @@ $().ready(function() {
 				  url: 'Controller/search.php',
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
-					  if ($('#showAllSet').val() == 1) {
-						  $('#grid tr:gt(0)').remove();
-						  $('#showAllSet').val(0);
-					  }
-					  $('#grid tr:last').after(data);
+				    	document.location.href = base_url + "workgroup";
 				  }
 			});	
 		$('#searchName').val("");
@@ -44,14 +36,12 @@ $().ready(function() {
 	});
 
 	$("#showAll").click(function() {
-		var base_url = './?view=';
     	document.location.href = base_url + "showall";
    
 		
 	});
 
 	$("#workgroup").click(function() {
-		var base_url = './?view=';
     	document.location.href = base_url + "workgroup";
    
 		
@@ -63,7 +53,6 @@ $().ready(function() {
 		    return false;
 		  }
 	});
-	//$("#showAll").click();	// I think this is a bit buggy. Maybe, if isset : someview.....
 });
 
 </script>

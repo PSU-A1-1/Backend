@@ -54,7 +54,7 @@ class User {
 
 		$result = mysql_query($query);
 		if ($result) {
-			$_SESSION['workgroup'][(string)$id] = $user;
+			$_SESSION['workgroup'][$id] = $user;
 			return "Ny frivillig: ".$name." ".$surname." with id: ".$id;
 		}
 		else {
@@ -124,6 +124,7 @@ class User {
 		if (mysql_affected_rows() == 0) {
 			return "Noting changed";
 		} elseif ($result) {
+			
 			return "Frivillig opdateret";
 		} else {
 			return mysql_error();

@@ -30,6 +30,10 @@ class CardHolder {
 	public function updateDrinks($drinks) {
 
 		$id = $this->id->current;
+		
+		if ($drinks != 0) {
+			
+		
 
 		$query = "UPDATE volunteer
               SET drinks = drinks + $drinks
@@ -49,6 +53,9 @@ class CardHolder {
 			$this->succes = false;
 			$this->error = mysql_error();
 		}
+		} else {
+			$this->succes = true;
+		}
 		 
 		return $this->succes;
 	}
@@ -57,6 +64,8 @@ class CardHolder {
 	public function updateBeers($beers) {
 		$id = $this->id->current;
 		 
+		if ($beers != 0) {
+		
 		$query = "UPDATE volunteer
               SET beers = beers + $beers
               WHERE `ST-ID` = $id";
@@ -73,6 +82,9 @@ class CardHolder {
 		else {
 			$this->succes = false;
 			$this->error = mysql_error();
+		}
+		} else {
+			$this->succes = true;
 		}
 		 
 		return $this->succes;
@@ -95,6 +107,8 @@ class CardHolder {
 		$drinks = ($this->drinks->original + $this->drinks->added);
 		if ($this->drinks->added > 0) {
 			$added = " +" . $this->drinks->added;
+		} else {
+			$added = "";
 		}
 		return $drinks.$added;
 	}
@@ -103,6 +117,8 @@ class CardHolder {
 		$beers = ($this->beers->original + $this->beers->added);
 		if ($this->beers->added > 0) {
 			$added = " +" . $this->beers->added;
+		} else {
+			$added = "";
 		}
 		return $beers.$added;
 	}

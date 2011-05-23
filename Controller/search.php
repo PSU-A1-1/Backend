@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once ("../Model/user_model.php");
 include_once ("../Model/cardholder.php");
 include_once ("../Model/volunteer.php");
@@ -12,14 +12,14 @@ function idChangeView ($id) {
 	if (isset($_SESSION['idsChanged'][$id])) {
 		$t = explode(", ", $_SESSION['idsChanged'][$id]);
 		if ($t[0] > 0)
-			$out[0] = " (+ $t[0])";
+		$out[0] = " (+ $t[0])";
 		elseif ($t[0] < 0)
-			$out[0] = " (- $t[0])";
+		$out[0] = " (- $t[0])";
 			
 		if ($t[1] > 0)
-			$out[1] = " (+ $t[1])";
+		$out[1] = " (+ $t[1])";
 		elseif ($t[1] < 0)
-			$out[1] = " (- $t[1])";
+		$out[1] = " (- $t[1])";
 	}
 	return $out;
 }
@@ -32,30 +32,39 @@ function gridRow ($data) {
 	echo "<td id='id'>".$data['ST-ID']."</td>";
 	echo "<td id='beers'>".$data['beers'].$pointChange[0]."</td>";
 	echo "<td id = 'drinks'>".$data['drinks'].$pointChange[1]."</td>";
-	if($_SESSION['Admin']) 
-		echo "<td id = 'active'>".$data['active']."</td>";
+	if($_SESSION['Admin'])
+	echo "<td id = 'active'>".$data['active']."</td>";
 	echo "<td><input type=\"checkbox\" name=\"user_id\" value=\"".$data['ST-ID']."\"></td>";
 	echo "</tr>";
 }
 
 // $q fra autocomplete i søge view (ajax)
 if(isset($_GET["q"])) {
-	
+
 	$q = strtolower($_GET["q"]);
 	$users = $UserModel->searchVolunteers($q);
 	foreach ($users as $user) {
 		echo $user['ST-ID'].", ".utf8_encode($user['name'])."\n";
-	}	
+	}
 } // Når der trykkes på tilføj knappen sendes  $_GET["id"]
 elseif (isset($_GET["id"])) {
-	
+
 	$id = $_GET["id"];
-	if (!in_array($id, $_SESSION['idsAdded'])) {
-		$_SESSION['idsAdded'][] = $id;
-		$user = $UserModel->searchVolunteer($id);
-		gridRow($user);
+
+	if (!array_key_exists($id, $_SESSION['workgroup'])) {
+		$user = $UserModel->createUserFromId($id);
+		$_SESSION['workgroup'][$id] = $user;
+	} else {
+		//
 	}
-} // Når der opdateresi gridden
+
+}
+
+
+
+
+// Remove???
+// Når der opdateresi gridden
 elseif (isset($_GET["ids"])) {
 
 	foreach ($_SESSION['idsAdded'] as $id) {
@@ -70,3 +79,5 @@ elseif (isset($_GET["ids"])) {
 		gridRow($user);
 	}
 }
+
+
