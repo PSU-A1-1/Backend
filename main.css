@@ -84,6 +84,12 @@ input[type="text"]
 	border: #96958f solid 1px;
 	border-width: 0px 1px 0px 1px;
 }
+
+#menuSep {
+	border: #96958f solid 1px;
+	border-width: 1px 0px 0px 0px;
+}
+
 a {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;

@@ -22,18 +22,24 @@ $().ready(function() {
     });
     
 	$("#searchAdd").click(function() {
+		
 			$.ajax({
 				  type: "GET",
 				  cache: false,
 				  url: 'Controller/search.php',
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
+					  if ($("#searchID").val() != "") 
+						{
 				    	document.location.href = base_url + "workgroup";
+				    	
+						}
 				  }
 			});	
 		$('#searchName').val("");
 		$('#searchName').focus();
 	});
+	
 
 	$("#showAll").click(function() {
     	document.location.href = base_url + "showall";

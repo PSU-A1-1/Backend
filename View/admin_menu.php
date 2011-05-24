@@ -1,6 +1,6 @@
 <?php include_once "Controller/admin_menu.php";?>
 
-<a id="newVolunteer" href="?view=newVolunteer">Tilføj frivillig</a>
+<a id="newVolunteer" href="?view=newVolunteer">TilfÃ¸j frivillig</a>
 <br>
 <a id="editVolunteer" href="#">Rediger frivillig</a>
 <br>

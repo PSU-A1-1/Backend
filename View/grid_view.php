@@ -34,7 +34,7 @@ $().ready(function() {
 		success: function(data, textStatus) {
 			
 			$('#grid tr:last').after(data);
-			$('#grid tr:nth-child(2n+1)').addClass('gridOdd');
+			$('#grid tr:nth-child(2n+2)').addClass('gridOdd');
 		}
 	});
 
@@ -47,7 +47,7 @@ $().ready(function() {
   <tr align="left">
     <th width="40%">Navn</th>
     <th width="20%">ID</th>
-    <th width="100">Øl</th>
+    <th width="100">Ã˜l</th>
     <th width="100">Drinks</th>
     <?php if($_SESSION['Admin']) { ?>
     <th width="10%">Aktiv</th>

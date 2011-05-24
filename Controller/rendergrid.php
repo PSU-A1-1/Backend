@@ -5,6 +5,7 @@ include_once ("../Model/volunteer.php");
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
+
 function gridRow ($data) {
 
 	echo "<tr><td id='name'>".utf8_encode($data['name'])."</td>";
@@ -21,14 +22,16 @@ function parseVolunteer($volunteer) {
 	$data['name'] = $volunteer->getFullName();
 	$data['ST-ID'] = $volunteer->id->current;
 	$data['beers'] = $volunteer->getBeers();
-	$data['drinks'] = $volunteer->getDrinks();// $volunteer->drinks->original . " +" . $volunteer->drinks->added;
+	$data['drinks'] = $volunteer->getDrinks();
 	$data['active'] = $volunteer->active->current;
 	return $data;
 
 }
 
 function workGroup() {
-	foreach($_SESSION['workgroup'] as $key => $volunteer) {
+	$session = $_SESSION['workgroup'];
+	//ksort($session);
+	foreach($session as $key => $volunteer) {
 		$data = parseVolunteer($volunteer);
 		gridRow($data);
 	}
@@ -37,7 +40,7 @@ function workGroup() {
 function showAll() {
 	// Take care of user model!!!
 	$UserModel = new User();
-	$users = $UserModel->searchVolunteers("");
+	$users = $UserModel->searchVolunteers("", "id");
 
 	foreach ($users as $user) {
 		$id = $user['ST-ID'];

@@ -22,9 +22,17 @@ class User {
 		$volunteer = mysql_fetch_assoc($volunteer_query);
 		return $volunteer;
 	}
-	public function searchVolunteers($text) {
+	public function searchVolunteers($text, $sort="") {
+		
+		switch ($sort) {
+			case "id" : $sortBy = "ORDER BY `ST-ID`";
+			break;
+			default : $sortBy = "";
+		}
+		
+		
 		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active 
-                          FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%'";
+                          FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%' ".$sortBy;
 		$volunteer_query = mysql_query($query);
 		$volunteers = array();
 		$i = 0;

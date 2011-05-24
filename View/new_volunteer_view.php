@@ -53,7 +53,7 @@ $().ready(
 
 
 <form action="" method="post" >
-Tilføj ny frivillig<br><br>
+TilfÃ¸j ny frivillig<br><br>
 <p>
 <label for="volunteerName">Fornavn</label> 
 <input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />

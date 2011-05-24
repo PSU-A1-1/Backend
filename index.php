@@ -33,7 +33,7 @@ $std_drinks = 4;
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 <script type="text/javascript" src="View/lib/jquery.js"></script>
 <script type='text/javascript' src='View/lib/jquery.autocomplete.js'></script>
 <script type="text/javascript" src="View/lib/jquery.url.min.js"></script>

@@ -24,7 +24,7 @@ $().ready(function() {
 				if (data == "Error") {
 					alert('Fejl i tildeling af point');
 				} else {
-					alert("Tilf¿jet");
+					alert('Ã¸l og drinks point tilfÃ¸jet');
 					
 					var base_url = './?view=';
 			    	document.location.href = base_url + "workgroup";
@@ -44,7 +44,7 @@ $().ready(function() {
 		if (ids.length == 0) {
 		    alert(tooFew);
 		} else if (!(positiveNumeric(beers) && positiveNumeric(drinks))) {
-			alert("Kun positive antal øl/drinks point kan tilføjes");
+			alert("Kun positive antal Ã¸l/drinks point kan tilfÃ¸jes");
 		} else {
 		    $.ajax({
 			type: "POST",
@@ -55,7 +55,7 @@ $().ready(function() {
 				if (data == "Error") {
 					alert('Fejl i tildeling af point');
 				} else {
-					alert('Øl og drinks point tilføjet');
+					alert('Ã¸l og drinks point tilfÃ¸jet');
 					var base_url = './?view=';
 			    	document.location.href = base_url + "workgroup";
 					//updateGrid (ids.join(', '));
@@ -75,7 +75,7 @@ $().ready(function() {
 		if (id == "" || !positiveNumeric(id)) {
 		    alert("Ingen brugere valgt");
 		} else if (!(positiveNumeric(beers) && positiveNumeric(drinks))) {
-			alert("Kun positive antal øl/drinks point kan tilføjes");
+			alert("Kun positive antal Ã¸l/drinks point kan tilfÃ¸jes");
 		} else {
 		    $.ajax({
 			type: "POST",
@@ -86,7 +86,7 @@ $().ready(function() {
 				if (data == "Error") {
 					alert('Fejl i tildeling af point');
 				} else {
-					alert(' Øl og drinks point tilføjet');
+					alert(' Ã¸l og drinks point tilfÃ¸jet');
 					updateGrid (id);
 				}
 			  },
