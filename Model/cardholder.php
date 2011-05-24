@@ -30,70 +30,70 @@ class CardHolder {
 	public function updateDrinks($drinks) {
 
 		$id = $this->id->current;
-		
-		if ($drinks != 0) {
-			
-		
 
-		$query = "UPDATE volunteer
+		if ($drinks != 0) {
+				
+
+
+			$query = "UPDATE volunteer
               SET drinks = drinks + $drinks
               WHERE `ST-ID` = $id";
-		$result = mysql_query($query);
-		 
+			$result = mysql_query($query);
+				
 
-		if (mysql_affected_rows() == 0) {
-			$this->succes = false;
-			$this->error = "nothing to do";
-		}
-		else if ($result) {
-			$this->succes = true;
-			$this->drinks->added += $drinks;
-		}
-		else {
-			$this->succes = false;
-			$this->error = mysql_error();
-		}
+			if (mysql_affected_rows() == 0) {
+				$this->succes = false;
+				$this->error = "nothing to do";
+			}
+			else if ($result) {
+				$this->succes = true;
+				$this->drinks->added += $drinks;
+			}
+			else {
+				$this->succes = false;
+				$this->error = mysql_error();
+			}
 		} else {
 			$this->succes = true;
 		}
-		 
+			
 		return $this->succes;
 	}
 
 
 	public function updateBeers($beers) {
 		$id = $this->id->current;
-		 
+			
 		if ($beers != 0) {
-		
-		$query = "UPDATE volunteer
+
+			$query = "UPDATE volunteer
               SET beers = beers + $beers
               WHERE `ST-ID` = $id";
-		$result = mysql_query($query);
+			$result = mysql_query($query);
 
-		if (mysql_affected_rows() == 0) {
-			$this->succes = false;
-			$this->error = "nothing to do";
-		}
-		else if ($result) {
-			$this->succes = true;
-			$this->beers->added += $beers;
-		}
-		else {
-			$this->succes = false;
-			$this->error = mysql_error();
-		}
+			if (mysql_affected_rows() == 0) {
+				$this->succes = false;
+				$this->error = "nothing to do";
+			}
+			else if ($result) {
+				$this->succes = true;
+				$this->beers->added += $beers;
+			}
+			else {
+				$this->succes = false;
+				$this->error = mysql_error();
+			}
 		} else {
 			$this->succes = true;
 		}
-		 
+			
 		return $this->succes;
 
 	}
 
 	// The error handling and returns are weird all over....
 	public function updateBoth($beers, $drinks) {
-		 
+			
 		if ($this->updateDrinks($drinks) && $this->updateBeers($beers)) {
 			return true;
 		}

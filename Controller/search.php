@@ -38,7 +38,7 @@ function gridRow ($data) {
 	echo "</tr>";
 }
 
-// $q fra autocomplete i søge view (ajax)
+// $q fra autocomplete i sï¿½ge view (ajax)
 if(isset($_GET["q"])) {
 
 	$q = strtolower($_GET["q"]);
@@ -46,7 +46,7 @@ if(isset($_GET["q"])) {
 	foreach ($users as $user) {
 		echo $user['ST-ID'].", ".utf8_encode($user['name'])."\n";
 	}
-} // Når der trykkes på tilføj knappen sendes  $_GET["id"]
+} // Nï¿½r der trykkes pï¿½ tilfï¿½j knappen sendes  $_GET["id"]
 elseif (isset($_GET["id"])) {
 
 	$id = $_GET["id"];
@@ -64,7 +64,7 @@ elseif (isset($_GET["id"])) {
 
 
 // Remove???
-// Når der opdateresi gridden
+// Nï¿½r der opdateresi gridden
 elseif (isset($_GET["ids"])) {
 
 	foreach ($_SESSION['idsAdded'] as $id) {

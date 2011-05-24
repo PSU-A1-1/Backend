@@ -1,7 +1,4 @@
 <!--  <input type='hidden' id='gridAdded' value="0" /><br> -->
-
-
-
 <script type="text/javascript">
 
 //Read a page's GET URL variables and return them as an associative array. Stolen from somewhere.
@@ -44,16 +41,16 @@ $().ready(function() {
 		
 </script>
 <table border="0" id="grid" width="80%" cellspacing="3" cellpadding="2">
-  <tr align="left">
-    <th width="40%">Navn</th>
-    <th width="20%">ID</th>
-    <th width="100">Øl</th>
-    <th width="100">Drinks</th>
-    <?php if($_SESSION['Admin']) { ?>
-    <th width="10%">Aktiv</th>
-    <?php } ?>
-    <th width="10%">&nbsp;</th>
-  </tr>
+	<tr align="left">
+		<th width="40%">Navn</th>
+		<th width="20%">ID</th>
+		<th width="100">Øl</th>
+		<th width="100">Drinks</th>
+		<?php if($_SESSION['Admin']) { ?>
+		<th width="10%">Aktiv</th>
+		<?php } ?>
+		<th width="10%">&nbsp;</th>
+	</tr>
 </table>
 
 

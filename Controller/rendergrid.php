@@ -49,8 +49,8 @@ function showAll() {
 			if ($_SESSION['workgroup'][$id] == 'fail') {
 			} else {
 				$data = parseVolunteer($_SESSION['workgroup'][$id]);
-				
-				
+
+
 			}
 		} else {
 			$data = $user;

@@ -1,8 +1,8 @@
 <?php
 
 // Debug
-ini_set('display_errors',1); 
-error_reporting(E_ALL); 
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 //include_once 'cardholder.php';
 //include_once 'volunteer.php';
 
@@ -17,21 +17,21 @@ class User {
 
 	}
 	public function searchVolunteer($id) {
-		$volunteer_query = mysql_query("SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active, start_date 
+		$volunteer_query = mysql_query("SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active, start_date
                                                 FROM volunteer WHERE `ST-ID` = '$id' LIMIT 1") or die(print(mysql_error()));
 		$volunteer = mysql_fetch_assoc($volunteer_query);
 		return $volunteer;
 	}
 	public function searchVolunteers($text, $sort="") {
-		
+
 		switch ($sort) {
 			case "id" : $sortBy = "ORDER BY `ST-ID`";
 			break;
 			default : $sortBy = "";
 		}
-		
-		
-		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active 
+
+
+		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active
                           FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%' ".$sortBy;
 		$volunteer_query = mysql_query($query);
 		$volunteers = array();
@@ -47,16 +47,16 @@ class User {
 		mysql_close();
 		return $volunteers;
 	}
-	
-//------------------------------------------------------------
-	
+
+	//------------------------------------------------------------
+
 	public function addVolunteer($user) {
-		
+
 		$name = $user->name->original;
 		$surname = $user->surname->original;
 		$id = $user->id->current;
 		$active = $user->active->original;
-		
+
 		$query = "INSERT INTO volunteer (`ST-ID`, `first_name`, `surname`, `beers`, `drinks`, `active`, `start_date`)
 			      VALUES ($id, '$name', '$surname', 0, 0, '$active', CURDATE())";
 
@@ -67,9 +67,9 @@ class User {
 		}
 		else {
 			return mysql_error();
-		}	
+		}
 	}
-	
+
 	public function createUserFromId($id) {
 		$query = "SELECT `ST-ID` AS id , `first_name` AS name , `surname` , `beers`, `drinks`, `active`
 				  FROM volunteer
@@ -83,21 +83,21 @@ class User {
 			return mysql_error();
 		}
 	}
-	
+
 	public function createVolunteer($name, $surname, $active) {
-		// Make safer		
+		// Make safer
 		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
 					        	        FROM volunteer), 0)"), 0);
-		
+
 		if ($id) {
 			$user = new Volunteer($name, $surname, $id, 0, 0, $active);
 			return $user;
-		
+
 		} else {
 			//
 		}
-		
-		
+
+
 
 	}
 
@@ -124,7 +124,7 @@ class User {
 	}
 
 	public function updateVolunteer($name, $s_name, $active, $newId, $oldId) {
-		$query = "UPDATE volunteer 
+		$query = "UPDATE volunteer
                   SET `first_name` = '$name', `surname` = '$s_name', `active` = $active, `ST-ID` = $newId  
                   WHERE `ST-ID` = $oldId";
 		$result = mysql_query($query);
@@ -132,7 +132,7 @@ class User {
 		if (mysql_affected_rows() == 0) {
 			return "Noting changed";
 		} elseif ($result) {
-			
+				
 			return "Frivillig opdateret";
 		} else {
 			return mysql_error();

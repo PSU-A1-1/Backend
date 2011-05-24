@@ -1,6 +1,11 @@
 <script type="text/javascript">
+var base_url = './?view=';
+
 
 $().ready(function() {
+
+	$("#newVolunteer").click(function() 
+			{document.location.href = base_url + 'newVolunteer';});
 
 	$("#editVolunteer").click(function() 
 	{	
@@ -15,8 +20,7 @@ $().ready(function() {
 				alert(tooMany);
 				break;
 			case 'one' :
-				var base_url = './?view=editVolunteer';
-	        	document.location.href = base_url + "&id=" + ids[0];
+	        	document.location.href = base_url + 'editVolunteer' + "&id=" + ids[0];
 	        	break;
 		}
 	});
@@ -34,7 +38,6 @@ $().ready(function() {
 			dataType: "text",
 			success: function (data) {
 				alert('Status opdateret');
-				var base_url = './?view=';
 		    	document.location.href = base_url + "workgroup";
 				
 			  },

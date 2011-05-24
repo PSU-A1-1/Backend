@@ -110,32 +110,30 @@ $().ready(
 </script>
 
 
-<form action="" method="post" >
-Rediger frivillig<br><br>
-<p>
-<label for="volunteerName">Fornavn</label> 
-<input type="text" id="volunteerName" /> <input type='hidden' id='volunteerName' />
-<br>
-</p>
+<form action="" method="post">
+	Rediger frivillig<br> <br>
+	<p>
+		<label for="volunteerName">Fornavn</label> <input type="text"
+			id="volunteerName" /> <input type='hidden' id='volunteerName' /> <br>
+	</p>
 
-<p>
-<label for="volunteerSurName">Efternavn</label> 
-<input type="text" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-</p>
-<br>
-<p>
-<label for="id">ID</label> 
-<input type="text" size="5" id="id" readonly />
-<br>
-</p>
-<p>
-<label for="aktiv">Aktiv</label> 
-<input type="checkbox" id="aktiv" checked="checked" />
-</p>
-<br>
-<p>
-<label for="newID">Nyt ID</label> 
-<input type="button" value="->" id="newID">
-</p>
-<input type="button" value="OK" id="volunteerEdit">
-</form> 
+	<p>
+		<label for="volunteerSurName">Efternavn</label> <input type="text"
+			id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
+	</p>
+	<br>
+	<p>
+		<label for="id">ID</label> <input type="text" size="5" id="id"
+			readonly /> <br>
+	</p>
+	<p>
+		<label for="aktiv">Aktiv</label> <input type="checkbox" id="aktiv"
+			checked="checked" />
+	</p>
+	<br>
+	<p>
+		<label for="newID">Nyt ID</label> <input type="button" value="->"
+			id="newID">
+	</p>
+	<input type="button" value="OK" id="volunteerEdit">
+</form>

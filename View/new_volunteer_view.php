@@ -52,25 +52,26 @@ $().ready(
 </script>
 
 
-<form action="" method="post" >
-Tilføj ny frivillig<br><br>
-<p>
-<label for="volunteerName">Fornavn</label> 
-<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
-</p>
-<br>
-<p>
-<label for="volunteerSurName">Efternavn</label> 
-<input type="text" name="name" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-</p>
-<br>
-<p>
-<label for="aktiv">Aktiv</label> 
-<input type="checkbox" name="aktiv" id="aktiv" checked="checked" />
-</p>
-<br><br>
-<input type="button" value="OK" id="volunteerAdd">
-</form> 
+<form action="" method="post">
+	Tilføj ny frivillig<br> <br>
+	<p>
+		<label for="volunteerName">Fornavn</label> <input type="text"
+			name="name" id="volunteerName" /> <input type='hidden'
+			id='volunteerName' />
+	</p>
+	<br>
+	<p>
+		<label for="volunteerSurName">Efternavn</label> <input type="text"
+			name="name" id="volunteerSurName" /> <input type='hidden'
+			id='volunteerSurName' />
+	</p>
+	<br>
+	<p>
+		<label for="aktiv">Aktiv</label> <input type="checkbox" name="aktiv"
+			id="aktiv" checked="checked" />
+	</p>
+	<br> <br> <input type="button" value="OK" id="volunteerAdd">
+</form>
 
 
 
