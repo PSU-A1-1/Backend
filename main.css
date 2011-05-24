@@ -5,6 +5,10 @@ html, body, #maintable {
 	border: none;
 	background-color: #dfded7;
 }
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
 #maintable {
 	margin: 0 auto;
 	padding: 0px 0px 30px 30px;
@@ -12,8 +16,12 @@ html, body, #maintable {
 	vertical-align: top;
 	width: 100%;
 }
+#maintable td {
+	padding: 5px;
+}
 #confirmBox {
 	background-color:#cccbc4;
+
 }
 
 label, input[type="text"]{
@@ -29,6 +37,7 @@ label
     width:100px;
     overflow:auto;
     margin:5px 0px;
+    x
 }
 
 input[type="checkbox"]
@@ -37,7 +46,63 @@ input[type="checkbox"]
     display:block;
 }
 
+input[type="text"]
+{
+    background-color:#cccbc4;
+	border-bottom:#acaba5 solid 1px;
+}
+
 .changed{
 	color:rgb(255,255,255);
     background-color: #C00000;
+
+	border: #96958f solid 1px;
+	border-bottom-color:#eae9e7;
+	border-right-color:#eae9e7;
+}
+#grid {
+	background-color:#dfded7;
+}
+#grid td {
+	border-top:#acaba5 solid 1px;
+	padding: 1px;
+}
+.gridOdd {
+	background-color:#d5d4cd;
+}
+.gridOver {
+	background-color:#c6c5be;
+}
+.input {
+	background-color:#cccbc4;
+	border-bottom:#acaba5 solid 1px;
+}
+#header {
+	background-color:#272727;	
+}
+#mainView {
+	border: #96958f solid 1px;
+	border-width: 0px 1px 0px 1px;
+}
+a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #2f2f2f;
+	text-decoration: underline;
+}
+a:link {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+    color: #2f2f2f;
+}
+a:hover {
+    text-decoration: underline;
+    color: #111111;
+}
+a:active {
+    text-decoration: none;
+    color: #2f2f2f;
 }

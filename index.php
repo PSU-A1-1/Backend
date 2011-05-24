@@ -33,6 +33,7 @@ $std_drinks = 4;
 ?>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/> 
 <script type="text/javascript" src="View/lib/jquery.js"></script>
 <script type='text/javascript' src='View/lib/jquery.autocomplete.js'></script>
 <script type="text/javascript" src="View/lib/jquery.url.min.js"></script>
@@ -41,19 +42,23 @@ $std_drinks = 4;
 
 </head>
 <body>
-<table border="2" id="maintable">
+
+
+
+<table border="0" cellspacing="3" cellpadding="3" id="maintable">
 <tr height="20%">
 	<td></td>
-	<td>Header</td>
+	<td id="header"><img src="View/img/logo.jpg" /></td>
+
 	<td></td>
 </tr>
 <tr>
 	<td width="200px" height="80%" valign="top">
 		<a href="?view&admin=1">Administrator</a><br>
-		<a href="?view&admin=0">Afvikler</a><br>
+		<a href="?view&admin=0">Afvikler</a><br><br><br>
 		<?php $ViewMachine->search(); ?>
 	</td>
-	<td valign="top"><?php $ViewMachine->view(); ?>
+	<td valign="top" id="mainView"><?php $ViewMachine->view(); ?>
 	
 	<!-- her kan smides test/fejl meddelser under udviklingen -->
 	<div id="status"><?php 

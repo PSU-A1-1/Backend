@@ -1,3 +1,19 @@
+<script type="text/javascript">
+
+$().ready(
+		function() 
+		{
+// Format form -- These are duplicate functions...maybe refactor.
+			var max = 0;
+		    $("label").each(function(){
+		        if ($(this).width() > max)
+		            max = $(this).width();   
+		    });
+		    $("label").width(max);
+
+		});
+		</script>
+
 <form action="" method="post" >
 Login<br><br>
 <p>

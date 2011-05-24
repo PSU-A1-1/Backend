@@ -1,5 +1,7 @@
 <!--  <input type='hidden' id='gridAdded' value="0" /><br> -->
 
+
+
 <script type="text/javascript">
 
 //Read a page's GET URL variables and return them as an associative array. Stolen from somewhere.
@@ -30,7 +32,9 @@ $().ready(function() {
 		url: 'Controller/rendergrid.php',
 		data: 'view=' + view,
 		success: function(data, textStatus) {
+			
 			$('#grid tr:last').after(data);
+			$('#grid tr:nth-child(2n+1)').addClass('gridOdd');
 		}
 	});
 
@@ -40,7 +44,7 @@ $().ready(function() {
 		
 </script>
 <table border="0" id="grid" width="80%" cellspacing="3" cellpadding="2">
-  <tr>
+  <tr align="left">
     <th width="40%">Navn</th>
     <th width="20%">ID</th>
     <th width="100">Øl</th>
@@ -51,3 +55,6 @@ $().ready(function() {
     <th width="10%">&nbsp;</th>
   </tr>
 </table>
+
+
+
