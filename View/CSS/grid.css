@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+#grid {
+	background-color: #dfded7;
+}
+
+#grid td {
+	border-top: #acaba5 solid 1px;
+	padding: 1px;
+}
+
+.gridOdd {
+	background-color: #d5d4cd;
+}
+
+.gridOver {
+	background-color: #c6c5be;
+}

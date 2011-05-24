@@ -50,26 +50,27 @@ $().ready(
 
 <form action="" method="post">
 	Tilføj ny frivillig<br> <br>
-	
-	<label for="aktiv">Aktiv</label> 
-	<input type="checkbox" name="aktiv" id="aktiv" style="clear:none;" checked="checked" />
-	<p>
+
+	<ul id="stylized">
+		<li>
 		<label for="volunteerName">Fornavn</label> 
 		<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
-	</p>
-	<br>
-	<p>
+		</li>
+		<li>
 		<label for="volunteerSurName">Efternavn</label> 
 		<input type="text" name="name" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-	</p>
-	<br>
-	<p>
-		
-		<a href="#" class="button" id="volunteerAdd" style="clear:none;">OK</a> 
-		
-		
-	</p>
+		</li>
 	
+		<li style="display:inline; float:left;">
+		<label style="display:inline; float:none;" for="aktiv">Aktiv</label>
+		<input type="checkbox" name="aktiv" id="aktiv"   checked="checked" />
+		</li>
+		<ul id="button">
+		<li><a href="#" id="volunteerAdd" >OK</a> </li>
+		</ul>
+	</ul>
+
+
 	
 	
 </form>

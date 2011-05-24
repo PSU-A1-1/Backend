@@ -1,6 +1,17 @@
 @CHARSET "UTF-8";
+#button {
 
-a.button {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 12em;
+}
+#button li {
+	font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+#button a {
 	margin-top: 4px;
 	margin-right: 4px;
 	float: left;
@@ -15,9 +26,66 @@ a.button {
 	text-align: left;
 	color: #ccc;
 }
-
-a.button:hover {
+#button a:hover {
 	color: #fff;
     background-color: #2580a2;
     text-decoration: none;
 }
+
+
+#stylized{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 12em;
+}
+#stylized li {
+	font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	float: left;
+	clear:both;
+	display:block; 
+}
+
+
+#stylized label{
+display:block;
+font-weight:bold;
+margin-bottom: 5px;
+
+}
+
+#stylized input{
+font-size:12px;
+background-color: #cccbc4;
+border: none;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+/*
+label {
+	display: block;
+	margin-right: 5px;
+}
+
+.field {
+	width: 100px;
+	overflow: auto;
+	margin: 5px 0px;
+	
+}
+
+
+input[type="checkbox"] {
+	float: left;
+	display: inline;
+}
+
+input[type="text"] {
+	background-color: #cccbc4;
+	display:inline; padding:5px;
+	border: none;
+}
+*/

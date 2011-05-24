@@ -112,28 +112,32 @@ $().ready(
 
 <form action="" method="post">
 	Rediger frivillig<br> <br>
-	<p>
-		<label for="volunteerName">Fornavn</label> <input type="text"
-			id="volunteerName" /> <input type='hidden' id='volunteerName' /> <br>
-	</p>
+	<ul id="stylized">
+		<li>
+		<label for="volunteerName">Fornavn</label> 
+		<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
+		</li>
+		<li>
+		<label for="volunteerSurName">Efternavn</label> 
+		<input type="text" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
+		</li>
+		
+		<li style="display:inline; float:left;">
+		<label for="id">ID</label> 
+		<input type="text" size="5" id="id" readonly style="display:inline; float:left;"/>
+		<ul id="button">
+			<a href="#" id="newID" style="clear:none; margin-top:0px; margin-left:5px">=></a> 
+		</ul>
+		</li>
 
-	<p>
-		<label for="volunteerSurName">Efternavn</label> <input type="text"
-			id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-	</p>
-	<br>
-	<p>
-		<label for="id">ID</label> <input type="text" size="5" id="id"
-			readonly /> <br>
-	</p>
-	<p>
-		<label for="aktiv">Aktiv</label> <input type="checkbox" id="aktiv"
-			checked="checked" />
-	</p>
-	<br>
-	<p>
-		<label for="newID">Nyt ID</label> <input type="button" value="->"
-			id="newID">
-	</p>
-	<input type="button" value="OK" id="volunteerEdit">
+		<li style="display:inline; float:left;">
+		<label for="aktiv" style="display:inline; float:none;">Aktiv</label>
+		<input type="checkbox" name="aktiv" id="aktiv" checked="checked" />
+		</li>
+
+	</ul>
+	<ul id="button">
+		<li><a href="#" id="volunteerEdit" >OK</a> </li>
+	</ul>
+	
 </form>
