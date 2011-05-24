@@ -4,13 +4,9 @@ $().ready(
 		function() 
 		{
 
-			// Format form -- These are duplicate functions...maybe refactor.
-			var max = 0;
-		    $("label").each(function(){
-		        if ($(this).width() > max)
-		            max = $(this).width();   
-		    });
-		    $("label").width(max);
+			$('#volunteerName').focus();
+
+			
 			
 			$("#volunteerAdd").click(function() 
 			{	
@@ -54,23 +50,28 @@ $().ready(
 
 <form action="" method="post">
 	Tilføj ny frivillig<br> <br>
+	
+	<label for="aktiv">Aktiv</label> 
+	<input type="checkbox" name="aktiv" id="aktiv" style="clear:none;" checked="checked" />
 	<p>
-		<label for="volunteerName">Fornavn</label> <input type="text"
-			name="name" id="volunteerName" /> <input type='hidden'
-			id='volunteerName' />
+		<label for="volunteerName">Fornavn</label> 
+		<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
 	</p>
 	<br>
 	<p>
-		<label for="volunteerSurName">Efternavn</label> <input type="text"
-			name="name" id="volunteerSurName" /> <input type='hidden'
-			id='volunteerSurName' />
+		<label for="volunteerSurName">Efternavn</label> 
+		<input type="text" name="name" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
 	</p>
 	<br>
 	<p>
-		<label for="aktiv">Aktiv</label> <input type="checkbox" name="aktiv"
-			id="aktiv" checked="checked" />
+		
+		<a href="#" class="button" id="volunteerAdd" style="clear:none;">OK</a> 
+		
+		
 	</p>
-	<br> <br> <input type="button" value="OK" id="volunteerAdd">
+	
+	
+	
 </form>
 
 

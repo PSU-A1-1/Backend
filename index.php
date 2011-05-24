@@ -32,13 +32,6 @@ $std_drinks = 4;
 
 ?>
 
-
-
-
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -58,14 +51,15 @@ $std_drinks = 4;
 <body>
 
 	<table border="0" cellspacing="3" cellpadding="3" id="maintable">
-		<tr height="20%">
+		<tr>
 			<td></td>
-			<td id="header"><img src="View/img/logo.jpg" /></td>
-
+			<td id="header">
+				<img src="View/img/logo.jpg" />
+			</td>
 			<td></td>
 		</tr>
 		<tr>
-			<td width="200px" height="80%" valign="top">
+			<td width="200px" height="100%" valign="top">
 			<ul id="menu">
     			<li><a href="?view&admin=1" target="_self">Administrator</a></li>
     			<li><a href="?view&admin=0" target="_self">Afvikler</a></li>

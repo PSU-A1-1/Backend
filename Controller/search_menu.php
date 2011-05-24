@@ -4,6 +4,14 @@
 $().ready(function() {
 
 	var base_url = './?view=';
+	var submit = false;
+	$('#searchName').val("");
+	$('#searchName').focus();
+
+	function a_onClick() {
+		   alert('a_onClick');
+		  }
+			
 	
 	$("#searchName").autocomplete("Controller/search.php", {
 		width: 260,
@@ -18,7 +26,7 @@ $().ready(function() {
 		}
 	}).result(function(event,item){
         $("#searchID").val(item[0].split(',')[0]);
-        $('#searchAdd').focus();
+        $('#searchName').focus();
     });
     
 	$("#searchAdd").click(function() {
@@ -30,33 +38,28 @@ $().ready(function() {
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
 					  if ($("#searchID").val() != "") 
-						{
-				    	document.location.href = base_url + "workgroup";
-				    	
-						}
+						{ document.location.href = base_url + "workgroup"; }
 				  }
 			});	
-		$('#searchName').val("");
-		$('#searchName').focus();
 	});
 	
 
 	$("#showAll").click(function() {
     	document.location.href = base_url + "showall";
-   
-		
 	});
 
 	$("#workgroup").click(function() {
     	document.location.href = base_url + "workgroup";
-   
-		
 	});
 	
 	$("#searchName").keypress(function(event){
-		  if(event.keyCode == 13){
+		  if(event.keyCode == 13 && submit){
 		    $("#searchAdd").click();
 		    return false;
+		  } else if (event.keyCode == 13 && !submit) {
+			  $('#searchName').focus();
+			  submit = true;
+			  return false;
 		  }
 	});
 });

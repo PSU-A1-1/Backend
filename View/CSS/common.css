@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+a.button {
+	margin-top: 4px;
+	margin-right: 4px;
+	float: left;
+    background-color: #333;
+    clear:both;
+	display:block; 
+	padding:5px;
+	border: none;
+	
+	font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+	text-align: left;
+	color: #ccc;
+}
+
+a.button:hover {
+	color: #fff;
+    background-color: #2580a2;
+    text-decoration: none;
+}
