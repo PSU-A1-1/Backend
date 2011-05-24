@@ -39,8 +39,7 @@ $().ready(function() {
 
 		
 </script>
-
-<table border="1" id="grid" width="80%">
+<table border="0" id="grid" width="80%" cellspacing="3" cellpadding="2">
   <tr>
     <th width="40%">Navn</th>
     <th width="20%">ID</th>
