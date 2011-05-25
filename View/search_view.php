@@ -15,53 +15,10 @@
 
 </form>
 </div>
-<!--  
-<form action="" method="post">
-<div style="margin-top:20px">
-	<ul id="stylized">
-	<li>
-		<label for="searchName">Søg</label> 
-		<input type="text" name="name" id="searchName" /> <input type='hidden' id='searchID' /> <input type='hidden' id='showAllSet' />
-		</li>
-	</ul>
-	<ul id="button">
-	<li><a href="#" class="button" id="searchAdd">Tilføj</a> </li>
-	<li><a href="#" class="button" id="showAll">Vis alle</a> </li>
-	<li><a href="#" class="button" id="workgroup" style="clear:none;">Workgroup</a> </li>
+<div id="stylized" class="rightmenu" style="width:150px; background:none; ">
+<a href="#" id="showAll" target="_self" style="margin:0; width:auto; clear:none; float: left; margin-right:4px; margin-top:1px;">Vis alle</a> 
+<a href="#"  id="workgroup" target="_self" style="margin:0; width:auto; clear:none; float: left;  margin-top:1px;">Workgroup</a>
 
-</ul>	
-	
 </div>
-	
-	
-	
-	<!--  <input class="button" type="button" value="Tilføj" id="searchAdd"><br><br> -->
-	<!--  <input type="button" value="Vis alle" id="showAll"> <input type="button" value="Workgroup" id="workgroup">-->
-</form>
 
-<!-- 
-<div>
-	<ul id="box">
 
-	<li>
-	<label for="numBeers">Øl</label> 
-	<input type="text" value="0" id="numBeers" size="1" maxlength="2" />
-	</li>
-	<li>	
-	<label>Drinks<input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> </label> 
-	<input type="button" value="OK" id="addSpecialButton" />
-	</li>
-	
-	</ul>
-	
-	
-	
-	<ul id="button">
-	<li><a href="#" class="button" id="searchAdd">Tilføj</a> </li>
-	<li><a href="#" class="button" id="showAll">Vis alle</a> </li>
-	<li><a href="#" class="button" id="workgroup" style="clear:none;">Workgroup</a> </li>
-
-</ul>	
-	
-</div>
- -->
