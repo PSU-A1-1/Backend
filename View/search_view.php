@@ -1,6 +1,21 @@
 <?php include_once "Controller/common_menu_func.php";?>
 <?php include_once "Controller/search_menu.php"; ?>
 
+
+<br style="clear: left;" /> 
+<br style="clear: left;" /> 
+<div id="stylized" class="search">
+<form id="form" name="form" method="post">
+<h2>Søg</h2>
+<p>Søg efter frivillige</p>
+<input type="text" name="name" id="searchName" style="width:150px; margin:0;"/> <input type='hidden' id='searchID' /> <input type='hidden' id='showAllSet' />
+<div class="spacer"></div>
+<a href="#" id="searchAdd" style="margin:0; margin-top:10px;">Tilføj</a>
+<div class="spacer"></div>
+
+</form>
+</div>
+<!--  
 <form action="" method="post">
 <div style="margin-top:20px">
 	<ul id="stylized">
@@ -24,22 +39,6 @@
 	<!--  <input type="button" value="Vis alle" id="showAll"> <input type="button" value="Workgroup" id="workgroup">-->
 </form>
 
-
-<form action="" method="post">
-<h3>Tilføj</h3>
-		<fieldset>	
-		  <p>
-			  <label class="field-first">Øl
-			    <input name="first_name" type="text" value="" />
-		      </label>
-			  <label class="field-last">Drinks
-			    <input type="text" name="last_name" value="" />
-		      </label>
-		  </p>
-			<p><br style="clear: left;" />
-		    <a class="button" href="#">sdfsdf</a></p>
-		</fieldset>
-			</form>
 <!-- 
 <div>
 	<ul id="box">

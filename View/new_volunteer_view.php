@@ -47,33 +47,66 @@ $().ready(
 		});
 </script>
 
+<div id="stylized" class="myform">
+<form id="form" name="form" method="post">
+<h1>Tilføj frivillig</h1>
+<p>Her tilføjes nye frivillige</p>
 
-<form action="" method="post">
-	Tilføj ny frivillig<br> <br>
+<label>Fornavn
+<span class="small">Frivilligs fornavn</span>
+</label>
+<input id="volunteerName" type="text" value="" name="name"/>
 
-	<ul id="stylized">
-		<li>
-		<label for="volunteerName">Fornavn</label> 
-		<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
-		</li>
-		<li>
-		<label for="volunteerSurName">Efternavn</label> 
-		<input type="text" name="name" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-		</li>
-	
-		<li style="display:inline; float:left;">
-		<label style="display:inline; float:none;" for="aktiv">Aktiv</label>
-		<input type="checkbox" name="aktiv" id="aktiv"   checked="checked" />
-		</li>
-		<ul id="button">
-		<li><a href="#" id="volunteerAdd" >OK</a> </li>
-		</ul>
-	</ul>
+<label>Efternavn
+<span class="small">Frivilligs efternavn</span>
+</label>
+<input id="volunteerSurName" type="text" value="" name="email"/>
 
+<div class="spacer"></div>
+<label>Aktiv
+<span class="small">Aktiver eller deaktiver frivillig</span>
+</label>
+<input type="checkbox" checked="checked" style="clear:none; margin:2px 0 20px 10px;"/> 
+<div class="spacer"></div>
+<a href="#" id="volunteerAdd">Tilføj</a>
+<div class="spacer"></div>
 
-	
-	
 </form>
+</div>
+
+<!--  
+
+<div id="menu">
+		<form action="" method="post" style="padding: 10px;">
+			<fieldset>
+				<p>
+					<label class="field-first">Fornavn
+					<input name="first_name" id="volunteerName" type="text" value=""  maxlength="25" style="width:150px;"/> 
+					<input type='hidden' id='volunteerName' />
+					</label>
+					</p>
+					
+					<p>
+					<br style="clear: left;" /> 
+					<label class="field-last">Efternavn 
+					<input type="text" name="last_name" id="volunteerSurName" value=""  maxlength="25" style="width:150px;" />
+					<input type='hidden' id='volunteerSurName' />
+					</label>
+				</p>
+				<fieldset>
+				<input id="aktiv" type="checkbox" name="aktiv" checked="checked" /> <label for="checkbox_1" class="field-checkbox">Aktiv</label>
+				</fieldset>
+				<p>
+					<br style="clear: left;" /> 
+					<a href="#" id="volunteerAdd">OK</a>
+				</p>
+
+			</fieldset>
+		</form>
+</div>
+
+
+-->
 
 
 

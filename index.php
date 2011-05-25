@@ -68,12 +68,22 @@ $std_drinks = 4;
 		
 		<tr>
 			<td width="200px" valign="top">
-			<ul id="menu">
-    			<li><a href="?view&admin=1" target="_self">Administrator</a></li>
-    			<li><a href="?view&admin=0" target="_self">Afvikler</a></li>
- 			</ul>
-			
+
+				<div id="stylized" class="search">
+					<form id="form" name="form" method="post">
+						<h2>Rolle</h2>
+						<p>Admin eller Afvikler</p>
+						<a href="?view&admin=1"
+							style="margin: 0; margin-top: 0px; clear:none; float: left;">Administrator</a>
+						<a href="?view&admin=0"
+							style="margin: 0; margin-top: 0px; margin-left:4px; clear:none; float: left;">Afvikler</a>
+						<div class="spacer"></div>
+
+					</form>
+				</div> 
+				
 			<?php $ViewMachine->search(); ?>
+			
 			</td>
 			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> 
 			<!-- her kan smides test/fejl meddelser under udviklingen -->

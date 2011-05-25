@@ -13,6 +13,8 @@ class ViewMachine {
 	function search() {
 		include "View/search_view.php";
 	}
+	
+
 	function menu() {
 		if (isset($_GET['view']))
 		include "View/menu_view.php";

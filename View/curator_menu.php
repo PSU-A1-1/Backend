@@ -6,60 +6,77 @@ $().ready(function(){
 		autoheight: false,	
 		active: false, 
 		animated: false
+		
 		});
 });
 			
 
-
 </script>
 
-<div id="menu">
-	<div style="color: #FFFFFF" id="curator">
+<div id="stylized" class="rightmenu" style="width:150px; background:none; ">
+
+<h2>Afvikler</h2>
+<p>So, what to do?</p>
+
+<div style="color: #282826;" id="curator">
+
+<!-- STANDARD -->
+<a id="menuStandard" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj standard</a>
+<form id="form" name="form" method="post" style="float:left;">
+<p style="float:left; margin-top:5px; margin-bottom:2px;">
+Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til valgte brugere? 
+</p>
+
+<a href="#" id="addFixedButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
+<div class="spacer"></div>
+
+</form>
 
 
-		<a id="menuStandard" href="#">Tilføj standard</a>
 
-		<div id="box" style="padding: 7px;">
-			Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til valgte brugere? 
-			<input type="button" value="OK" id="addFixedButton" />
+<!-- SPECIAL -->
+<a id="menuSpecial" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj antal</a>
+<form id="form" name="form" method="post" style="float:left;">
+<p style="float:left; margin-top:5px; margin-bottom:2px;">
+Tilføj drikkevarer
+</p>
+<br style="clear: left;" /> 
 
-		</div>
+<input type="text" name="name" id="numBeers" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
+<input type="text" name="name" id="numDrinks" style="width:50px; margin:0; margin-top:5px;"/>
+<div class="spacer"></div>
+<a href="#" id="addSpecialButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
+<div class="spacer"></div>
 
-
-
-		<a id="menuSpecial" href="#">Tilføj antal</a>
-
-
-		<div id="box" style="padding: 7px;">
-
-
-			
-			<label for="numBeers">Øl</label> <input type="text" value="0" id="numBeers" size="1" maxlength="2" />
-			
-		
-			<label for="numDrinks">Drinks</label> <input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> 
-			<input type="button" value="OK" id="addSpecialButton" />
-		</div>
+</form>
 
 
-		<a id="menuGuest" href="#">Tilføj til gæst</a>
+
+<!-- GUEST -->
+<a id="menuGuest" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj til ID</a>
+<form id="form" name="form" method="post" style="float:left;">
+<p style="float:left; margin-top:5px; margin-bottom:2px;">
+Tilføj drikkevarer til ID
+</p>
+<br style="clear: left;" /> 
+
+<input type="text" name="name" id="numGuestBeers" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
+<input type="text" name="name" id="numGuestDrinks" style="width:50px; margin:0; margin-top:5px;"/>
+<br style="clear: left;" /> 
+<input type="text" name="name" id="guestId" style="width:50px; margin:0; margin-top:5px;"/>
+<div class="spacer"></div>
+<a href="#" id="addGuestButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
+<div class="spacer"></div>
+
+</form>
 
 
-		<div id="box" style="padding: 7px;">
-		
-			<li>
-			<label for="numGuestBeers">Øl</label> <input type="text" value="<?php echo $std_beers; ?>" id="numGuestBeers" size="1" maxlength="2" /> 
-			</li>
-			
-			<label for="numGuestDrinks">Drinks</label> 
-			<input type="text" value="<?php echo $std_drinks; ?>" id="numGuestDrinks" size="1" maxlength="2" /> 
-			
-			<label for="guestId">ID</label>
-			
-			<input type="text" value="" id="guestId" size="10" maxlength="16" /><br> <input type="button" value="OK" id="addGuestButton" />
-
-		</div>
-		
-	
-	</div>
 </div>
+
+
+
+<div class="spacer"></div>
+
+</div>
+
+

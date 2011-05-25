@@ -1,8 +1,16 @@
 <?php include_once "Controller/admin_menu.php";?>
 
-<ul id="menu">
-	<li><a id="newVolunteer" href="#" target="_self">Tilføj frivillig</a></li>
-	<li><a id="editVolunteer" href="#" target="_self">Rediger frivillig</a></li>
-	<li><a id="activateVolunteer" href="#" target="_self">Skift status</a></li>
-	<li><a id="statistics" href="#" target="_self">Statistik</a></li>
-</ul>
+
+
+<div id="stylized" class="rightmenu" style="width:150px; background:none; ">
+<form id="form" name="form" method="post">
+<h2>Admin</h2>
+<p>So, what to do?</p>
+<a id="newVolunteer" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj frivillig</a>
+<a id="editVolunteer" href="#" target="_self" style="margin:0; margin-top:1px;">Rediger frivillig</a>
+<a id="activateVolunteer" href="#" target="_self" style="margin:0; margin-top:1px;">Skift status</a>
+<a id="statistics" href="#" target="_self" style="margin:0; margin-top:1px;">Statistik</a>
+<div class="spacer"></div>
+
+</form>
+</div>

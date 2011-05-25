@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 #menu {
-	background: #333;
+	font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -12,17 +13,20 @@
 	padding: 0;
 }
 #menu a {
-	background: #333;
-	border-bottom: 1px solid #393939;
-	color: #ccc;
+	
+	border-bottom: 1px solid #dfded7;
+	color: #565656;
 	display: block;
+	float: left;
 	margin: 0;
 	padding: 8px 12px;
+	text-shadow: 0px 1px 0px #FFFFFF;
 	text-decoration: none;
 	font-weight:normal;
 }
 #menu a:hover {
 	background: #2580a2 url("images/hover.gif") left center no-repeat;
+	text-shadow: 0px -1px 0px #374683;
 	color: #fff;
 	padding-bottom: 8px;
 }

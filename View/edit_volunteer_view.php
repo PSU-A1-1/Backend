@@ -24,14 +24,7 @@ $().ready(
 			var id = parseInt($.url.param("id"));
 		
 
-			// Format form
-			var max = 0;
-		    $("label").each(function(){
-		        if ($(this).width() > max)
-		            max = $(this).width();   
-		    });
-		    $("label").width(max);
-
+		
 			
 			// Get volunteer and set fields.
 			$.ajax({
@@ -111,34 +104,53 @@ $().ready(
 </script>
 
 
-<form action="" method="post">
-	Rediger frivillig<br> <br>
-	<ul id="stylized">
-		<li>
-		<label for="volunteerName">Fornavn</label> 
-		<input type="text" name="name" id="volunteerName" /> <input type='hidden' id='volunteerName' />
-		</li>
-		<li>
-		<label for="volunteerSurName">Efternavn</label> 
-		<input type="text" id="volunteerSurName" /> <input type='hidden' id='volunteerSurName' />
-		</li>
-		
-		<li style="display:inline; float:left;">
-		<label for="id">ID</label> 
-		<input type="text" size="5" id="id" style="display:inline; float:left;"/>
-		<ul id="button">
-			<a href="#" id="newID" style="clear:none; margin-top:0px; margin-left:5px">=></a> 
-		</ul>
-		</li>
+<div id="stylized" class="myform">
+<form id="form" name="form" method="post">
+<h1>Opdater frivillig</h1>
+<p>Her opdateres frivilliges stamdata</p>
 
-		<li style="display:inline; float:left;">
-		<label for="aktiv" style="display:inline; float:none;">Aktiv</label>
-		<input type="checkbox" name="aktiv" id="aktiv" checked="checked" />
-		</li>
+<label>Fornavn
+<span class="small">Frivilligs fornavn</span>
+</label>
+<input id="volunteerName" type="text" value="" name="name"/>
 
-	</ul>
-	<ul id="button">
-		<li><a href="#" id="volunteerEdit" >OK</a> </li>
-	</ul>
-	
+<label>Efternavn
+<span class="small">Frivilligs efternavn</span>
+</label>
+<input id="volunteerSurName" type="text" value="" name="email"/>
+
+<label>ID
+<span class="small">Nuværende ID</span>
+</label>
+<input id="id" maxlength="5" type="text" value=""  name="password" />
+
+<label>Nyt ID
+<span class="small">Tildel nyt ID</span>
+</label>
+<a href="#" id="newID"  style="clear:none; margin:2px 0 20px 10px;">=></a>
+<div class="spacer"></div>
+<label>Aktiv
+<span class="small">Aktiver eller deaktiver frivillig</span>
+</label>
+<input type="checkbox" checked="checked" style="clear:none; margin:2px 0 20px 10px;"/> 
+<div class="spacer"></div>
+<a href="#" id="volunteerEdit">Opdater</a>
+<div class="spacer"></div>
+
 </form>
+</div>
+
+
+
+
+
+
+
+<!--  
+				<br style="clear: left;" /> 
+				<input id="aktiv" type="checkbox" name="aktiv" checked="checked" /> <label for="checkbox_1" class="field-checkbox">Aktiv</label>
+		
+	-->		
+
+
+

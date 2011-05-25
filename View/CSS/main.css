@@ -11,6 +11,8 @@ html,body,#maintable {
 	padding: 0;
 	border: none;
 	background-color: #dfded7;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
 }
 
 body,td,th {
