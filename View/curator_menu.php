@@ -4,8 +4,8 @@ $().ready(function(){
 		// simple accordion
 		jQuery('#curator').accordion({
 		autoheight: false,	
-		active: false, 
-		animated: false
+		active: false
+		
 		
 		});
 });
@@ -21,7 +21,7 @@ $().ready(function(){
 <div style="color: #282826;" id="curator">
 
 <!-- STANDARD -->
-<a id="menuStandard" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj standard</a>
+<a id="menuStandard" href="#" target="_self" style="margin:0; width:117px; margin-top:1px;">Tilføj standard</a>
 <form id="form" name="form" method="post" style="float:left;">
 <p style="float:left; margin-top:5px; margin-bottom:2px;">
 Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til valgte brugere? 
@@ -35,7 +35,7 @@ Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til v
 
 
 <!-- SPECIAL -->
-<a id="menuSpecial" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj antal</a>
+<a id="menuSpecial" href="#" target="_self" style="margin:0; width:117px; margin-top:1px;">Tilføj antal</a>
 <form id="form" name="form" method="post" style="float:left;">
 <p style="float:left; margin-top:5px; margin-bottom:2px;">
 Tilføj drikkevarer
@@ -53,7 +53,7 @@ Tilføj drikkevarer
 
 
 <!-- GUEST -->
-<a id="menuGuest" href="#" target="_self" style="margin:0; margin-top:1px;">Tilføj til ID</a>
+<a id="menuGuest" href="#" target="_self" style="margin:0; width:117px; margin-top:1px;">Tilføj til ID</a>
 <form id="form" name="form" method="post" style="float:left;">
 <p style="float:left; margin-top:5px; margin-bottom:2px;">
 Tilføj drikkevarer til ID
