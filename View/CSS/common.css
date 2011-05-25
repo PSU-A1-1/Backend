@@ -64,6 +64,69 @@ padding: 5px;
 margin-bottom: 10px;
 }
 
+
+
+#box{
+	font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	color:#FFFFFF;
+	
+	list-style: none;
+
+	
+
+}
+#box li {
+	
+	
+	
+	float: left;
+	margin-right:5px;
+	display:block; 
+
+}
+
+#box a {
+
+	
+    background-color: #333;
+  
+	
+
+	border: none;
+	
+	font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+	text-align: left;
+	color: #ccc;
+}
+#box a:hover {
+	color: #fff;
+    background-color: #2580a2;
+    text-decoration: none;
+}
+
+
+
+#box label{
+	color:#FFFFFF;
+	display: block;
+font-weight:bold;
+
+
+}
+
+#box input{
+display: block;
+margin-right:10px;
+margin-top: 5px;
+padding:5px;
+font-size:12px;
+background-color: #cccbc4;
+border: none;
+
+
+}
+
 /*
 label {
 	display: block;

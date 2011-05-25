@@ -42,6 +42,12 @@ $std_drinks = 4;
 <script type='text/javascript' src='View/lib/jquery.autocomplete.js'></script>
 <script type="text/javascript" src="View/lib/jquery.url.min.js"></script>
 
+<script type="text/javascript" src="View/lib/chili-1.7.pack.js"></script>
+	<script type="text/javascript" src="View/lib/jquery.easing.js"></script>
+
+	<script type="text/javascript" src="View/lib/jquery.dimensions.js"></script>
+	<script type="text/javascript" src="View/lib/jquery.accordion.js"></script>
+
 
 
 <link rel="stylesheet" type="text/css" href="View/lib/jquery.autocomplete.css" />
