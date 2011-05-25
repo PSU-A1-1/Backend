@@ -8,16 +8,6 @@ session_start();
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-function idChange ($id, $beers, $drinks) {
-	if (!isset($_SESSION['idsChanged'][$id])) {
-		$_SESSION['idsChanged'][$id] = "$beers, $drinks";
-	} else {
-		$t = explode(", ", $_SESSION['idsChanged'][$id]);
-		$_SESSION['idsChanged'][$id] = ($t[0]+$beers) . ", " . ($t[1]+$drinks);
-	}
-}
-
-
 if(isset($_POST['m'])) {
 
 	$UserModel = new User();
@@ -64,15 +54,20 @@ if(isset($_POST['m'])) {
 			break;
 
 		case 'addGuest':
-			foreach($_SESSION['idsAdded'] as $key => $id) { unset($_SESSION['idsAdded'][$key]); }
+			
+			
 			$id = $_POST['id'];
-			if ($UserModel->addPoints($id, $_POST['beers'], $_POST['drinks']) === true) {
-				if(!in_array($id, $_SESSION['idsAdded']))
-				$_SESSION['idsAdded'][] = $id;
-				idChange($id, $_POST['beers'], $_POST['drinks']);
-			} else {
-				$succes = false;
-			}
+			if (array_key_exists($id, $_SESSION['workgroup'])) {
+					$user = $_SESSION['workgroup'][$id];
+				} else {
+					$user = $UserModel->createUserFromId($id);
+				}
+				
+			if ($user->updateBoth((int)$_POST['beers'], (int)$_POST['drinks'])) {
+					$_SESSION['workgroup'][$id] = $user;
+				} else {
+					$_SESSION['workgroup'][$id] = "fail";
+				}
 			break;
 
 		case 'getVolunteer':

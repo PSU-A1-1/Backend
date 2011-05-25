@@ -87,7 +87,9 @@ $().ready(function() {
 					alert('Fejl i tildeling af point');
 				} else {
 					alert(' øl og drinks point tilføjet');
-					updateGrid (id);
+					var base_url = './?view=';
+			    	document.location.href = base_url + "workgroup";
+				
 				}
 			  },
 			error: function(request,error){

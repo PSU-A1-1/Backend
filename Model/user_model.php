@@ -132,6 +132,7 @@ class User {
 		if (mysql_affected_rows() == 0) {
 			return "Noting changed";
 		} elseif ($result) {
+			
 				
 			return "Frivillig opdateret";
 		} else {

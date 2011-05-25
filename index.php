@@ -72,7 +72,7 @@ $std_drinks = 4;
     			<li><a href="?view&admin=1" target="_self">Administrator</a></li>
     			<li><a href="?view&admin=0" target="_self">Afvikler</a></li>
  			</ul>
-			<br><br>
+			
 			<?php $ViewMachine->search(); ?>
 			</td>
 			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> 
