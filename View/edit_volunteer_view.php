@@ -18,6 +18,7 @@ function updateGrid (ids) {
 $().ready(
 		function() 
 		{
+			$('#volunteerName').focus();
 			// A few vars.
 			var idChanged = false;
 			var id = parseInt($.url.param("id"));

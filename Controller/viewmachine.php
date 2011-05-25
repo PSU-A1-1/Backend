@@ -24,8 +24,8 @@ class ViewMachine {
 				break;
 				case "editVolunteer" : include_once "View/edit_volunteer_view.php";
 				break;
-				//case "workGroup" : include_once "View/workgroup_view.php"; //workGroup();
-				//break;
+				case "workGroup" : include_once "View/grid_view.php"; //workGroup();
+				break;
 				case "showall" : include_once "View/grid_view.php"; //workGroup();
 				break;
 				default : include_once "View/grid_view.php";

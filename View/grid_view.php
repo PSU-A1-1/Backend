@@ -34,13 +34,11 @@ $().ready(function() {
 			$('#grid tr:nth-child(2n+2)').addClass('gridOdd');
 		}
 	});
-
-	
 });
 
 		
 </script>
-<table border="0" id="grid" width="80%" cellspacing="3" cellpadding="2">
+<table border="0" id="grid" cellspacing="3" cellpadding="2">
 	<tr align="left">
 		<th width="40%">Navn</th>
 		<th width="20%">ID</th>

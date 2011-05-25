@@ -1,11 +1,12 @@
 <?php include_once "Controller/curator_menu.php";?>
+<ul id="menu">
+	<li><a id="menuFixed" href="#">Tilføj standart</a></li>
+	<li><a id="menuSpecial" href="#">Tilføj antal</a></li>
+	<li><a id="menuGuest" href="#">Tilføj til gæst / id</a></li>
+</ul>
 
 
-<a id="menuFixed" href="#">Tilføj standart</a>
-<br>
-<a id="menuSpecial" href="#">Tilføj antal</a>
-<br>
-<a id="menuGuest" href="#">Tilføj til gæst / id</a>
+
 <div id="confirmBox">
 	<div id="addFixedBox">
 		Tilføj

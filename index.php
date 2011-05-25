@@ -42,24 +42,26 @@ $std_drinks = 4;
 <script type='text/javascript' src='View/lib/jquery.autocomplete.js'></script>
 <script type="text/javascript" src="View/lib/jquery.url.min.js"></script>
 
-<link rel="stylesheet" href="View/menu/menu_style.css" type="text/css" />
+
 
 <link rel="stylesheet" type="text/css" href="View/lib/jquery.autocomplete.css" />
-<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" href="View/CSS/main.css" />
 </head>
 
 <body>
-
-	<table border="0" cellspacing="3" cellpadding="3" id="maintable">
-		<tr>
-			<td></td>
-			<td id="header">
+	<table border="0" id="toptable">
+	<tr>
+			<td width="200px"></td>
+			<td  id="header">
 				<img src="View/img/logo.jpg" />
 			</td>
-			<td></td>
+			<td width="220px"></td>
 		</tr>
+	</table>
+	<table border="0" cellspacing="3" cellpadding="3" id="maintable">
+		
 		<tr>
-			<td width="200px" height="100%" valign="top">
+			<td width="200px" valign="top">
 			<ul id="menu">
     			<li><a href="?view&admin=1" target="_self">Administrator</a></li>
     			<li><a href="?view&admin=0" target="_self">Afvikler</a></li>
@@ -67,12 +69,13 @@ $std_drinks = 4;
 			<br><br>
 			<?php $ViewMachine->search(); ?>
 			</td>
-			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> <!-- her kan smides test/fejl meddelser under udviklingen -->
-				<div id="status">
+			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> 
+			<!-- her kan smides test/fejl meddelser under udviklingen -->
+			<div id="status">
 				<?php
 				//var_dump( $_SESSION['workgroup']);
 				?>
-				</div>
+			</div>
 			</td>
 			<td width="220px" valign="top"><?php $ViewMachine->menu(); ?></td>
 		</tr>

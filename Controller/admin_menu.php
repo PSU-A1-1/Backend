@@ -37,7 +37,7 @@ $().ready(function() {
 			data: "m=activate&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {
-				//alert('Status opdateret');
+				alert('Status opdateret');
 		    	document.location.href = base_url + "workgroup";
 				
 			  },

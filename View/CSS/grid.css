@@ -1,6 +1,7 @@
 @CHARSET "UTF-8";
 #grid {
 	background-color: #dfded7;
+	width: 80%;
 }
 
 #grid td {

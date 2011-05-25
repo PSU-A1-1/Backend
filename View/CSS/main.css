@@ -1,6 +1,6 @@
-@import url("View/CSS/common.css");
-@import url("View/CSS/menu.css");
-@import url("View/CSS/grid.css");
+@import url("common.css");
+@import url("menu.css");
+@import url("grid.css");
 
 
 
@@ -29,14 +29,28 @@ body,td,th {
 	padding: 5px;
 }
 
+#toptable {
+	margin: 0 auto;
+	margin-bottom: 0px;
+	padding: 0px 0px 30px 30px;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+
+#toptable td {
+	padding: 5px;
+	
+}
+
 #confirmBox {
 	background-color: #cccbc4;
 }
 
 
 #header {
-	height: 30%;
 	background-color: #272727;
+	height: 200px;
 }
 
 #mainView {
