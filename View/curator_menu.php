@@ -33,9 +33,9 @@ $().ready(function(){
 		<div id="box" style="padding: 7px;">
 
 
-			<li>
+			
 			<label for="numBeers">Øl</label> <input type="text" value="0" id="numBeers" size="1" maxlength="2" />
-			</li>
+			
 		
 			<label for="numDrinks">Drinks</label> <input type="text" value="0" id="numDrinks" size="1" maxlength="2" /> 
 			<input type="button" value="OK" id="addSpecialButton" />

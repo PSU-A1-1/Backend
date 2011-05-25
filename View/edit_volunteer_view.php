@@ -125,7 +125,7 @@ $().ready(
 		
 		<li style="display:inline; float:left;">
 		<label for="id">ID</label> 
-		<input type="text" size="5" id="id" readonly style="display:inline; float:left;"/>
+		<input type="text" size="5" id="id" style="display:inline; float:left;"/>
 		<ul id="button">
 			<a href="#" id="newID" style="clear:none; margin-top:0px; margin-left:5px">=></a> 
 		</ul>
