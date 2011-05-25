@@ -25,7 +25,21 @@
 </form>
 
 
-
+<form action="" method="post">
+<h3>Tilføj</h3>
+		<fieldset>	
+		  <p>
+			  <label class="field-first">Øl
+			    <input name="first_name" type="text" value="" />
+		      </label>
+			  <label class="field-last">Drinks
+			    <input type="text" name="last_name" value="" />
+		      </label>
+		  </p>
+			<p><br style="clear: left;" />
+		    <a class="button" href="#">sdfsdf</a></p>
+		</fieldset>
+			</form>
 <!-- 
 <div>
 	<ul id="box">
