@@ -41,14 +41,21 @@ Tilføj <?php echo $std_beers; ?> øl og <?php echo $std_drinks; ?> drinks til v
 Tilføj drikkevarer
 </p>
 <br style="clear: left;" /> 
-
-<input type="text" name="name" id="numBeers" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
-<input type="text" name="name" id="numDrinks" style="width:50px; margin:0; margin-top:5px;"/>
+<label style="font-weight:normal; margin-top:10px; margin-right:45px; width:auto; text-align:left;">ØL
+</label>
+<label style="font-weight:normal; margin-top:10px; width:auto; text-align:left;">Drinks
+</label>
+<br style="clear: left;" /> 
+<input type="text" name="name" id="numBeers" value="0" maxlength="2" size="1" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
+<input type="text" name="name" id="numDrinks" value="0" maxlength="2" size="1" style="width:50px; margin:0; margin-top:5px;"/>
 <div class="spacer"></div>
 <a href="#" id="addSpecialButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
 <div class="spacer"></div>
 
 </form>
+
+
+
 
 
 
@@ -60,10 +67,17 @@ Tilføj drikkevarer til ID
 </p>
 <br style="clear: left;" /> 
 
-<input type="text" name="name" id="numGuestBeers" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
-<input type="text" name="name" id="numGuestDrinks" style="width:50px; margin:0; margin-top:5px;"/>
+<label style="font-weight:normal; margin-top:10px; margin-right:45px; width:auto; text-align:left;">ØL
+</label>
+<label style="font-weight:normal; margin-top:10px; width:auto; text-align:left;">Drinks
+</label>
+<input type="text" name="name" id="numGuestBeers" value="6" maxlength="2" size="1" style="width:50px; margin:0; margin-top:5px; margin-right:5px;"/>
+<input type="text" name="name" id="numGuestDrinks" value="4" maxlength="2" size="1" style="width:50px; margin:0; margin-top:5px;"/>
 <br style="clear: left;" /> 
-<input type="text" name="name" id="guestId" style="width:50px; margin:0; margin-top:5px;"/>
+
+<label style="font-weight:normal; margin-top:10px; margin-right:49px; width:auto; text-align:left;">ID
+</label>
+<input type="text" name="name" id="guestId" maxlength="2" size="5" style="width:50px; margin:0; margin-top:5px;"/>
 <div class="spacer"></div>
 <a href="#" id="addGuestButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
 <div class="spacer"></div>

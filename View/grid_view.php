@@ -38,6 +38,7 @@ $().ready(function() {
 
 		
 </script>
+
 <table border="0" id="grid" cellspacing="3" cellpadding="2">
 	<tr align="left">
 		<th width="40%">Navn</th>

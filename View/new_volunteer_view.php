@@ -66,7 +66,7 @@ $().ready(
 <label>Aktiv
 <span class="small">Aktiver eller deaktiver frivillig</span>
 </label>
-<input type="checkbox" checked="checked" style="clear:none; margin:2px 0 20px 10px;"/> 
+<input type="checkbox" checked="checked" style="width:auto;"/> 
 <div class="spacer"></div>
 <a href="#" id="volunteerAdd">Tilføj</a>
 <div class="spacer"></div>

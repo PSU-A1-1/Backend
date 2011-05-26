@@ -85,7 +85,9 @@ $std_drinks = 4;
 			<?php $ViewMachine->search(); ?>
 			
 			</td>
+			
 			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> 
+			
 			<!-- her kan smides test/fejl meddelser under udviklingen -->
 			<div id="status">
 				<?php
