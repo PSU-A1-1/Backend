@@ -1,5 +1,11 @@
+<script type="text/javascript">
+$().ready(
+		function() 
+		{
 
-
+			$('#user').focus();
+		});
+</script>
 
 <div id="stylized" class="myform">
 <form id="form" name="form" method="post">
