@@ -77,7 +77,7 @@ Tilføj drikkevarer til ID
 
 <label style="font-weight:normal; margin-top:10px; margin-right:49px; width:auto; text-align:left;">ID
 </label>
-<input type="text" name="name" id="guestId" maxlength="2" size="5" style="width:50px; margin:0; margin-top:5px;"/>
+<input type="text" name="name" id="guestId" maxlength="5" size="1" style="width:50px; margin:0; margin-top:5px;"/>
 <div class="spacer"></div>
 <a href="#" id="addGuestButton" style="margin:0; margin-top:5px; margin-bottom:15px;">OK</a>
 <div class="spacer"></div>
