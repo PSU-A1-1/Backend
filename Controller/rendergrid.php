@@ -3,8 +3,8 @@ include_once ("../Model/user_model.php");
 include_once ("../Model/cardholder.php");
 include_once ("../Model/volunteer.php");
 session_start();
-header('Content-type: text/html; charset=utf-8');
 
+header('Content-type: text/html; charset=utf-8');
 
 function gridRow ($data) {
 
@@ -26,6 +26,10 @@ function parseVolunteer($volunteer) {
 	$data['active'] = $volunteer->active->current;
 	return $data;
 
+}
+
+function paginate ($data) {
+	
 }
 
 function workGroup() {

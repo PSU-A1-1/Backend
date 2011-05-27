@@ -1,4 +1,7 @@
 <!--  <input type='hidden' id='gridAdded' value="0" /><br> -->
+
+
+
 <script type="text/javascript">
 
 //Read a page's GET URL variables and return them as an associative array. Stolen from somewhere.
@@ -21,6 +24,7 @@ $.extend({
 
 
 $().ready(function() {
+
 	$('#grid tr:gt(0)').remove();
 	var view = $.getUrlVars()['view'];
 	$.ajax({
@@ -29,9 +33,15 @@ $().ready(function() {
 		url: 'Controller/rendergrid.php',
 		data: 'view=' + view,
 		success: function(data, textStatus) {
-			
-			$('#grid tr:last').after(data);
-			$('#grid tr:nth-child(2n+2)').addClass('gridOdd');
+
+			$('#grid > tbody').append(data);
+  
+		
+			$('#grid').dataTable( {
+				"iDisplayLength": 15,
+				"sPaginationType": "full_numbers",
+				"bFilter": false
+			} );
 		}
 	});
 });
@@ -39,7 +49,10 @@ $().ready(function() {
 		
 </script>
 
-<table border="0" id="grid" cellspacing="3" cellpadding="2">
+<link rel="stylesheet" type="text/css" href="View/CSS/pagination.css" />
+
+<table border="0" id="grid" class="display" cellspacing="3" cellpadding="2">
+<thead>
 	<tr align="left">
 		<th width="40%">Navn</th>
 		<th width="20%">ID</th>
@@ -50,7 +63,10 @@ $().ready(function() {
 		<?php } ?>
 		<th width="10%">&nbsp;</th>
 	</tr>
+	</thead>
+	<tbody id="gridbody">
+	<tr align="left">
+	</tr>
+	</tbody>
 </table>
-
-
 

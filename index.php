@@ -47,11 +47,13 @@ $std_drinks = 4;
 
 	<script type="text/javascript" src="View/lib/jquery.dimensions.js"></script>
 	<script type="text/javascript" src="View/lib/jquery.accordion.js"></script>
+	<script type="text/javascript" language="javascript" src="View/lib/jquery.dataTables.js"></script>
 
 
 
 <link rel="stylesheet" type="text/css" href="View/lib/jquery.autocomplete.css" />
 <link rel="stylesheet" type="text/css" href="View/CSS/main.css" />
+
 </head>
 
 <body>
