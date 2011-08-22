@@ -4,16 +4,8 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-//include 'Controller/main.php';
-include_once 'Controller/viewmachine.php';
-//include_once "Model/user.php";
-
-$ViewMachine = new ViewMachine();
-//$User = new User();
-
-if (isset($_GET['admin']))
-$ViewMachine->setAdmin($_GET['admin']);
-
+// Move this stuff....
+session_start();
 if (!isset($_SESSION['idsAdded']))
 $_SESSION['idsAdded'] = array();
 
@@ -23,9 +15,14 @@ $_SESSION['idsChanged'] = array();
 if (!isset($_SESSION['workgroup']))
 $_SESSION['workgroup'] = array();
 
-//if (!isset($_SESSION['user']))
-//$_SESSION['user'] = $User;
+if(!isset($_SESSION['user'])) {
+	$_SESSION['user'] = 0;
+}
+session_write_close();
 
+// Main view controller
+include_once 'Controller/ControllerView.php';
+$ViewMachine = new ControllerView();
 
 $std_beers = 6;
 $std_drinks = 4;
@@ -46,8 +43,10 @@ $std_drinks = 4;
 	<script type="text/javascript" src="View/lib/jquery.easing.js"></script>
 
 	<script type="text/javascript" src="View/lib/jquery.dimensions.js"></script>
+	<script type="text/javascript" src="View/lib/jquery.color.js"></script>
 	<script type="text/javascript" src="View/lib/jquery.accordion.js"></script>
-	<script type="text/javascript" language="javascript" src="View/lib/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="View/lib/jquery.dataTables.js">
+</script>
 
 
 
@@ -70,7 +69,8 @@ $std_drinks = 4;
 		
 		<tr>
 			<td width="200px" valign="top">
-
+			  
+			  <!--
 				<div id="stylized" class="search">
 					<form id="form" name="form" method="post">
 						<h2>Rolle</h2>
@@ -83,17 +83,19 @@ $std_drinks = 4;
 
 					</form>
 				</div> 
-				
+			-->
+	
 			<?php $ViewMachine->search(); ?>
-			
+						
 			</td>
 			
 			<td valign="top" id="mainView"><?php $ViewMachine->view(); ?> 
 			
 			<!-- her kan smides test/fejl meddelser under udviklingen -->
 			<div id="status">
+			  
 				<?php
-				//var_dump( $_SESSION['workgroup']);
+				  //echo $_SESSION['user'];
 				?>
 			</div>
 			</td>

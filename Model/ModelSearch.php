@@ -1,7 +1,7 @@
 <?php
-include_once ("../Model/user_model.php");
-include_once ("../Model/cardholder.php");
-include_once ("../Model/volunteer.php");
+include_once ("ModelBrain.php");
+include_once ("ModelAbstractCardHolder.php");
+include_once ("ModelVolunteer.php");
 session_start();
 
 $UserModel = new User();
@@ -28,7 +28,7 @@ function gridRow ($data) {
 
 	$pointChange = idChangeView($data['ST-ID']);
 
-	echo "<tr><td id='name'>".utf8_encode($data['name'])."</td>";
+	echo "<tr><td id='name'>".$data['name']."</td>";
 	echo "<td id='id'>".$data['ST-ID']."</td>";
 	echo "<td id='beers'>".$data['beers'].$pointChange[0]."</td>";
 	echo "<td id = 'drinks'>".$data['drinks'].$pointChange[1]."</td>";
@@ -60,11 +60,8 @@ elseif (isset($_GET["id"])) {
 
 }
 
-
-
-
 // Remove???
-// N�r der opdateresi gridden
+// Når der opdateresi gridden
 elseif (isset($_GET["ids"])) {
 
 	foreach ($_SESSION['idsAdded'] as $id) {

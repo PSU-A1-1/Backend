@@ -1,7 +1,3 @@
-<!--  <input type='hidden' id='gridAdded' value="0" /><br> -->
-
-
-
 <script type="text/javascript">
 
 //Read a page's GET URL variables and return them as an associative array. Stolen from somewhere.
@@ -30,7 +26,7 @@ $().ready(function() {
 	$.ajax({
 		type: "GET",
 		cache: false,
-		url: 'Controller/rendergrid.php',
+		url: 'Model/ModelGrid.php',
 		data: 'view=' + view,
 		success: function(data, textStatus) {
 
@@ -38,7 +34,7 @@ $().ready(function() {
   
 		
 			$('#grid').dataTable( {
-				"iDisplayLength": 15,
+				"iDisplayLength": 10,
 				"sPaginationType": "full_numbers",
 				"bFilter": false
 			} );
@@ -48,25 +44,3 @@ $().ready(function() {
 
 		
 </script>
-
-<link rel="stylesheet" type="text/css" href="View/CSS/pagination.css" />
-
-<table border="0" id="grid" class="display" cellspacing="3" cellpadding="2">
-<thead>
-	<tr align="left">
-		<th width="40%">Navn</th>
-		<th width="20%">ID</th>
-		<th width="100">Øl</th>
-		<th width="100">Drinks</th>
-		<?php if($_SESSION['Admin']) { ?>
-		<th width="10%">Aktiv</th>
-		<?php } ?>
-		<th width="10%">&nbsp;</th>
-	</tr>
-	</thead>
-	<tbody id="gridbody">
-	<tr align="left">
-	</tr>
-	</tbody>
-</table>
-

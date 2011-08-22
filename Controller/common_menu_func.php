@@ -4,7 +4,7 @@ function updateGrid (ids) {
 		$.ajax({
 			type: "GET",
 			cache: false,
-			url: 'Controller/search.php',
+			url: 'Model/search.php',
 			data: "ids=" + ids ,
 			success: function(data, textStatus) {
 				$('#grid tr:last').after(data);

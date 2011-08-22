@@ -1,7 +1,7 @@
 <?php
-include_once ("../Model/user_model.php");
-include_once '../Model/cardholder.php';
-include_once '../Model/volunteer.php';
+include_once ("ModelBrain.php");
+include_once 'ModelAbstractCardHolder.php';
+include_once 'ModelVolunteer.php';
 session_start();
 
 // Debug
@@ -76,7 +76,7 @@ if(isset($_POST['m'])) {
 			break;
 
 		case 'newVolunteer':
-			$user = $UserModel->createVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv']);
+		  	$user = $UserModel->createVolunteer($_POST['name'], $_POST['s_name'], $_POST['s_id'], $_POST['aktiv']);
 			echo $UserModel->addVolunteer($user);
 
 			break;
@@ -102,6 +102,12 @@ if(isset($_POST['m'])) {
 					
 			}
 
+			break;
+			
+		case 'newId':
+			$UserModel = new User();
+			echo $UserModel->getNewId();
+			
 			break;
 
 

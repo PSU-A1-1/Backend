@@ -28,12 +28,12 @@ $().ready(function() {
 	$("#activateVolunteer").click(function() {	
 	var ids = getChecks();
 
-	if (ids.length == 0) {	
+	if (ids.length == 0) {
 	    alert(tooFew);
 	} else {
 		    $.ajax({
 			type: "POST",
-			url: "Controller/edit.php",
+			url: "Model/ModelMenu.php",
 			data: "m=activate&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {

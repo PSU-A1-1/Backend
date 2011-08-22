@@ -13,7 +13,7 @@ $().ready(function() {
 		  }
 			
 	
-	$("#searchName").autocomplete("Controller/search.php", {
+	$("#searchName").autocomplete("Model/ModelSearch.php", {
 		width: 260,
 		multiple: false,
 		selectFirst: false,
@@ -34,7 +34,7 @@ $().ready(function() {
 			$.ajax({
 				  type: "GET",
 				  cache: false,
-				  url: 'Controller/search.php',
+				  url: 'Model/ModelSearch.php',
 				  data: "id=" + $("#searchID").val() ,
 				  success: function(data, textStatus) {
 					  if ($("#searchID").val() != "") 
@@ -61,6 +61,26 @@ $().ready(function() {
 			  submit = true;
 			  return false;
 		  }
+	});
+
+	$("#logout").click(function() {
+		$.ajax({
+			type: "POST",
+			url: "Model/ModelLogin.php",
+			data: "userAction=logout",
+			dataType: "text",
+			success: function (data) {
+				// TODO : Better dialog box. ie. yes / no
+			    var base_url = './?view=';
+			    document.location.href = base_url + "login";
+
+			   
+			  },
+			error: function(request, error){
+			    alert(error);
+			  }
+			});
+    	
 	});
 });
 

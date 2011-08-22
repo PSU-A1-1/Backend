@@ -30,7 +30,6 @@ class User {
 			default : $sortBy = "";
 		}
 
-
 		$query = "SELECT `ST-ID`, CONCAT_WS(' ',first_name, surname) AS name, beers, drinks, active
                           FROM volunteer WHERE CONCAT(first_name, surname) LIKE '$text%' ".$sortBy;
 		$volunteer_query = mysql_query($query);
@@ -84,11 +83,12 @@ class User {
 		}
 	}
 
-	public function createVolunteer($name, $surname, $active) {
+	public function createVolunteer($name, $surname, $s_id, $active) {
 		// Make safer
-		$id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
-					        	        FROM volunteer), 0)"), 0);
-
+	        //  $id = mysql_result(mysql_query("SELECT 1 + COALESCE((SELECT MAX(`ST-ID`)
+	  //FROM volunteer), 0)"), 0);
+		 $id = $s_id;
+		
 		if ($id) {
 			$user = new Volunteer($name, $surname, $id, 0, 0, $active);
 			return $user;
@@ -96,9 +96,6 @@ class User {
 		} else {
 			//
 		}
-
-
-
 	}
 
 

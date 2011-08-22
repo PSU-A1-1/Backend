@@ -309,7 +309,7 @@ td.details {
 }
 
 .paging_full_numbers span.paginate_button {
-	background-color: #ddd;
+	/*background-color: #ddd;*/
 }
 
 .paging_full_numbers span.paginate_button:hover {

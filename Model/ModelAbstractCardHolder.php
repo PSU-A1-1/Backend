@@ -4,15 +4,17 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-
+// Abstract class cardholder. Superclass for Volunteer and Guest.
 class CardHolder {
-
+	
+	// Fields
 	public $id;
 	public $beers;
 	public $drinks;
 	public $succes;
 	public $error;
-
+	
+	// Constructor. Initialize fields.
 	public function __construct($id, $beers, $drinks) {
 		include_once 'connect.php';
 		$this->id->current = (int)$id;
@@ -32,8 +34,6 @@ class CardHolder {
 		$id = $this->id->current;
 
 		if ($drinks != 0) {
-				
-
 
 			$query = "UPDATE volunteer
               SET drinks = drinks + $drinks

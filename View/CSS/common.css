@@ -89,6 +89,19 @@ font-weight:bold;
 
 }
 
+#stylized .error{
+	background: #2580a2 
+	
+	}
+	#stylized .error a{
+background: #2580a2 
+	
+	}
+#stylized .error:hover{
+	background: #2580a2 
+	}
+
+
 
 
 /* ----------- Other forms ----------- */
