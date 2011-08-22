@@ -4,7 +4,7 @@ include_once ("./Model/ModelAbstractCardHolder.php");
 include_once ("./Model/ModelVolunteer.php");
 
 class ControllerView {
-  function search() {
+  function leftMenu() {
     //if (isset($_GET['view']))
     if ($_SESSION['user'] != 0)  
   		include "View/ViewLeftMenu.php";

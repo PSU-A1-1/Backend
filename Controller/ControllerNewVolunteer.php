@@ -24,7 +24,7 @@ $().ready(
 					dataType: "text",
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
-						var c = confirm(data);
+						var c = confirm(data + "\n\nVil du tilføje endnu en frivillig?");
 						if (c) {
 							var base_url = './?view=';
 							document.location.href = base_url + "newVolunteer";

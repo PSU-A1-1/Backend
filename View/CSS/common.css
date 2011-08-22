@@ -1,124 +1,130 @@
 @CHARSET "UTF-8";
 
-p, h1, form, button{border:0; margin:0; padding:0;}
-.spacer{clear:both; height:1px;}
+p,h1,form,button {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.spacer {
+	clear: both;
+	height: 1px;
+}
 /* ----------- Form ----------- */
-.myform{
-margin:0 auto;
-width:400px;
-padding:14px;
+.myform {
+	margin: 0 auto;
+	width: 400px;
+	padding: 14px;
 }
 
 /* ----------- stylized ----------- */
-#stylized{
-/*border:solid 2px #b7ddf2;*/
-background:#d7d6cf;
+#stylized { /*border:solid 2px #b7ddf2;*/
+	background: #d7d6cf;
 }
+
 #stylized h1 {
-font-size:14px;
-font-weight:bold;
-margin-bottom:8px;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px;
 }
+
 #stylized h2 {
-font-size:12px;
-font-weight:bold;
-margin-bottom:4px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 4px;
 }
-#stylized p{
-font-size:11px;
-color:#666666;
-margin-bottom:20px;
-border-bottom:solid 1px #5d5d5d;
-padding-bottom:10px;
+
+#stylized p {
+	font-size: 11px;
+	color: #666666;
+	margin-bottom: 20px;
+	border-bottom: solid 1px #5d5d5d;
+	padding-bottom: 10px;
 }
-#stylized label{
-display:block;
-font-weight:bold;
-text-align:right;
-width:140px;
-float:left;
+
+#stylized label {
+	display: block;
+	font-weight: bold;
+	text-align: right;
+	width: 140px;
+	float: left;
 }
-#stylized .small{
-color:#666666;
-display:block;
-font-size:11px;
-font-weight:normal;
-text-align:right;
-width:140px;
+
+#stylized .small {
+	color: #666666;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	width: 140px;
 }
-#stylized input{
-float:left;
-font-size:12px;
-padding:4px 2px;
-border:solid 1px #b7b6ae;
-width:200px;
-margin:2px 0 20px 10px;
+
+#stylized input {
+	float: left;
+	font-size: 12px;
+	padding: 4px 2px;
+	border: solid 1px #b7b6ae;
+	width: 200px;
+	margin: 2px 0 20px 10px;
 }
-#stylized button{
-clear:both;
-margin-left:150px;
-width:125px;
-height:31px;
-background:#666666 url(img/button.png) no-repeat;
-text-align:center;
-line-height:31px;
-color:#FFFFFF;
-font-size:11px;
-font-weight:bold;
+
+#stylized button {
+	clear: both;
+	margin-left: 150px;
+	width: 125px;
+	height: 31px;
+	background: #666666 url(img/button.png) no-repeat;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
 }
-#stylized a{
+
+#stylized a {
 	border-bottom: 1px solid #dfded7;
 	background: #c4c3bc;
 	color: #565656;
 	display: block;
-	clear:both;
+	clear: both;
 	float: left;
-	margin-left:150px;
+	margin-left: 150px;
 	padding: 8px 12px;
 	text-shadow: 0px 1px 0px #FFFFFF;
 	text-decoration: none;
-	font-weight:normal;
-
+	font-weight: normal;
 }
 
-#stylized a:hover{
+#stylized a:hover {
 	background: #2580a2 /*url("images/hover.gif") left center no-repeat*/;
 	text-shadow: 0px -1px 0px #374683;
 	color: #fff;
 	padding-bottom: 8px;
-
 }
 
-#stylized .error{
-	background: #2580a2 
-	
-	}
-	#stylized .error a{
-background: #2580a2 
-	
-	}
-#stylized .error:hover{
-	background: #2580a2 
-	}
+#stylized .error {
+	background: #2580a2
+}
 
+#stylized .error a {
+	background: #2580a2
+}
 
-
+#stylized .error:hover {
+	background: #2580a2
+}
 
 /* ----------- Other forms ----------- */
-.search{
-margin:0 auto;
-width:auto;
-padding:14px;
+.search {
+	margin: 0 auto;
+	width: auto;
+	padding: 14px;
 }
 
-.rightmenu{
-background:none;
-margin-left:auto;
-margin:0;
-width:auto;
-padding:14px;
+.rightmenu {
+	background: none;
+	margin-left: auto;
+	margin: 0;
+	width: auto;
+	padding: 14px;
 }
-
-
-
-

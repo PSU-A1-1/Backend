@@ -62,7 +62,7 @@ class User {
 		$result = mysql_query($query);
 		if ($result) {
 			$_SESSION['workgroup'][$id] = $user;
-			return "Ny frivillig: ".$name." ".$surname." with id: ".$id;
+			return "Ny frivillig: ".$name." ".$surname." med id: ".$id;
 		}
 		else {
 			return mysql_error();
