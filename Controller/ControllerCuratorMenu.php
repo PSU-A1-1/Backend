@@ -17,7 +17,7 @@ $().ready(function() {
 			
 		    $.ajax({
 			type: "POST",
-			url: "Model/ModelMenu.php",
+			url: "Model/ModelInterface.php",
 			data: "m=addFixed&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {
@@ -48,7 +48,7 @@ $().ready(function() {
 		} else {
 		    $.ajax({
 			type: "POST",
-			url: "Model/ModelMenu.php",
+			url: "Model/ModelInterface.php",
 			data: "m=addSpecial&ids=" + ids.join('|') + "&beers=" + beers + "&drinks=" + drinks,
 			dataType: "text",
 			success: function (data) {	
@@ -79,7 +79,7 @@ $().ready(function() {
 		} else {
 		    $.ajax({
 			type: "POST",
-			url: "Model/ModelMenu.php",
+			url: "Model/ModelInterface.php",
 			data: "m=addGuest&id=" + id + "&beers=" + beers + "&drinks=" + drinks,
 			dataType: "text",
 			success: function (data) {

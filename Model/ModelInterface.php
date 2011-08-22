@@ -1,31 +1,52 @@
 <?php
-include_once ("ModelBrain.php");
-include_once 'ModelAbstractCardHolder.php';
-include_once 'ModelVolunteer.php';
+
+// Initialize brain
+include_once 'ModelBrain.php';
+
+
+// Set session vars
 session_start();
+if (!isset($_SESSION['idsAdded']))
+	$_SESSION['idsAdded'] = array();
 
-// Debug
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+if (!isset($_SESSION['idsChanged']))
+	$_SESSION['idsChanged'] = array();
 
+if (!isset($_SESSION['workgroup']))
+	$_SESSION['workgroup'] = array();
+
+if(!isset($_SESSION['user'])) {
+	$_SESSION['user'] = 0;
+}
+
+if(!isset($_SESSION['brain'])) {
+	$Brain = new ModelBrain();
+	$_SESSION['brain'] = $Brain;
+} else {
+	$Brain = $_SESSION['brain'];
+}
+
+
+// Interface
 if(isset($_POST['m'])) {
 
-	$UserModel = new User();
 	$succes = true;
 
 	switch ($_POST['m']) {
 		// Done for now
+		
+
 		case 'addFixed':
 			foreach(explode("|", $_POST['ids']) as $id) {
 				if (array_key_exists($id, $_SESSION['workgroup'])) {
 					$user = $_SESSION['workgroup'][$id];
 				} else {
-					$user = $UserModel->createUserFromId($id);
+					$user = $Brain->createUserFromId($id);
 					//var_dump($user);
 				}
 					
 				// Make $std_ a datacall
-				if ($user->updateBoth($UserModel->std_beers, $UserModel->std_drinks)) {
+				if ($user->updateBoth($Brain->std_beers, $Brain->std_drinks)) {
 					$_SESSION['workgroup'][$id] = $user;
 				} else {
 					$_SESSION['workgroup'][$id] = "fail";
@@ -42,7 +63,7 @@ if(isset($_POST['m'])) {
 				if (array_key_exists($id, $_SESSION['workgroup'])) {
 					$user = $_SESSION['workgroup'][$id];
 				} else {
-					$user = $UserModel->createUserFromId($id);
+					$user = $Brain->createUserFromId($id);
 				}
 
 				if ($user->updateBoth((int)$_POST['beers'], (int)$_POST['drinks'])) {
@@ -54,35 +75,35 @@ if(isset($_POST['m'])) {
 			break;
 
 		case 'addGuest':
-			
-			
+				
+				
 			$id = $_POST['id'];
 			if (array_key_exists($id, $_SESSION['workgroup'])) {
-					$user = $_SESSION['workgroup'][$id];
-				} else {
-					$user = $UserModel->createUserFromId($id);
-				}
-				
+				$user = $_SESSION['workgroup'][$id];
+			} else {
+				$user = $Brain->createUserFromId($id);
+			}
+
 			if ($user->updateBoth((int)$_POST['beers'], (int)$_POST['drinks'])) {
-					$_SESSION['workgroup'][$id] = $user;
-				} else {
-					$_SESSION['workgroup'][$id] = "fail";
-				}
+				$_SESSION['workgroup'][$id] = $user;
+			} else {
+				$_SESSION['workgroup'][$id] = "fail";
+			}
 			break;
 
 		case 'getVolunteer':
-			$arr = $UserModel->getVolunteer($_POST['id']);
+			$arr = $Brain->getVolunteer($_POST['id']);
 			echo json_encode($arr);
 			break;
 
 		case 'newVolunteer':
-		  	$user = $UserModel->createVolunteer($_POST['name'], $_POST['s_name'], $_POST['s_id'], $_POST['aktiv']);
-			echo $UserModel->addVolunteer($user);
+			$user = $Brain->createVolunteer($_POST['name'], $_POST['s_name'], $_POST['s_id'], $_POST['aktiv']);
+			echo $Brain->addVolunteer($user);
 
 			break;
 
 		case 'updateVolunteer':
-			echo $UserModel->updateVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv'], $_POST['newid'], $_POST['oldid']);
+			echo $Brain->updateVolunteer($_POST['name'], $_POST['s_name'], $_POST['aktiv'], $_POST['newid'], $_POST['oldid']);
 			break;
 
 		case 'activate':
@@ -90,7 +111,7 @@ if(isset($_POST['m'])) {
 				if (array_key_exists($id, $_SESSION['workgroup'])) {
 					$user = $_SESSION['workgroup'][$id];
 				} else {
-					$user = $UserModel->createUserFromId($id);
+					$user = $Brain->createUserFromId($id);
 
 				}
 
@@ -103,11 +124,10 @@ if(isset($_POST['m'])) {
 			}
 
 			break;
-			
+				
 		case 'newId':
-			$UserModel = new User();
-			echo $UserModel->getNewId();
-			
+			echo $Brain->getNewId();
+				
 			break;
 
 
@@ -115,4 +135,3 @@ if(isset($_POST['m'])) {
 	if(!$succes)
 	echo "Error";
 }
-?>

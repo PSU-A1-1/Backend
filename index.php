@@ -5,27 +5,14 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 
 // Move this stuff....
-session_start();
-if (!isset($_SESSION['idsAdded']))
-$_SESSION['idsAdded'] = array();
-
-if (!isset($_SESSION['idsChanged']))
-$_SESSION['idsChanged'] = array();
-
-if (!isset($_SESSION['workgroup']))
-$_SESSION['workgroup'] = array();
-
-if(!isset($_SESSION['user'])) {
-	$_SESSION['user'] = 0;
-}
-session_write_close();
+if (!isset($_SESSION['user'])) {
+	include_once 'Model/ModelInterface.php';
 
 // Main view controller
-include_once 'Controller/ControllerView.php';
-$ViewMachine = new ControllerView();
+	include_once 'Controller/ControllerView.php';
+	$ViewMachine = new ControllerView();
+}
 
-$std_beers = 6;
-$std_drinks = 4;
 
 ?>
 

@@ -4,7 +4,7 @@ include_once ("ModelAbstractCardHolder.php");
 include_once ("ModelVolunteer.php");
 session_start();
 
-$UserModel = new User();
+$UserModel = new ModelBrain();
 
 function idChangeView ($id) {
 	$out[0] = "";

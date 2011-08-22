@@ -26,7 +26,7 @@ $().ready(
 			// Get volunteer and set fields.
 			$.ajax({
 					type: "POST",
-					url: "Model/ModelMenu.php",
+					url: "Model/ModelInterface.php",
 					data: "m=getVolunteer" + "&id=" + id,
 					
 					success: function (data) {
@@ -50,7 +50,7 @@ $().ready(
 				
 				$.ajax({
 						type: "POST",
-						url: "Model/ModelMenu.php",		
+						url: "Model/ModelInterface.php",		
 						data: "m=newId",			
 						success: function (data) {
 							idChanged = true;
@@ -77,13 +77,13 @@ $().ready(
 			
 				$.ajax({
 					type: "POST",
-					url: "Model/ModelMenu.php",
+					url: "Model/ModelInterface.php",
 					data: "m=updateVolunteer" + "&name=" + name 
 						   + "&s_name=" + surName + "&aktiv=" + aktiv + "&newid=" + newId + "&oldid=" + id ,
 					dataType: "text",
 					success: function (data) {
 						// TODO : Better dialog box. ie. yes / no
-						confirm(data);
+						alert(data);
 						var base_url = './?view=';
 				    	document.location.href = base_url + "workgroup";
 						

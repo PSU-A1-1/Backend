@@ -33,7 +33,7 @@ $().ready(function() {
 	} else {
 		    $.ajax({
 			type: "POST",
-			url: "Model/ModelMenu.php",
+			url: "Model/ModelInterface.php",
 			data: "m=activate&ids=" + ids.join('|'),
 			dataType: "text",
 			success: function (data) {

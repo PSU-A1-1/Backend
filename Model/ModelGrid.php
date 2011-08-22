@@ -50,7 +50,7 @@ function workGroup() {
 // Show all function.
 function showAll() {
 	// Take care of user model!!!
-	$UserModel = new User();
+	$UserModel = new ModelBrain();
 	// Get all users
 	$users = $UserModel->searchVolunteers("", "id");
 

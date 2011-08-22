@@ -3,17 +3,21 @@
 // Debug
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-//include_once 'cardholder.php';
-//include_once 'volunteer.php';
 
-class User {
+include_once 'connect.php';
+include_once 'ModelAbstractCardHolder.php';
+include_once 'ModelVolunteer.php';
+
+class ModelBrain {
 	public $std_beers;
 	public $std_drinks;
 
 	public function __construct() {
-		include_once 'connect.php';
-		$this->std_beers = 6;
-		$this->std_drinks = 4;
+
+	//echo '<script language="javascript">alert("contructed")</script>;'; 
+	
+	$this->std_beers = 6;
+	$this->std_drinks = 4;
 
 	}
 	public function searchVolunteer($id) {

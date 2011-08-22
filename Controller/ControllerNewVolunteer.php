@@ -19,7 +19,7 @@ $().ready(
 
 				$.ajax({
 					type: "POST",
-					url: "Model/ModelMenu.php",
+					url: "Model/ModelInterface.php",
 					data: "m=newVolunteer" + "&name=" + name + "&s_name=" + surName + "&s_id=" + volID + "&aktiv=" + aktiv,
 					dataType: "text",
 					success: function (data) {
